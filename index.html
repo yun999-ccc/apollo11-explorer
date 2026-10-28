@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阿波罗11号｜飞船外观研究</title>
+<meta name="description" content="旋转查看阿波罗11号指令舱、服务舱与登月舱的三维外观，对照NASA任务图纸、核对尺寸与资料依据。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23172b3b'/%3E%3Cpath d='M9 30 20 7l11 23M13 22h14' fill='none' stroke='%23c9a45b' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
+</head>
+<body>
+<header class="masthead">
+ <a class="identity" href="./" aria-label="阿波罗11号飞船外观研究首页"><span class="mission-mark" aria-hidden="true">A<span>11</span></span><span><strong>阿波罗11号</strong><small>飞船外观研究</small></span></a>
+ <div class="mission-context"><span>1969</span><span class="sep"></span><span>CSM-107 & LM-5</span></div>
+ <div class="header-actions"><span class="status-dot">图纸复核中</span><button class="button outline" id="sources-open" aria-label="查看图纸与核对记录">图纸与依据 <span aria-hidden="true">↗</span></button></div>
+</header>
+<main class="workspace">
+<aside class="navigator" aria-label="模型与尺寸">
+ <div class="aside-top"><h1>探索飞船</h1><p>从整体，到每一个部件。</p></div>
+ <nav class="assembly-nav" aria-label="选择飞船模块">
+  <button data-focus="all" class="assembly active" aria-pressed="true"><span class="assembly-icon"><svg viewBox="0 0 42 46"><path d="M7 18 15 3l8 15v17H7Zm0 4h16M10 35l-2 8h14l-2-8M28 30l5-11 6 11v7H28Zm0 7-3 6m14-6 2 6m-8-6v6"/></svg></span><span><strong>飞船组合</strong><small>CSM + LM · 等比例</small></span><span class="nav-arrow">›</span></button>
+  <button data-focus="cm" class="assembly" aria-pressed="false"><span class="assembly-icon"><svg viewBox="0 0 42 46"><path d="m7 35 11-25h6l11 25q-14 6-28 0ZM18 10V6h6v4M10 31h22M18 21h6v5h-6Z"/></svg></span><span><strong>指令舱</strong><small>Columbia · CM-107</small></span><span class="nav-arrow">›</span></button>
+  <button data-focus="sm" class="assembly" aria-pressed="false"><span class="assembly-icon"><svg viewBox="0 0 42 46"><path d="M11 5h20v27H11ZM11 10h20M11 27h20M16 32l-3 10h16l-3-10M7 18h8m12 0h8M8 15v6m26-6v6"/></svg></span><span><strong>服务舱</strong><small>SM-107</small></span><span class="nav-arrow">›</span></button>
+  <button data-focus="lm" class="assembly" aria-pressed="false"><span class="assembly-icon"><svg viewBox="0 0 42 46"><path d="m12 21 3-13h12l4 13v8H11Zm5-13V5h8v3M11 29 6 41m25-12 5 12M3 41h7m22 0h7M10 24h22M17 30v11m7-11v11M17 34h7m-7 4h7M17 20h7v6h-7"/></svg></span><span><strong>登月舱</strong><small>Eagle · LM-5</small></span><span class="nav-arrow">›</span></button>
+ </nav>
+ <section class="dimension-summary" aria-live="polite"><div class="section-label">图纸标注尺寸 <span>m</span></div><div id="dimension-values"></div><a id="dimension-source" href="assets/A11_PressKit.pdf" target="_blank" rel="noopener">查看原始尺寸页 <span>↗</span></a></section>
+ <section class="selection-detail" id="selection-detail" aria-live="polite"><span class="section-label">部件信息</span><h2 id="selection-title">按真实尺度查看</h2><p id="selection-description">拖动旋转，滚轮缩放；点击模型上的部件可查看资料依据。</p><div id="part-evidence" hidden></div></section>
+ <div class="aside-bottom"><span class="evidence-key"><i></i> 有标注尺寸</span><span class="evidence-key inferred"><i></i> 图示推定／待核</span><p>主尺寸有来源，不等于全部外观已符合图纸。</p></div>
+</aside>
+<section class="stage" aria-label="交互式三维飞船模型">
+ <div class="stage-caption"><span id="stage-code">CSM-107 / LM-5</span><span>1 单位 = 1 米</span></div>
+ <div id="viewport" tabindex="0" aria-label="三维模型：拖动旋转，滚轮缩放，按1至4切换视图，按R复位"></div>
+ <div id="loading"><span class="load-ring"></span><strong>建立三维视图</strong><small>正在加载飞船外观与图纸尺寸</small></div>
+ <div class="stage-toolbar" aria-label="显示设置">
+  <button id="dimensions-toggle" class="tool" title="尺寸标注" aria-label="尺寸标注" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m5 18 13-13 3 3L8 21Zm3-3 2 2m1-5 2 2m1-5 2 2M3 3v8m0-8h8"/></svg><span>尺寸</span></button>
+  <button id="wire-toggle" class="tool" title="线框视图" aria-label="线框视图" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m12 3 9 5v9l-9 5-9-5V8Zm0 0v10m9-5-9 5-9-5m9 5v9M3 17l9-14 9 14"/></svg><span>线框</span></button>
+  <button id="explode-toggle" class="tool" title="分离上升级与指令舱" aria-label="分舱查看" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m4 8 8-4 8 4-8 4Zm0 8 8 4 8-4M4 12l8 4 8-4M12 1v3m0 16v3"/></svg><span>分舱</span></button>
+  <span class="tool-rule"></span>
+  <button id="grid-toggle" class="tool selected" title="参考网格" aria-label="参考网格" aria-pressed="true"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3ZM3 9h18M3 15h18M9 3v18m6-18v18"/></svg><span>网格</span></button>
+  <button id="photo-save" class="tool" title="保存当前视图" aria-label="保存当前视图"><svg viewBox="0 0 24 24"><path d="M3 7h5l2-3h4l2 3h5v13H3Zm13 6a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg><span>截图</span></button>
+ </div>
+ <div id="dimension-labels" aria-hidden="true"></div>
+ <div class="view-dock"><div class="view-buttons" role="group" aria-label="相机视图"><button data-view="iso" class="active" aria-pressed="true">立体</button><button data-view="front" aria-pressed="false">正视</button><button data-view="side" aria-pressed="false">侧视</button><button data-view="top" aria-pressed="false">俯视</button></div><button id="reset-view" class="reset-button" aria-label="复位视角" title="复位视角"><svg viewBox="0 0 24 24"><path d="M4 10a8 8 0 1 1 1 8M4 4v6h6"/></svg></button></div>
+ <div class="stage-footer"><span><span class="mouse-hint">⤧</span> 拖动旋转 <span class="hint-gap">滚轮缩放</span></span><button id="compare-open">对照原始图纸 <span>↗</span></button></div>
+ <div class="model-caption"><span id="model-name">阿波罗11号飞船组合</span><small id="model-subtitle">指令／服务舱与登月舱并列展示</small></div>
+</section>
+</main>
+<div class="bottom-notice"><span class="notice-symbol">i</span><p>研究模型：已建立主尺寸约束；侧后轮廓、附件定位及36／37英寸脚垫冲突仍待复核，当前不声称完整符合图纸。</p><button id="audit-open">查看核对记录</button></div>
+<dialog id="source-dialog" aria-labelledby="dialog-title"><div class="dialog-head"><div><span>原始资料 / 核对记录</span><h2 id="dialog-title">模型有据可查</h2></div><button class="close-button" id="sources-close" aria-label="关闭图纸与依据">×</button></div><div class="dialog-tabs" role="tablist"><button role="tab" data-tab="drawings" aria-selected="true" class="active">原始图纸</button><button role="tab" data-tab="checks" aria-selected="false">尺寸核对</button><button role="tab" data-tab="issues" aria-selected="false">待核事项</button></div><div class="dialog-body" id="source-content"></div></dialog>
+<dialog id="compare-dialog" aria-labelledby="compare-title"><div class="dialog-head"><div><span>图纸对照</span><h2 id="compare-title">回到原始资料</h2></div><button class="close-button" id="compare-close" aria-label="关闭图纸对照">×</button></div><div class="compare-tools"><label>选择源图 <select id="drawing-choice"><option value="lm-front-panels.webp">LM-5 正面热防护面板</option><option value="csm-dimensions.webp">指令舱／服务舱尺寸图</option><option value="lm-assembly.webp">登月舱完整装配示意</option><option value="lm-landing-gear.webp">LM-5 着陆架结构</option></select></label><button id="compare-fit">正视对应模型</button><button id="drawing-zoom">放大源图</button></div><div class="comparison-grid"><div class="compare-render"><img id="compare-snapshot" alt="当前模型视图"><span>当前模型视图 · <b id="compare-view-label">正视</b></span></div><div class="compare-sheet" id="compare-sheet"><img id="drawing-image" src="assets/lm-front-panels.webp" alt="LM-5原始正面热防护图"><span id="drawing-caption">LM-5 Structures Handout · PDF 第20页</span></div></div><p class="compare-disclosure">源图包含标注与构造线；并排查看用于人工复核，未通过全部多视图轮廓校验。</p></dialog>
+<dialog id="part-dialog" aria-labelledby="part-dialog-title"><div class="dialog-head"><div><span>选中部件</span><h2 id="part-dialog-title"></h2></div><button class="close-button" id="part-close" aria-label="关闭部件信息">×</button></div><div class="dialog-body"><p class="checks-lead" id="part-dialog-source"></p><span class="evidence-pill" id="part-dialog-confidence"></span><p class="source-credit">部件高亮仅表示选中。几何精度以资料标记和核对记录为准。</p></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">请开启 JavaScript 以旋转查看三维飞船。原始资料可直接查看：<a href="assets/A11_PressKit.pdf">Apollo 11 Press Kit</a>。</p></noscript>
+<script type="module" src="app.js"></script>
+</body></html>

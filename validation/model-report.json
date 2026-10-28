@@ -1,0 +1,112 @@
+{
+  "units": "metres",
+  "constraints": [
+    {
+      "name": "服务舱筒体直径",
+      "actual_m": 3.911600112915039,
+      "target_m": 3.9116,
+      "error_m": 1.1291503909660605e-7,
+      "pass": true,
+      "source": "Press Kit PDF p93"
+    },
+    {
+      "name": "服务舱筒体高度",
+      "actual_m": 4.521199941635132,
+      "target_m": 4.521199999999999,
+      "error_m": 5.836486760557591e-8,
+      "pass": true,
+      "source": "Press Kit PDF p93"
+    },
+    {
+      "name": "指令舱最大直径",
+      "actual_m": 3.911600112915039,
+      "target_m": 3.9116,
+      "error_m": 1.1291503909660605e-7,
+      "pass": true,
+      "source": "Press Kit PDF p93"
+    },
+    {
+      "name": "登月舱前舱门宽",
+      "actual_m": 0.8127999901771545,
+      "target_m": 0.8128,
+      "error_m": 9.822845425944138e-9,
+      "pass": true,
+      "source": "Press Kit PDF p100"
+    },
+    {
+      "name": "登月舱前舱门高",
+      "actual_m": 0.812799990177155,
+      "target_m": 0.8128,
+      "error_m": 9.822844981854928e-9,
+      "pass": true,
+      "source": "Press Kit PDF p100"
+    }
+  ],
+  "mesh_count": 605,
+  "strict_drawing_match": false,
+  "unresolved": [
+    "LM脚垫36/37英寸冲突",
+    "LM侧后热防护轮廓未完成注册",
+    "CM开口、SM附件位置需要多视图复核",
+    "天线与喷管细部缺少完整尺寸链"
+  ],
+  "source_scope": "CSM107 / LM5",
+  "triangles": 125080,
+  "counts": [
+    {
+      "name": "LM着陆架",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    {
+      "name": "LM脚垫",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    {
+      "name": "LM接触探针",
+      "actual": 3,
+      "expected": 3,
+      "pass": true
+    },
+    {
+      "name": "CM观察窗",
+      "actual": 5,
+      "expected": 5,
+      "pass": true
+    },
+    {
+      "name": "LM前观察窗",
+      "actual": 2,
+      "expected": 2,
+      "pass": true
+    },
+    {
+      "name": "SM姿控发动机组",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    {
+      "name": "LM姿控发动机组",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    },
+    {
+      "name": "SM高增益碟面",
+      "actual": 4,
+      "expected": 4,
+      "pass": true
+    }
+  ],
+  "attachments": {
+    "SM_EPS_top_m": 7.39300012588501,
+    "SM_top_m": 7.492999999999999,
+    "inside_axial_envelope": true
+  },
+  "finite_geometry": true,
+  "issues": []
+}

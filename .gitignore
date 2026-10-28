@@ -1,0 +1,5 @@
+.DS_Store
+.qa-model.mjs
+node_modules/
+outputs/
+*.log

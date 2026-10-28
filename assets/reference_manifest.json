@@ -1,0 +1,77 @@
+{
+  "scope": [
+    "CM107",
+    "SM107",
+    "LM5_ascent",
+    "LM5_descent"
+  ],
+  "status": "work_in_progress",
+  "sources": [
+    {
+      "id": "A11_PRESS",
+      "file": "references/A11_PressKit.pdf",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf",
+      "role": "canonical mission dimensions and diagrams",
+      "configuration": "CSM107, LM5",
+      "used_pdf_pages": [
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        99,
+        100,
+        101,
+        102,
+        105,
+        106,
+        107
+      ],
+      "sha256": "fcb1ae7a88e5251559dde0b7d51ec71f06795cf78f64491aa9594fdf9ca89334",
+      "bytes": 8858407
+    },
+    {
+      "id": "LM5_TRAINING",
+      "file": "references/a11LM5structures.pdf",
+      "url": "https://www.apollojournals.org/alsj/a11/a11LM5structures.pdf",
+      "role": "canonical LM5 structure, panel front outline and gear construction",
+      "date": "May 1969",
+      "used_pdf_pages": [
+        4,
+        5,
+        20,
+        22,
+        24,
+        25,
+        29
+      ],
+      "sha256": "b794e99c6fe0c5de532a5b10146bdc4b23edc54c1696ccef0782197b755482d5",
+      "bytes": 3807361
+    },
+    {
+      "id": "LDW_LATE",
+      "file": "references/LDW280_54000B-1-4-3.pdf",
+      "url": "https://www.ibiblio.org/apollo/jldw/LDW280_54000B-1-4-3.pdf",
+      "role": "excluded from canonical constraints pending revision applicability",
+      "reason": "1970 stamp seen on drawing; not proof of LM5 as flown",
+      "sha256": "d344f82edaee93c243ecbe1e70ec5640d7c41400c7e33e101eb2a2ab321bc860",
+      "bytes": 314958
+    }
+  ],
+  "hard_gates": {
+    "structural_part_counts": "exact where specified",
+    "dimension_error_m": 0.002,
+    "silhouette_iou": 0.95,
+    "orthographic_landmark_max_fraction": 0.01,
+    "unresolved_canonical_conflicts": 0
+  },
+  "prohibited_claims": [
+    "manufacturing certified",
+    "all drawing requirements passed before validation"
+  ],
+  "delivery": "interactive web model",
+  "geometry_source": "dist/model.js",
+  "strict_completion": false
+}
