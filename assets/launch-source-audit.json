@@ -1,0 +1,150 @@
+{
+  "version": "deep-20261028-1",
+  "target": "Apollo11 SA-506 / CSM-107 / LM-5，发射构型",
+  "baseline_commit": "0c920a04bb9678b888437fec2bef73efe208610b",
+  "sources": [
+    {
+      "id": "SA506",
+      "title": "Saturn V Flight Manual（SA-506飞行手册）",
+      "date": "1969-02-25; changed 1969-06-10",
+      "file": "SA506-flight-manual.pdf",
+      "url": "https://www.ibiblio.org/apollo/Documents/Saturn_V_Flight_Manual_SA-506.pdf",
+      "scope": "直接适用于SA-506；信息性手册，原序言说明发生冲突时由控制文件决定。",
+      "pages": "PDF81 / 印刷5-2 图5-1；PDF103 / 印刷5-24 图5-19；PDF104 / 印刷5-25。",
+      "caveat": "扫描本233页，有效页表标称248页。空白、删除及缺页尚未逐页完成对照，不能宣称扫描完整。",
+      "sha256": "2ff1b9917500a4950061bdc250fff2954020f5c8b5bf775ba33c02c871e91d19",
+      "scan_pages": 233,
+      "bytes": 183386679
+    },
+    {
+      "id": "CR1539",
+      "title": "NASA-CR-1539（结构动力学技术报告）",
+      "date": "1970-06-01",
+      "file": "NASA-CR-1539.pdf",
+      "url": "https://ntrs.nasa.gov/citations/19700019695",
+      "scope": "土星五号通用构型，提供STA -115基准、各级接口与五发动机排列；不是SA-506竣工图。",
+      "pages": "PDF15 / 印刷2，图1-1。",
+      "extract": "evidence/cr1539-fig1-1.pdf",
+      "sha256": "f12ee51991065be1f2534ecc1420301fafb72f296551c733faf8d28a56673e5e",
+      "scan_pages": 58,
+      "bytes": 2784066
+    },
+    {
+      "id": "TM53770",
+      "title": "NASA-TM-X-53770（气动模型几何）",
+      "date": "1968-08-21",
+      "file": "NASA-TM-X-53770.pdf",
+      "url": "https://ntrs.nasa.gov/citations/19690009748",
+      "scope": "图上明确写S-IVB-501、S-II-501及S-IC-1。仅辅助上部参考站位，未把SA-501当成SA-506竣工状态。",
+      "pages": "PDF34 / 印刷24，图2。",
+      "extract": "evidence/tm53770-fig2.pdf",
+      "sha256": "f60fed99deaf8228fa2490e4eb68097f752d871ddbb77e9841700ec9c3670a9d",
+      "scan_pages": 186,
+      "bytes": 40456212
+    },
+    {
+      "id": "F1",
+      "title": "Apollo 6 Quick Reference（阿波罗6号速查手册）",
+      "date": "任务资料；精确出版日期未在本轮确认",
+      "file": "apollo6-quick-reference.pdf",
+      "url": "https://www.ibiblio.org/apollo/Documents/apollo_6_quick_reference.pdf",
+      "scope": "PDF52，§5.6。明确区分发动机宽12英尺4英寸与喷口最大直径11英尺7英寸；SA-504以后推力提高的脚注未证明几何完全不变。",
+      "pages": "PDF52，§5.6。",
+      "extract": "evidence/f1-fact-sheet.pdf",
+      "sha256": "f717017b6d0336cd1ff50aeb2f6bec59123903351efe3d1f33d7e7bd0e85ca3f",
+      "scan_pages": 93,
+      "bytes": 29303815
+    },
+    {
+      "id": "AS506-EVAL",
+      "title": "AS-506 Flight Evaluation（飞行评估报告）",
+      "date": "1969-09-20",
+      "file": "AS506-flight-evaluation.pdf",
+      "url": "https://www.ibiblio.org/apollo/Documents/lvfea-AS506-Apollo11.pdf",
+      "scope": "飞行后任务资料；已确认封面和目录。本轮未从该报告得到可独立认证全部外观的制造尺寸。",
+      "pages": "封面、目录；不用于填补外形尺寸。",
+      "sha256": "84b23ee1f3e8e76db20e4e6c1a5bc8b83cd9bc09950c43c43330bce753c3a9c7",
+      "scan_pages": 280,
+      "bytes": 11455509
+    },
+    {
+      "id": "SP8120",
+      "title": "NASA SP-8120（液体火箭发动机喷管）",
+      "date": "1976-07",
+      "file": "NASA-SP-8120.pdf",
+      "url": "https://ntrs.nasa.gov/citations/19770009165",
+      "scope": "表1明确区分流道喉径35英寸、出口直径140英寸、喉部到出口轴向长度158英寸。用作通用F‑1工程标称约束；并非SA-506单台发动机的竣工测量。",
+      "pages": "PDF20 / 印刷6，表1末行。",
+      "extract": "evidence/sp8120-table1.pdf",
+      "sha256": "c6aa504371b090027fc4b597aad7ca7595e6f9489997857bbc573aab437bf79f",
+      "scan_pages": 126,
+      "bytes": 4732902
+    },
+    {
+      "id": "R3896",
+      "title": "Rocketdyne R-3896-1（F‑1发动机技术手册）",
+      "date": "初版1967-03-31；当前汇编封面更改12：1972-05-12",
+      "file": "Rocketdyne-R3896-1.pdf",
+      "url": "https://archive.org/details/r-3896-1-technical-manual-engine-data-f-1-rocket-engine-31-mar-1967",
+      "scope": "图2-22原页注明1967-08-10，更改2：安装摆心至出口包络215.50英寸、端部最大包络直径147英寸。包络与内部流道分开使用；汇编内1970—1972更改不直接视为1969状态。",
+      "pages": "PDF148 / 印刷2-23，图2-22；PDF35 / 印刷1-9，图1-8为1970更改。",
+      "sha256": "fb281e25e0a36a23942299ebf738ae078dae35c4aca83d079d7524f532f2d1ec",
+      "scan_pages": 262,
+      "bytes": 9279507
+    }
+  ],
+  "conflicts": [
+    {
+      "item": "F‑1喷口直径",
+      "status": "冲突未解决",
+      "evidence": "早期技术表为139英寸；NASA SP-8120工程表为140英寸内部流道出口；R-3896-1的147英寸是外部包络；Apollo11新闻资料写接近14英尺。端点、版本和证据精度不同，不能混为一个尺寸。",
+      "decision": "当前采用SP-8120的140英寸内部出口、35英寸喉径、158英寸轴向长度。139英寸和宣传稿文字的差异保留；外壳显示厚度及SA-506单台发动机适用性未认证。"
+    },
+    {
+      "item": "S‑IVB标称长度",
+      "status": "端点存在歧义",
+      "evidence": "SA-506图1-3写59.3英尺，图6-1写59.0英尺；任务新闻资料写58.3英尺。",
+      "decision": "核心接口采用绝对站位2519/2746.5；上接口3222.555暂引SA-501图，并明确适用范围。不再把59.x当独立无重叠分段累加。"
+    },
+    {
+      "item": "S‑IC底部宽度",
+      "status": "原文疑点",
+      "evidence": "SA-506图1-3扫描表写含翼63.0英尺，不能直接与主体33英尺等同。",
+      "decision": "主体用33英尺；翼展没有据此放大，保留原模型且未认证。"
+    },
+    {
+      "item": "收拢LM‑5",
+      "status": "关键尺寸缺失",
+      "evidence": "LM着陆架报告及原始SLA示意图证实收拢关系；不足以约束每个支点、折角和动态间隙。",
+      "decision": "保留原始剖视图；不把展开LM模型压缩后冒充真实收拢模型。"
+    }
+  ],
+  "coordinate_contract": "Blender工程：Z向上，米；名义F‑1喷口平面z=0，对应STA -115英寸。z=(STA+115)×0.0254。GLB以Y向上导出。",
+  "confirmed": [
+    "五个F‑1，四外置与一中央的排列拓扑",
+    "S‑II结构参考站位1541/2519",
+    "分离面1564、1760、2746.5",
+    "一、二级主体直径396英寸；IU标称高36英寸"
+  ],
+  "inferred": [
+    "原NASA展示模型附件的安装位置与黑白涂装",
+    "F‑1中间曲线、显示壁厚与管路仍为近似；仅内部喉径、出口和轴向长度采用工程表约束",
+    "LES桁架接点、横撑和鼻锥轮廓",
+    "上部.555英寸站位从SA-501气动图借用，不是SA-506制造公差"
+  ],
+  "unverified": [
+    "SA‑506单台F‑1配置与精确安装坐标；工程名义值和宣传稿差异的原因",
+    "LES完整焊接桁架接点表",
+    "LM‑5收拢几何及SPS喷管间隙",
+    "照片相机标定与独立多视图误差验收"
+  ],
+  "source_precision": "软件检查容差4毫米只用于发现导出实现错误。原资料多为标称或取整值，不能据此宣称实物误差小于4毫米。",
+  "held_out": {
+    "id": "S69-38660",
+    "date": "1969-07-01",
+    "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/images11.html",
+    "use": "保留任务实拍，用于定性查看大体外形与涂装。照片具有透视、遮挡和未知镜头参数，未伪造像素级通过率。",
+    "metric_status": "相机标定未完成，未通过独立多视图认证"
+  },
+  "strict_drawing_match": false
+}

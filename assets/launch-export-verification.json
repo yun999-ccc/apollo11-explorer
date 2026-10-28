@@ -1,0 +1,130 @@
+{
+  "verification": "fresh GLB import; hard-coded independent document transcription",
+  "checks": [
+    {
+      "name": "S-II top diameter at STA2519",
+      "actual_m": 10.05834150314331,
+      "target_m": 10.0584,
+      "error_m": 5.849685669012672e-05,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "SA-506 Fig5-1"
+    },
+    {
+      "name": "S-IVB lower diameter at STA2746.5",
+      "actual_m": 6.604043006896973,
+      "target_m": 6.604,
+      "error_m": 4.300689697256388e-05,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "SA-506 Fig5-19; CR1539 Fig1-1"
+    },
+    {
+      "name": "IU lower diameter",
+      "actual_m": 6.604202508926392,
+      "target_m": 6.604,
+      "error_m": 0.0002025089263915092,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "TM-X-53770 Fig2, SA501 provisional upper station"
+    },
+    {
+      "name": "IU upper diameter",
+      "actual_m": 6.604237079620361,
+      "target_m": 6.604,
+      "error_m": 0.00023707962036123575,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "TM-X-53770 Fig2, SA501 provisional upper station"
+    },
+    {
+      "name": "Adapter top diameter",
+      "actual_m": 3.9117825031280518,
+      "target_m": 3.9116,
+      "error_m": 0.00018250312805179192,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "Apollo11 Press Kit PDF93 / 28ft adapter"
+    },
+    {
+      "name": "F1 inner exit diameter 1",
+      "actual_m": 3.5560001134872437,
+      "target_m": 3.556,
+      "error_m": 1.1348724360260576e-07,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal140in; SA506 applicability unresolved"
+    },
+    {
+      "name": "F1 inner exit diameter 2",
+      "actual_m": 3.5560001134872437,
+      "target_m": 3.556,
+      "error_m": 1.1348724360260576e-07,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal140in; SA506 applicability unresolved"
+    },
+    {
+      "name": "F1 inner exit diameter 3",
+      "actual_m": 3.5560001134872437,
+      "target_m": 3.556,
+      "error_m": 1.1348724360260576e-07,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal140in; SA506 applicability unresolved"
+    },
+    {
+      "name": "F1 inner exit diameter 4",
+      "actual_m": 3.555999994277954,
+      "target_m": 3.556,
+      "error_m": 5.7220459481754915e-09,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal140in; SA506 applicability unresolved"
+    },
+    {
+      "name": "F1 inner exit diameter 5",
+      "actual_m": 3.5560001134872437,
+      "target_m": 3.556,
+      "error_m": 1.1348724360260576e-07,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal140in; SA506 applicability unresolved"
+    },
+    {
+      "name": "F1 throat diameter",
+      "actual_m": 0.8890001773834229,
+      "target_m": 0.889,
+      "error_m": 1.77383422839128e-07,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal35in"
+    },
+    {
+      "name": "F1 throat to exit length",
+      "actual_m": 4.013199806213379,
+      "target_m": 4.0132,
+      "error_m": 1.937866214163364e-07,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "NASA SP8120 Table1 nominal158in"
+    },
+    {
+      "name": "Nominal stack height",
+      "actual_m": 110.64240264892578,
+      "target_m": 110.6424,
+      "error_m": 2.6489257862749582e-06,
+      "tolerance_m": 0.004,
+      "pass_": true,
+      "basis": "SA506 Fig1-3 nominal363ft, not manufacturing tolerance"
+    }
+  ],
+  "counts": {
+    "F1_bells": 5,
+    "F1_inner_surfaces": 5,
+    "LES_legs": 4
+  },
+  "finite_geometry": true,
+  "mesh_count": 169,
+  "strict_drawing_match": false
+}

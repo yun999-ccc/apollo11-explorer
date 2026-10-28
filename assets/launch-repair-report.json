@@ -1,90 +1,201 @@
 {
+  "version": "deep-20261028-1",
   "source_model": {
     "file": "saturn-v-nasa.glb",
     "sha256": "6c44497bce54ee0b09d0edb8e33a6f484762a320dab1c54b383e434f5bba06b5"
   },
   "units": "metres",
+  "coordinate_contract": {
+    "axis": "Z-up engineering scene; Y-up GLB",
+    "origin": "Nominal F1 exit plane, vehicle STA -115 in",
+    "station_to_z": "(station_in + 115) × 0.0254",
+    "rounding": "Upper .555 stations are generic SA-501 references; not SA-506 manufacturing tolerance"
+  },
   "checks": [
     {
       "name": "S-IC主体直径",
-      "actual_m": 10.058403015136719,
-      "target_m": 10.0584,
-      "error_m": 3.0151367180764055e-06,
+      "actual_m": 10.0584135055542,
+      "target_m": 10.058399999999999,
+      "error_m": 1.3505554200321512e-05,
+      "implementation_tolerance_m": 0.004,
       "pass": true,
-      "basis": "Apollo 11 Press Kit PDF p113: 33 ft"
+      "basis": "SA-506 Fig 1-3 / NASA-CR-1539 Fig 1-1",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
     },
     {
       "name": "S-II主体直径",
-      "actual_m": 10.058403015136719,
-      "target_m": 10.0584,
-      "error_m": 3.0151367180764055e-06,
+      "actual_m": 10.0584135055542,
+      "target_m": 10.058399999999999,
+      "error_m": 1.3505554200321512e-05,
+      "implementation_tolerance_m": 0.004,
       "pass": true,
-      "basis": "Apollo 11 Press Kit PDF p113: 33 ft"
+      "basis": "SA-506 Fig 5-1",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
     },
     {
       "name": "S-IVB主体直径",
-      "actual_m": 6.604031085968018,
+      "actual_m": 6.604112148284912,
       "target_m": 6.604,
-      "error_m": 3.1085968017485754e-05,
+      "error_m": 0.000112148284912017,
+      "implementation_tolerance_m": 0.004,
       "pass": true,
-      "basis": "NASA spacecraft/adapter drawing: 260 in; Press Kit 21.7 ft is rounded"
+      "basis": "NASA-CR-1539 Fig 1-1; nominal 21.7 ft in SA-506",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
     },
     {
       "name": "服务舱主体直径",
-      "actual_m": 3.9116870164871216,
+      "actual_m": 3.9118263721466064,
       "target_m": 3.9116,
-      "error_m": 8.701648712161614e-05,
+      "error_m": 0.00022637214660647942,
+      "implementation_tolerance_m": 0.004,
       "pass": true,
-      "basis": "Apollo 11 Press Kit PDF p93: 154 in"
+      "basis": "Apollo 11 Press Kit PDF p93",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
+    },
+    {
+      "name": "S-II顶端站位2519",
+      "actual_m": 66.9036,
+      "target_m": 66.9036,
+      "error_m": 0.0,
+      "implementation_tolerance_m": 0.004,
+      "pass": true,
+      "basis": "SA-506 Fig 5-1 / Fig 5-19",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
+    },
+    {
+      "name": "S-II/S-IVB分离面2746.5",
+      "actual_m": 72.68209999999999,
+      "target_m": 72.68209999999999,
+      "error_m": 0.0,
+      "implementation_tolerance_m": 0.004,
+      "pass": true,
+      "basis": "SA-506 Fig 5-19 / text p5-25",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
+    },
+    {
+      "name": "仪器舱高度",
+      "actual_m": 0.9144000000000005,
+      "target_m": 0.9144,
+      "error_m": 5.551115123125783e-16,
+      "implementation_tolerance_m": 0.004,
+      "pass": true,
+      "basis": "SA-506 Fig 1-3, IU = 3 ft",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
+    },
+    {
+      "name": "适配器高度",
+      "actual_m": 8.534400000000005,
+      "target_m": 8.5344,
+      "error_m": 5.329070518200751e-15,
+      "implementation_tolerance_m": 0.004,
+      "pass": true,
+      "basis": "Apollo 11 Press Kit: 28 ft adapter",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
     },
     {
       "name": "逃逸塔桁架高度",
       "actual_m": 3.048,
       "target_m": 3.048,
       "error_m": 0.0,
+      "implementation_tolerance_m": 0.004,
       "pass": true,
-      "basis": "CSM News Reference p140: 10 ft"
+      "basis": "CSM News Reference p140: nominal 10 ft",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
     },
     {
-      "name": "整箭总高",
-      "actual_m": 110.64132589288056,
+      "name": "整箭标称总高",
+      "actual_m": 110.64240264892578,
       "target_m": 110.64240000000001,
-      "error_m": 0.0010741071194502183,
+      "error_m": 2.6489257720641035e-06,
+      "implementation_tolerance_m": 0.004,
       "pass": true,
-      "basis": "Apollo 11 nominal 363 ft"
+      "basis": "Apollo 11 Press Kit / SA-506 Fig1-3: nominal 363 ft",
+      "evidence_status": "source_constraint",
+      "note": "Numerical agreement checks implementation only; it does not certify historical fidelity."
+    }
+  ],
+  "stations": [
+    {
+      "station_in": 48.5,
+      "z_m": 4.1529,
+      "source": "NASA-CR-1539 / TM-X-53770 (generic/SA-501)"
+    },
+    {
+      "station_in": 1541,
+      "z_m": 42.0624,
+      "source": "SA-506 Fig5-1/5-19"
+    },
+    {
+      "station_in": 1564,
+      "z_m": 42.6466,
+      "source": "SA-506 Fig5-1/5-19"
+    },
+    {
+      "station_in": 1760,
+      "z_m": 47.625,
+      "source": "SA-506 Fig5-1/5-19"
+    },
+    {
+      "station_in": 2519,
+      "z_m": 66.9036,
+      "source": "SA-506 Fig5-1/5-19"
+    },
+    {
+      "station_in": 2746.5,
+      "z_m": 72.68209999999999,
+      "source": "SA-506 Fig5-1/5-19"
+    },
+    {
+      "station_in": 3222.555,
+      "z_m": 84.77389699999999,
+      "source": "NASA-CR-1539 / TM-X-53770 (generic/SA-501)"
+    },
+    {
+      "station_in": 3258.555,
+      "z_m": 85.68829699999999,
+      "source": "NASA-CR-1539 / TM-X-53770 (generic/SA-501)"
     }
   ],
   "stages_z_m": {
     "S-IC": [
       0,
-      42.062400000000004
+      42.6466
     ],
     "S-II": [
-      42.062400000000004,
-      66.9036
+      42.6466,
+      72.68209999999999
     ],
     "S-IVB": [
-      66.9036,
-      84.67344000000001
+      72.68209999999999,
+      84.77389699999999
     ],
     "IU": [
-      84.67344000000001,
-      85.58784000000001
+      84.77389699999999,
+      85.68829699999999
     ],
     "SLA": [
-      85.58784000000001,
-      94.12224000000002
+      85.68829699999999,
+      94.222697
     ],
     "SM": [
-      94.12224000000002,
-      98.64344000000001
+      94.222697,
+      98.74389699999999
     ],
     "CM": [
-      98.64344000000001,
-      102.12324000000002
+      98.74389699999999,
+      102.22369699999999
     ],
     "LES": [
-      101.22,
+      101.32045699999999,
       110.6424
     ]
   },
@@ -94,24 +205,37 @@
     "LES_primary_legs": 4
   },
   "F1_dimensions": {
-    "height_m": 5.60832,
-    "max_width_m": 3.6576000000000004,
-    "source": "NASA SP-4545 PDF p107, printed p106, photograph dimensions 18.4 ft tall / 12 ft wide",
-    "nozzle_contour": "Photo-derived approximate contour; not a dimensioned engineering nozzle profile",
-    "centers": "Retained from NASA display source; installation positions unverified"
+    "height_m": 5.8521600000000005,
+    "internal_exit_diameter_m": 3.556,
+    "internal_throat_diameter_m": 0.889,
+    "throat_to_exit_m": 4.013199999999999,
+    "display_wall_m": 0.035,
+    "basis": "NASA SP-8120 Table1, PDF20 printed6: throat35in, exit140in, length158in. R3896-1 Fig2-22 envelope gimbal-to-exit215.5in, page dated10Aug1967. Individual SA506 engine applicability still unverified.",
+    "nozzle_contour": "Approximate intermediate contour constrained by engineering throat/exit/axial length; NOT a manufacturing contour",
+    "centers": "NASA display model locations retained; actual mounting coordinates remain unverified"
   },
   "repairs": [
-    "Axial section stations and diameters registered separately",
-    "Source blue flag background replaced by white; flag rectangles retained",
-    "Solid LES approximation removed; open truss rebuilt",
-    "Five conical solid engine approximations replaced by open bell / chamber assemblies",
-    "Paint roughness increased; highlights restrained"
+    "Absolute station registration for core interfaces, with overlap and datum stated",
+    "S-II/S-IVB cone ends at station2746.5, rather than a fraction of accumulated nominal length",
+    "Circular section refinement with original UV sectors retained",
+    "F1 exit no longer takes the 12 ft engine envelope as its nozzle dimension",
+    "All historical confidence separated from numerical self-consistency"
   ],
   "strict_drawing_match": false,
+  "gates": {
+    "core_station_implementation": "pass",
+    "engine_installation": "unverified",
+    "LES_joint_coordinates": "unverified",
+    "LM5_stowed_packaging": "unverified",
+    "independent_multiview_fidelity": "unverified"
+  },
   "remaining": [
-    "F1 nozzle contour, feed lines and engine-center positions lack complete dimensions",
-    "LES nose/nozzle contours and attachment locations use source figure proportions",
-    "Black-white patterns, antennas, access panels and fairings still require full SA-506 photographic registration",
-    "Source profile has low radial tessellation; not a manufacturing model"
-  ]
+    "F1 nominal engineering exit140in differs from early139in sheet and nearly14ft Apollo11 press text; precise SA506 configuration unresolved",
+    "F1 contour, feed-line geometry and mounting coordinates remain approximate",
+    "LES support feet, crossmember topology and nose profile require dimensioned assembly drawing",
+    "Generic SA501 upper station precision is not an as-built SA506 spacecraft survey",
+    "Photographic comparison is qualitative; full camera calibration and multiview registration pending",
+    "LM5 folded joint geometry is not fabricated; original NASA cutaway retained"
+  ],
+  "range_definitions": "Display ranges follow separation assemblies, not nominal standalone length envelopes. S-II includes the forward S-II/S-IVB interstage, which remains with S-II (SA506 printed5-25). S-II engines extend down to STA1541 below first separation1564."
 }

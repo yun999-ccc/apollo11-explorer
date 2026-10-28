@@ -45,11 +45,11 @@
   "active_model": {
     "file": "saturn-v-apollo11-repaired.glb",
     "derived_from": "saturn-v-nasa.glb",
-    "sha256": "c957911aace87efa9a81ceeca7547b285d802e8f491c6d4cec7da14433483e30",
-    "bytes": 1757444,
-    "method": "Independent axial station and radial registration; no uniform height-only rescale in webpage",
+    "sha256": "950641a4be10526413c417d2f900a088803d229d0093fadd01dacf5754a091ee",
+    "bytes": 2837252,
+    "method": "Documented absolute station datum, core interface registration, circular-section refinement; upper and engine applicability limits explicit",
     "report": "launch-repair-report.json",
-    "engineering_source": "modeling/repair-launch.py",
+    "engineering_source": "modeling/deep-launch.py",
     "strict_drawing_match": false
   },
   "additional_references": [
@@ -67,5 +67,6 @@
       "source": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4545.pdf",
       "basis": "NASA SP-4545 PDF p107, printed p106, F-1 photo: 18.4 ft tall / 12 ft wide; nozzle contour photo-derived"
     }
-  ]
+  ],
+  "source_audit": "launch-source-audit.json"
 }
