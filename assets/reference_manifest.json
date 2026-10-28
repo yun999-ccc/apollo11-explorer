@@ -79,7 +79,7 @@
       ],
       "sha256": "608097c6faf5f11f077e37d4192befd61dc19bae85bbc3d3077b315a908143e7",
       "bytes": 3575577,
-      "limits": "joint positions and probe angles are inferred; approximately 7 in depth / 1.25 in tube diameter retain approximation"
+      "limits": "joint positions and probe angles are inferred; approximately 7 in depth / 1.25 in tube diameter retain approximation. The report does not define probe length measurement endpoints: interpreting 5.6 ft as a segmented centerline is a provisional modeling convention."
     },
     {
       "id": "A11_MISSION_REPORT",
