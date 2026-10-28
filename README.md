@@ -79,6 +79,10 @@ node validation/check-model.mjs
 
 ## 发射整体与内部装配
 
-新增 `launch/` 页面，首页四个既有模型入口保持原样。整箭可旋转、缩放和放大顶部；内部位置使用 NASA 原始发射构型剖视图，添加括号中文释义，并链接到原有三个舱的独立视图。
+`launch/` 提供可旋转的整箭、顶部放大、发动机近景和带中文标注的 NASA 原始内部剖视图。首页原来的四个模型入口和独立飞船模型不变。
 
-外观模型为 [NASA / Michael D. Carbajal 发布的 Saturn V](https://science.nasa.gov/3d-resources/saturn-v/)，原始 GLB 保留未修改，浏览器统一缩放至整箭标称363英尺（110.6424米）。该通用模型不等同于 AS-506 逐件制造图。内部剖视来自 NASA 保存的1975年《阿波罗计划总结报告》图，与1968年适配器图和阿波罗11号任务 Press Kit 交叉核对装配关系。原始扫描、来源与校验值见 `assets/launch-sources.json`。内部图为原始二维剖视，没有把现有展开着陆架模型伪装为已核实的发射收拢模型。
+当前加载 `assets/saturn-v-apollo11-repaired.glb`，由 [NASA / Michael D. Carbajal 原模型](https://science.nasa.gov/3d-resources/saturn-v/)修订：分别配准主筒体33英尺、上部260英寸、服务舱154英寸直径及分段高度；修正国旗贴图的蓝色底纹；以开放桁架替代实心逃逸塔；重建五个开放式钟形喷管；调整涂层粗糙度。网页使用模型自身米制坐标，不再仅按整箭高度统一缩放。原始 GLB 保留为来源检查点。
+
+6项主尺寸和5个喷管／4根主支柱检查通过；新 GLB 重新导入 Blender 后检查通过。`assets/launch-repair-report.json` 保留实际测量值、来源和未完成事项。F-1喷管曲线、管路、发动机安装点、逃逸系统局部细节和完整涂装仍未完成全部制造尺寸与照片注册，`strict_drawing_match` 保持 `false`。
+
+复现：在独立新 Blender 后台进程中执行 `modeling/repair-launch.py`，传入 `--work` 指定工程源和校验输出目录。脚本只清理该独立进程的已确认工厂启动对象，保留原始模型，另存新 GLB 与 `.blend`。原始扫描、版本与校验值见 `assets/launch-sources.json`。

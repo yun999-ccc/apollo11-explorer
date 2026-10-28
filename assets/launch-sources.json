@@ -6,7 +6,7 @@
     "download": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/saturn-v/Saturn%20V.glb",
     "credit": "NASA / Michael D. Carbajal",
     "modified": false,
-    "display_scale": "Uniform scale to nominal complete stack height 363 ft (110.6424 m); not independently dimension-verified for AS-506",
+    "display_scale": "Original checkpoint only; no longer used by active viewer. Former uniform 363 ft height scale produced about 5% oversized main cylinder.",
     "sha256": "6c44497bce54ee0b09d0edb8e33a6f484762a320dab1c54b383e434f5bba06b5",
     "bytes": 927212
   },
@@ -41,5 +41,31 @@
     "source": "https://science.nasa.gov/wp-content/uploads/2023/09/Apollo_11.pdf"
   },
   "original_four_view_navigation_unchanged": true,
-  "strict_drawing_match": false
+  "strict_drawing_match": false,
+  "active_model": {
+    "file": "saturn-v-apollo11-repaired.glb",
+    "derived_from": "saturn-v-nasa.glb",
+    "sha256": "c957911aace87efa9a81ceeca7547b285d802e8f491c6d4cec7da14433483e30",
+    "bytes": 1757444,
+    "method": "Independent axial station and radial registration; no uniform height-only rescale in webpage",
+    "report": "launch-repair-report.json",
+    "engineering_source": "modeling/repair-launch.py",
+    "strict_drawing_match": false
+  },
+  "additional_references": [
+    {
+      "file": "launch-escape-reference.pdf",
+      "source": "https://apollojournals.org/alsj/CSM15_Launch_Escape_Subsystem_pp137-146.pdf",
+      "basis": "Apollo Spacecraft News Reference, printed p140: 10 ft truss, 4 ft square base / 3 ft square top"
+    },
+    {
+      "file": "apollo-csm-les-original.gif",
+      "source": "https://www.nasa.gov/wp-content/uploads/static/history/SP-4225/diagrams/apollo/apollo-diagram-4.htm"
+    },
+    {
+      "file": "f1-dimensions-nasa-extract.pdf",
+      "source": "https://www.nasa.gov/wp-content/uploads/2023/04/sp-4545.pdf",
+      "basis": "NASA SP-4545 PDF p107, printed p106, F-1 photo: 18.4 ft tall / 12 ft wide; nozzle contour photo-derived"
+    }
+  ]
 }

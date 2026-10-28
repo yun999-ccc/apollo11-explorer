@@ -1,0 +1,117 @@
+{
+  "source_model": {
+    "file": "saturn-v-nasa.glb",
+    "sha256": "6c44497bce54ee0b09d0edb8e33a6f484762a320dab1c54b383e434f5bba06b5"
+  },
+  "units": "metres",
+  "checks": [
+    {
+      "name": "S-IC主体直径",
+      "actual_m": 10.058403015136719,
+      "target_m": 10.0584,
+      "error_m": 3.0151367180764055e-06,
+      "pass": true,
+      "basis": "Apollo 11 Press Kit PDF p113: 33 ft"
+    },
+    {
+      "name": "S-II主体直径",
+      "actual_m": 10.058403015136719,
+      "target_m": 10.0584,
+      "error_m": 3.0151367180764055e-06,
+      "pass": true,
+      "basis": "Apollo 11 Press Kit PDF p113: 33 ft"
+    },
+    {
+      "name": "S-IVB主体直径",
+      "actual_m": 6.604031085968018,
+      "target_m": 6.604,
+      "error_m": 3.1085968017485754e-05,
+      "pass": true,
+      "basis": "NASA spacecraft/adapter drawing: 260 in; Press Kit 21.7 ft is rounded"
+    },
+    {
+      "name": "服务舱主体直径",
+      "actual_m": 3.9116870164871216,
+      "target_m": 3.9116,
+      "error_m": 8.701648712161614e-05,
+      "pass": true,
+      "basis": "Apollo 11 Press Kit PDF p93: 154 in"
+    },
+    {
+      "name": "逃逸塔桁架高度",
+      "actual_m": 3.048,
+      "target_m": 3.048,
+      "error_m": 0.0,
+      "pass": true,
+      "basis": "CSM News Reference p140: 10 ft"
+    },
+    {
+      "name": "整箭总高",
+      "actual_m": 110.64132589288056,
+      "target_m": 110.64240000000001,
+      "error_m": 0.0010741071194502183,
+      "pass": true,
+      "basis": "Apollo 11 nominal 363 ft"
+    }
+  ],
+  "stages_z_m": {
+    "S-IC": [
+      0,
+      42.062400000000004
+    ],
+    "S-II": [
+      42.062400000000004,
+      66.9036
+    ],
+    "S-IVB": [
+      66.9036,
+      84.67344000000001
+    ],
+    "IU": [
+      84.67344000000001,
+      85.58784000000001
+    ],
+    "SLA": [
+      85.58784000000001,
+      94.12224000000002
+    ],
+    "SM": [
+      94.12224000000002,
+      98.64344000000001
+    ],
+    "CM": [
+      98.64344000000001,
+      102.12324000000002
+    ],
+    "LES": [
+      101.22,
+      110.6424
+    ]
+  },
+  "counts": {
+    "F1_engines": 5,
+    "open_F1_bells": 5,
+    "LES_primary_legs": 4
+  },
+  "F1_dimensions": {
+    "height_m": 5.60832,
+    "max_width_m": 3.6576000000000004,
+    "source": "NASA SP-4545 PDF p107, printed p106, photograph dimensions 18.4 ft tall / 12 ft wide",
+    "nozzle_contour": "Photo-derived approximate contour; not a dimensioned engineering nozzle profile",
+    "centers": "Retained from NASA display source; installation positions unverified"
+  },
+  "repairs": [
+    "Axial section stations and diameters registered separately",
+    "Source blue flag background replaced by white; flag rectangles retained",
+    "Solid LES approximation removed; open truss rebuilt",
+    "Five conical solid engine approximations replaced by open bell / chamber assemblies",
+    "Paint roughness increased; highlights restrained"
+  ],
+  "strict_drawing_match": false,
+  "remaining": [
+    "F1 nozzle contour, feed lines and engine-center positions lack complete dimensions",
+    "LES nose/nozzle contours and attachment locations use source figure proportions",
+    "Black-white patterns, antennas, access panels and fairings still require full SA-506 photographic registration",
+    "Source profile has low radial tessellation; not a manufacturing model"
+  ]
+}
