@@ -6,6 +6,28 @@
 
 ![网页实际预览](assets/preview.png)
 
+## 机载计算机操作
+
+从外观页点击“进入指令舱操作”或“进入登月舱操作”，也可点击正面的舱门。分别加载真实运行的 **Comanche055** 与 **Luminary099**，使用19个DSKY按键操作。
+
+- [直接打开登月舱DSKY](https://yun999-ccc.github.io/apollo11-explorer/console/?craft=lm)
+- [直接打开指令舱DSKY](https://yun999-ccc.github.io/apollo11-explorer/console/?craft=cm)
+- 可手动输入 `VERB 3 5 ENTR` 做原程序灯光测试；逐键演示也写入相同输入通道。
+- `VERB 3 7 ENTR 0 0 ENTR` 请求P00。暂停和重新启动是网页控制，置于实体面板外。
+- 面板依据此前指定的五个资料入口及其链接的原始图纸。CM与LM指示灯分别追溯到1006387和1005025，不使用后期面板照片。
+- 内核、ROM与固定版本源码均本地保存，启动前校验SHA-256；原始程序与模拟器移植依赖分别记录。
+- 这不是完整飞行模拟器：未接入IMU、雷达和完整飞行动力学，也未加载任务飞行存储快照。
+
+来源、图号、扫描PDF与校验值见网页“面板与操作依据”和 `assets/agc/provenance.json`；CPU及许可说明见 `vendor/agc/README.md`。`console/`按GPL-2.0-or-later发布，许可全文随附；历史资料保留原署名。
+
+![DSKY真实程序灯光测试截图，画面已暂停以便查看](assets/agc/console-preview.png)
+
+验证运行内核与原程序响应：
+
+```sh
+node validation/check-agc.mjs
+```
+
 ## 当前精度
 
 这是研究模型，**尚未达到完整、严格的图纸一致性**。主尺寸、四个脚垫和三根探针共23项数值已从实际几何测量核对，九项部件数量核对通过；这些检查不能代替全部外观复核。

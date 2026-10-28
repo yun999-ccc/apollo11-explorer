@@ -1,0 +1,104 @@
+{
+  "historical_scope": "Apollo 11 CM-107 / LM-5",
+  "original_five_entries": [
+    "https://www.nasa.gov/gallery/project-apollo-technical-diagrams/",
+    "https://apollojournals.org/alsj/LMSysHandbk.pdf",
+    "https://www.ibiblio.org/apollo/AgcDrawingIndex.html",
+    "https://www.ibiblio.org/apollo/ElectroMechanical.html",
+    "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf"
+  ],
+  "source_chain": {
+    "cm": "ElectroMechanical.html → 2014999-101 → 2003994-121 → 1006387-002 or -003",
+    "lm": "ElectroMechanical.html → 6014999-091 → 2003994-091 → 1005025-001",
+    "keypad_and_display": "ElectroMechanical.html → ND-1021042 Vol II, original PDF345–363; figures4-223/4-224 and relay/display circuit pages. Blank verso pages retained.",
+    "operator_sequence": "ND-1021042 Vol II PDF347, printed4-655; VERB digit digit, NOUN digit digit, ENTR",
+    "software_examples": "Original program PINBALL_GAME__BUTTONS_AND_LIGHTS.agc, VB35 TEST LIGHTS and VB37 CHANGE MAJOR MODE, VBTSTLTS five-second test; fixed source commit 92a74ef1c88aede2e4ba0a86c6585c9ea911226d"
+  },
+  "original_scans": {
+    "manual": "https://archive.org/download/acelectroniclmma00acel_0/acelectroniclmma00acel_0.pdf",
+    "lm_alarm": "https://archive.org/details/AgcApertureCardsBatch3Images/page/n2/mode/1up",
+    "cm_alarm": "https://www.ibiblio.org/apollo/SCDs/scd_1006387d.pdf"
+  },
+  "implementation_dependencies": {
+    "yaAGC_webassembly": {
+      "origin": "https://github.com/michaelfranzl/webAGC",
+      "commit": "0575ea7a1231e3948bae7d2c22a6ac146da0c38d",
+      "corresponding_c_source": "https://github.com/michaelfranzl/virtualagc/tree/ddc65e7bed41f1301921b934fcbaaee93db99dda/yaAGC",
+      "reported_version": "2020-12-24 ddc65e7be",
+      "license": "GPL-2.0-or-later"
+    },
+    "flight_images": {
+      "origin": "webAGC demo/agc at commit 0575ea7a1231e3948bae7d2c22a6ac146da0c38d",
+      "source": "https://github.com/virtualagc/virtualagc/tree/92a74ef1c88aede2e4ba0a86c6585c9ea911226d",
+      "mapping": {
+        "cm": "Comanche055.bin",
+        "lm": "Luminary099.bin"
+      }
+    },
+    "digit_paths": "webDSKY npm1.1.4, GPL-2.0-or-later; digit SVG paths only. Apollo16 background/overlay photos are NOT used."
+  },
+  "limits": [
+    "No full spacecraft flight dynamics, IMU or radar simulation",
+    "Cold/default emulator state, no complete Apollo11 mission-state snapshot",
+    "No invented gauges or flight telemetry",
+    "Website pause/restart controls are distinct from DSKY hardware",
+    "Visual font, colorimetry and manufacturing dimensions not certified"
+  ],
+  "files": [
+    {
+      "path": "vendor/agc/yaAGC.wasm",
+      "bytes": 132617,
+      "sha256": "a595f3ad3cc6833638b49879e2d41149a7327b1a10577828f50466d6c7747f14"
+    },
+    {
+      "path": "assets/agc/1005025-original.pdf",
+      "bytes": 2137261,
+      "sha256": "2c37f62c4fecb2ce81b304bc7869061883437769caa8e886f39bc5634fc5f2c4"
+    },
+    {
+      "path": "assets/agc/1006387D-original.pdf",
+      "bytes": 1225160,
+      "sha256": "565056142abeb85377d58c201ad19ecb4ae2928b1a5284bd31127e823deabf42"
+    },
+    {
+      "path": "assets/agc/Comanche055.bin",
+      "bytes": 73728,
+      "sha256": "2ba31de9291cd10fb351a64d261bae8514a1cb75b4651bfa6a135dfa821a2d79"
+    },
+    {
+      "path": "assets/agc/Luminary099.bin",
+      "bytes": 73728,
+      "sha256": "1f5326e038de5b741b2f27b01ec949dbd688cf1906994e997402587c8628f40e"
+    },
+    {
+      "path": "assets/agc/cm-alarm.webp",
+      "bytes": 132866,
+      "sha256": "b723b97e4e9c50de5901a177dcaec9fb16b3ed3cfeef72e948c65ada03f5837d"
+    },
+    {
+      "path": "assets/agc/dsky-front.webp",
+      "bytes": 48690,
+      "sha256": "958b2070909b31084b44f592464d88d6d974160f7219d26a78f1b093c2e40603"
+    },
+    {
+      "path": "assets/agc/dsky-primary-extract.pdf",
+      "bytes": 617407,
+      "sha256": "523b5ec23ea37d124a1ec2f2cf8fce6558b7f2be4580bda4460c9088a017a2dc"
+    },
+    {
+      "path": "assets/agc/flight-source.zip",
+      "bytes": 1427052,
+      "sha256": "285bbeb02a8a6adcfbc72d5d92b987b6ca9f6dee030405a39891858ce39fcbe4"
+    },
+    {
+      "path": "assets/agc/lamp-test-source.txt",
+      "bytes": 9852,
+      "sha256": "d562aa14d6ce8bc622c095baf60a4526a8c5f336f8b782fb3792b773361d9c43"
+    },
+    {
+      "path": "assets/agc/lm-alarm.webp",
+      "bytes": 123552,
+      "sha256": "1a406fbc2e1a4e4e8a8ebdc0be17159b45d75ab1d308136f0af288f598390d15"
+    }
+  ]
+}
