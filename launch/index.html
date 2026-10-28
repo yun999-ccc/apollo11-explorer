@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>阿波罗11号｜发射整体与内部装配</title>
+<meta name="description" content="旋转查看土星五号发射整体，对照NASA原始剖面图，理解指令舱、服务舱和登月舱在火箭里的位置。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ctext x='5' y='31' font-size='30'%3E🚀%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="launch.css?v=launch-20261028-3">
+<script type="importmap">{"imports":{"three":"../vendor/three.module.js","three/addons/":"../vendor/"}}</script>
+</head>
+<body>
+<header><a href="../" class="back">← 返回原来的四个视图</a><a class="identity" href="../">阿波罗11号</a><button id="sources-open">资料依据</button></header>
+<main>
+ <section class="visual-area" aria-label="发射整体与内部装配视图">
+  <div class="view-heading"><div><p>1969年7月16日 · 地面发射构型</p><h1>三个舱，一起装在这里。</h1></div><span class="height-note">整箭高约110.6米</span></div>
+  <div class="mode-switch" role="group" aria-label="选择整体或内部视图"><button data-mode="exterior" aria-pressed="true" class="active">整枚火箭</button><button data-mode="inside" aria-pressed="false">内部装配剖视</button></div>
+  <div class="model-area" id="exterior-panel">
+   <div id="viewport" tabindex="0" aria-label="土星五号完整三维模型。拖动旋转，滚轮缩放；按R恢复整体。"></div>
+   <div id="loading" role="status">正在加载NASA土星五号模型…</div>
+   <div id="rocket-labels" hidden aria-label="火箭从上至下的组成"><button class="rocket-label spacecraft" data-z="93" id="payload-label"><span>三个舱都在最上端</span><small>点击看内部位置 ↗</small></button><span class="rocket-label" data-z="75"><span>S-IVB（第三级）</span></span><span class="rocket-label" data-z="54"><span>S-II（第二级）</span></span><span class="rocket-label" data-z="21"><span>S-IC（第一级）</span></span></div>
+   <div class="camera-tools" aria-label="模型视角"><button id="full-view" class="active" aria-pressed="true">看整枚</button><button id="top-view" aria-pressed="false">放大顶部</button><button id="reset" aria-label="复位视角">复位</button></div>
+   <p class="model-hint">拖动旋转 · 滚轮缩放<span>NASA公开三维模型</span></p>
+  </div>
+  <div id="inside-panel" hidden>
+   <figure class="cutaway"><div class="cutaway-sheet"><img src="../assets/apollo-launch-configuration-original.gif" alt="NASA阿波罗登月任务发射构型原始剖面图：自上而下为逃逸系统、指令舱、服务舱、适配器内的登月舱和运载火箭。"><span class="diagram-zh diagram-cm">（指令舱）</span><span class="diagram-zh diagram-sm">（服务舱）</span><span class="diagram-zh diagram-sla">（适配器外壳）</span><span class="diagram-zh diagram-lm">（登月舱）</span><span class="diagram-zh diagram-vehicle">（运载火箭）</span></div><figcaption>NASA原始剖视图 · 括号中文为辅助标注<br>剖开外壳是为了看内部，发射时外壳闭合。</figcaption></figure>
+   <div class="cutaway-callouts"><p class="callout-top">沿着原图，从上往下看</p><div><span class="part-dot les"></span><strong>逃逸系统</strong><p>发射异常时，用来把指令舱带离火箭。</p></div><button data-part="cm"><span class="part-dot cm"></span><strong>Command module（指令舱）</strong><small>三名宇航员发射时坐在这里。</small></button><button data-part="sm"><span class="part-dot sm"></span><strong>Service module（服务舱）</strong><small>与指令舱相连，提供推进与电力。</small></button><div><span class="part-dot sla"></span><strong>Spacecraft / lunar module adapter<br>（飞船／登月舱适配器）</strong><p>包在外面的锥形结构，内部收纳登月舱。</p></div><button data-part="lm"><span class="part-dot lm"></span><strong>Lunar module（登月舱）</strong><small>发射时支腿收拢，藏在适配器内。</small></button><div><span class="part-dot vehicle"></span><strong>Launch vehicle（运载火箭）</strong><p>下面连接土星五号，把整套飞船送上太空。</p></div></div>
+  </div>
+ </section>
+ <aside>
+  <section class="orientation"><p class="eyebrow">先看整体，再看部件</p><h2>四个入口，<br>实际是三个舱。</h2><p>原来的“飞船组合”是三个舱的合看视图。发射时，它们一起装在同一枚土星五号上。</p><div class="three-parts"><button data-part="cm"><i class="cm"></i><span><strong>指令舱</strong><small>CM（指令舱） · Columbia（哥伦比亚号）</small></span></button><span class="join-line" aria-hidden="true"></span><button data-part="sm"><i class="sm"></i><span><strong>服务舱</strong><small>SM（服务舱） · 与指令舱连接</small></span></button><span class="join-line" aria-hidden="true"></span><button data-part="lm"><i class="lm"></i><span><strong>登月舱</strong><small>LM（登月舱） · Eagle（鹰号）</small></span></button><p>登月舱位于服务舱下方，收在适配器里。</p></div><button id="inside-action" class="primary">看三个舱在内部的位置 <span>↗</span></button></section>
+  <section class="part-story" aria-live="polite"><h2 id="part-title">这次看的是发射前的整体</h2><p id="part-description">整枚火箭向上竖立；三个舱位于顶部。进入“内部装配剖视”，可以直接看到它们的上下关系。</p><a id="part-link" href="../">返回原来的四个视图 ↗</a></section>
+  <details class="flight-note"><summary>后来怎样变成在轨飞船？</summary><p>进入飞向月球的轨道后，指令舱与服务舱一起分离，转身180°，与适配器中的登月舱对接，再将登月舱拉出来。</p><p>发射时的装配位置，与太空中对接后的排列不同。</p><a href="https://www.nasa.gov/history/apollo-11-mission-overview/" target="_blank" rel="noopener">查看NASA任务记录 ↗</a></details>
+  <p class="source-note">外观采用NASA公开土星五号模型。内部关系采用NASA原始剖视图，并与阿波罗11号任务资料对照。</p>
+ </aside>
+</main>
+<dialog id="sources-dialog" aria-labelledby="source-title"><div class="dialog-heading"><h2 id="source-title">发射整体的资料依据</h2><button id="sources-close" aria-label="关闭资料">×</button></div><ol><li><a href="https://science.nasa.gov/3d-resources/saturn-v/" target="_blank" rel="noopener">NASA Saturn V（土星五号）三维模型</a><p>来源：NASA / Michael D. Carbajal。原始模型保留未修改；网页按整箭363英尺的标称总高作统一缩放。通用展示模型不等于AS-506逐件制造图。</p><a href="../assets/saturn-v-nasa.glb" download>下载原始GLB（三维模型文件）</a></li><li><a href="https://www.nasa.gov/history/SP-4225/diagrams/apollo/apollo-diagram-3.htm" target="_blank" rel="noopener">Apollo Spacecraft Launch Configuration（阿波罗飞船发射构型）</a><p>NASA图集保存的《阿波罗计划总结报告》插图，1975年4月。用于确认通用装配关系；不是1969年LM-5的制造尺寸图。原始英文扫描保留，中文为辅助释义。</p><a href="../assets/apollo-launch-configuration-original.gif" target="_blank" rel="noopener">打开原始剖视图</a></li><li><a href="https://www.nasa.gov/history/SP-4225/diagrams/apollo/apollo-diagram-12.htm" target="_blank" rel="noopener">Apollo Spacecraft / LM Adapter（阿波罗飞船／登月舱适配器）</a><p>《阿波罗飞船与系统熟悉手册》，1968年3月13日。可对照登月舱收纳位置与外壳关系。</p><img src="../assets/apollo-sla-original.gif" alt="NASA适配器原图：展示收纳中的登月舱及适配器面板"><a href="../assets/apollo-sla-original.gif" target="_blank" rel="noopener">打开适配器原图</a></li><li><a href="../assets/A11_PressKit.pdf#page=90" target="_blank" rel="noopener">Apollo 11 Press Kit（阿波罗11号任务新闻资料）</a><p>PDF（便携式文档格式）第90、92、112–118页：飞船组成、适配器、火箭描述与发射资料。阿波罗11号装配关系由该任务资料交叉核对。</p></li></ol><p class="dialog-note">本页用于理解整体与收纳关系。没有将原有展开着陆架的登月舱模型改成未经核对的折叠姿态。</p></dialog>
+<noscript>请启用JavaScript（网页脚本）查看可旋转模型。<a href="../assets/apollo-launch-configuration-original.gif">可直接打开NASA发射构型剖视图。</a></noscript>
+<script type="module" src="launch.mjs?v=launch-20261028-3"></script>
+</body></html>

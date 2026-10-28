@@ -5,7 +5,7 @@
 <title>阿波罗11号｜飞船外观研究</title>
 <meta name="description" content="旋转查看阿波罗11号指令舱、服务舱与登月舱的三维外观，对照NASA任务图纸、核对尺寸与资料依据。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23172b3b'/%3E%3Cpath d='M9 30 20 7l11 23M13 22h14' fill='none' stroke='%23c9a45b' stroke-width='3'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="style.css?v=agc-20261028-2">
+<link rel="stylesheet" href="style.css?v=launch-20261028-1">
 <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
 </head>
 <body>
@@ -17,6 +17,7 @@
 <main class="workspace">
 <aside class="navigator" aria-label="模型与尺寸">
  <div class="aside-top"><h1>探索飞船</h1><p>从整体，到每一个部件。</p></div>
+ <a class="launch-entry" href="launch/"><svg viewBox="0 0 24 44" aria-hidden="true"><path d="M10 11 12 2l2 9v6l3 6v15H7V23l3-6ZM7 28h10M7 38l-4 4h18l-4-4M10 11h4"/></svg><span><strong>先看发射整体</strong><small>三个舱怎样装进同一枚火箭</small></span><span aria-hidden="true">↗</span></a>
  <nav class="assembly-nav" aria-label="选择飞船模块">
   <button data-focus="all" class="assembly active" aria-pressed="true"><span class="assembly-icon"><svg viewBox="0 0 42 46"><path d="M7 18 15 3l8 15v17H7Zm0 4h16M10 35l-2 8h14l-2-8M28 30l5-11 6 11v7H28Zm0 7-3 6m14-6 2 6m-8-6v6"/></svg></span><span><strong>飞船组合</strong><small>CSM + LM · 等比例</small></span><span class="nav-arrow">›</span></button>
   <button data-focus="cm" class="assembly" aria-pressed="false"><span class="assembly-icon"><svg viewBox="0 0 42 46"><path d="m7 35 11-25h6l11 25q-14 6-28 0ZM18 10V6h6v4M10 31h22M18 21h6v5h-6Z"/></svg></span><span><strong>指令舱</strong><small>Columbia · CM-107</small></span><span class="nav-arrow">›</span></button>

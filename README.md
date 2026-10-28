@@ -75,3 +75,10 @@ node validation/check-model.mjs
 ## 资料与权利
 
 依据NASA《Apollo 11 Press Kit》、1969年5月《LM-5 Structures Handout》与NASA TN D-6850《Lunar Module Landing Gear Subsystem》扫描资料制作；完整来源见`assets/reference_manifest.json`。本项目为独立研究展示，不代表NASA官方产品。历史资料的原有权利和署名信息保留；Three.js使用MIT许可。此仓库目前未另行为项目原创代码授予开源复用许可。
+
+
+## 发射整体与内部装配
+
+新增 `launch/` 页面，首页四个既有模型入口保持原样。整箭可旋转、缩放和放大顶部；内部位置使用 NASA 原始发射构型剖视图，添加括号中文释义，并链接到原有三个舱的独立视图。
+
+外观模型为 [NASA / Michael D. Carbajal 发布的 Saturn V](https://science.nasa.gov/3d-resources/saturn-v/)，原始 GLB 保留未修改，浏览器统一缩放至整箭标称363英尺（110.6424米）。该通用模型不等同于 AS-506 逐件制造图。内部剖视来自 NASA 保存的1975年《阿波罗计划总结报告》图，与1968年适配器图和阿波罗11号任务 Press Kit 交叉核对装配关系。原始扫描、来源与校验值见 `assets/launch-sources.json`。内部图为原始二维剖视，没有把现有展开着陆架模型伪装为已核实的发射收拢模型。

@@ -1,0 +1,45 @@
+{
+  "purpose": "Apollo 11 launch overview and original interior configuration diagram",
+  "model": {
+    "file": "saturn-v-nasa.glb",
+    "source": "https://science.nasa.gov/3d-resources/saturn-v/",
+    "download": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/saturn-v/Saturn%20V.glb",
+    "credit": "NASA / Michael D. Carbajal",
+    "modified": false,
+    "display_scale": "Uniform scale to nominal complete stack height 363 ft (110.6424 m); not independently dimension-verified for AS-506",
+    "sha256": "6c44497bce54ee0b09d0edb8e33a6f484762a320dab1c54b383e434f5bba06b5",
+    "bytes": 927212
+  },
+  "interior": {
+    "file": "apollo-launch-configuration-original.gif",
+    "source": "https://www.nasa.gov/history/SP-4225/diagrams/apollo/apollo-diagram-3.htm",
+    "original_document": "Apollo Program Summary Report, April 1975",
+    "scope": "Generic lunar landing launch configuration. Original scan unchanged; Chinese explanations in separate HTML.",
+    "sha256": "39ecb0a1e16ee6bc7aa45685a8c16154d049af16d7d1b06ee231e07758a33ec8",
+    "bytes": 72731
+  },
+  "adapter": {
+    "file": "apollo-sla-original.gif",
+    "source": "https://www.nasa.gov/history/SP-4225/diagrams/apollo/apollo-diagram-12.htm",
+    "original_document": "Apollo Spacecraft & Systems Familiarization, March 13, 1968",
+    "sha256": "227ad6d51e39b4ace0d3ed171c74d6baeec254d872a4752161e6ea8d4d7fcea0",
+    "bytes": 39030
+  },
+  "mission_cross_check": {
+    "file": "A11_PressKit.pdf",
+    "pages": [
+      90,
+      92,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118
+    ],
+    "source": "https://science.nasa.gov/wp-content/uploads/2023/09/Apollo_11.pdf"
+  },
+  "original_four_view_navigation_unchanged": true,
+  "strict_drawing_match": false
+}
