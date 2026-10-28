@@ -7,7 +7,9 @@
       "target_m": 3.9116,
       "error_m": 1.1291503909660605e-7,
       "pass": true,
-      "source": "Press Kit PDF p93"
+      "source": "Press Kit PDF p93",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
     },
     {
       "name": "服务舱筒体高度",
@@ -15,7 +17,9 @@
       "target_m": 4.521199999999999,
       "error_m": 5.836486760557591e-8,
       "pass": true,
-      "source": "Press Kit PDF p93"
+      "source": "Press Kit PDF p93",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
     },
     {
       "name": "指令舱最大直径",
@@ -23,7 +27,9 @@
       "target_m": 3.9116,
       "error_m": 1.1291503909660605e-7,
       "pass": true,
-      "source": "Press Kit PDF p93"
+      "source": "Press Kit PDF p93",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
     },
     {
       "name": "登月舱前舱门宽",
@@ -31,7 +37,9 @@
       "target_m": 0.8128,
       "error_m": 9.822845425944138e-9,
       "pass": true,
-      "source": "Press Kit PDF p100"
+      "source": "Press Kit PDF p100",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
     },
     {
       "name": "登月舱前舱门高",
@@ -39,19 +47,216 @@
       "target_m": 0.8128,
       "error_m": 9.822844981854928e-9,
       "pass": true,
-      "source": "Press Kit PDF p100"
+      "source": "Press Kit PDF p100",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫1直径",
+      "actual_m": 0.9398000240325928,
+      "target_m": 0.9398,
+      "error_m": 2.403259280470138e-8,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫1深度（约）",
+      "actual_m": 0.17779999971389773,
+      "target_m": 0.17779999999999999,
+      "error_m": 2.861022529998536e-10,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫1中心半径",
+      "actual_m": 4.256278,
+      "target_m": 4.256278,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p13",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫2直径",
+      "actual_m": 0.9398000240325928,
+      "target_m": 0.9398,
+      "error_m": 2.403259280470138e-8,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫2深度（约）",
+      "actual_m": 0.17779999971389773,
+      "target_m": 0.17779999999999999,
+      "error_m": 2.861022529998536e-10,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫2中心半径",
+      "actual_m": 4.256278,
+      "target_m": 4.256278,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p13",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫3直径",
+      "actual_m": 0.9398000240325928,
+      "target_m": 0.9398,
+      "error_m": 2.403259280470138e-8,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫3深度（约）",
+      "actual_m": 0.17779999971389773,
+      "target_m": 0.17779999999999999,
+      "error_m": 2.861022529998536e-10,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫3中心半径",
+      "actual_m": 4.256278,
+      "target_m": 4.256278,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p13",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫4直径",
+      "actual_m": 0.9398000240325928,
+      "target_m": 0.9398,
+      "error_m": 2.403259280470138e-8,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫4深度（约）",
+      "actual_m": 0.17779999971389773,
+      "target_m": 0.17779999999999999,
+      "error_m": 2.861022529998536e-10,
+      "pass": true,
+      "source": "TN D-6850 PDF p57",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "脚垫4中心半径",
+      "actual_m": 4.256278,
+      "target_m": 4.256278,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p13",
+      "basis": "标注尺寸",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "探针1中心线长",
+      "actual_m": 1.7068799999999995,
+      "target_m": 1.7068799999999997,
+      "error_m": 2.220446049250313e-16,
+      "pass": true,
+      "source": "TN D-6850 PDF p56",
+      "basis": "标称长度；非垂直落差",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "探针1管径（约）",
+      "actual_m": 0.03175,
+      "target_m": 0.03175,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p56",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "探针2中心线长",
+      "actual_m": 1.7068799999999995,
+      "target_m": 1.7068799999999997,
+      "error_m": 2.220446049250313e-16,
+      "pass": true,
+      "source": "TN D-6850 PDF p56",
+      "basis": "标称长度；非垂直落差",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "探针2管径（约）",
+      "actual_m": 0.03175,
+      "target_m": 0.03175,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p56",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "探针3中心线长",
+      "actual_m": 1.7068799999999995,
+      "target_m": 1.7068799999999997,
+      "error_m": 2.220446049250313e-16,
+      "pass": true,
+      "source": "TN D-6850 PDF p56",
+      "basis": "标称长度；非垂直落差",
+      "tolerance_m": 0.002
+    },
+    {
+      "name": "探针3管径（约）",
+      "actual_m": 0.03175,
+      "target_m": 0.03175,
+      "error_m": 0,
+      "pass": true,
+      "source": "TN D-6850 PDF p56",
+      "basis": "近似值；仅核对建模取值",
+      "tolerance_m": 0.002
     }
   ],
-  "mesh_count": 605,
+  "mesh_count": 631,
   "strict_drawing_match": false,
+  "source_decisions": [
+    {
+      "item": "LM脚垫直径",
+      "adopted": "37 in：TN D-6850工程总结与Apollo 11 Press Kit一致；训练图36 in原文保留，差异原因未确认"
+    },
+    {
+      "item": "着陆架跨度",
+      "adopted": "脚垫中心半径167.57 in、直径37 in推算外缘跨度9.452356 m；图5的31.0 ft为较粗标称值"
+    },
+    {
+      "item": "探针",
+      "adopted": "用5.6 ft作为中心线标称总长；折角与安装点仍属图示推定"
+    }
+  ],
   "unresolved": [
-    "LM脚垫36/37英寸冲突",
+    "LM脚垫36/37英寸资料差异原因未确认",
+    "LM支腿接点、探针折角和碟形曲率缺少完整尺寸",
     "LM侧后热防护轮廓未完成注册",
     "CM开口、SM附件位置需要多视图复核",
     "天线与喷管细部缺少完整尺寸链"
   ],
   "source_scope": "CSM107 / LM5",
-  "triangles": 125080,
+  "triangles": 129760,
   "counts": [
     {
       "name": "LM着陆架",
@@ -69,6 +274,12 @@
       "name": "LM接触探针",
       "actual": 3,
       "expected": 3,
+      "pass": true
+    },
+    {
+      "name": "LM脚垫约束带",
+      "actual": 16,
+      "expected": 16,
       "pass": true
     },
     {
@@ -99,6 +310,44 @@
       "name": "SM高增益碟面",
       "actual": 4,
       "expected": 4,
+      "pass": true
+    }
+  ],
+  "gear_details": [
+    {
+      "gear": 1,
+      "restraint_count": 4,
+      "primary_collinear": true,
+      "probe_present": false,
+      "probe_centerline_m": null,
+      "probe_segments_joined": true,
+      "pass": true
+    },
+    {
+      "gear": 2,
+      "restraint_count": 4,
+      "primary_collinear": true,
+      "probe_present": true,
+      "probe_centerline_m": 1.7068800032138824,
+      "probe_segments_joined": true,
+      "pass": true
+    },
+    {
+      "gear": 3,
+      "restraint_count": 4,
+      "primary_collinear": true,
+      "probe_present": true,
+      "probe_centerline_m": 1.7068800032138824,
+      "probe_segments_joined": true,
+      "pass": true
+    },
+    {
+      "gear": 4,
+      "restraint_count": 4,
+      "primary_collinear": true,
+      "probe_present": true,
+      "probe_centerline_m": 1.7068800032138824,
+      "probe_segments_joined": true,
       "pass": true
     }
   ],

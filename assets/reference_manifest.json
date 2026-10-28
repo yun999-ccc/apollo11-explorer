@@ -9,7 +9,7 @@
   "sources": [
     {
       "id": "A11_PRESS",
-      "file": "references/A11_PressKit.pdf",
+      "file": "assets/A11_PressKit.pdf",
       "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_PressKit.pdf",
       "role": "canonical mission dimensions and diagrams",
       "configuration": "CSM107, LM5",
@@ -34,7 +34,7 @@
     },
     {
       "id": "LM5_TRAINING",
-      "file": "references/a11LM5structures.pdf",
+      "file": "assets/a11LM5structures.pdf",
       "url": "https://www.apollojournals.org/alsj/a11/a11LM5structures.pdf",
       "role": "canonical LM5 structure, panel front outline and gear construction",
       "date": "May 1969",
@@ -58,6 +58,39 @@
       "reason": "1970 stamp seen on drawing; not proof of LM5 as flown",
       "sha256": "d344f82edaee93c243ecbe1e70ec5640d7c41400c7e33e101eb2a2ab321bc860",
       "bytes": 314958
+    },
+    {
+      "id": "LM_GEAR_TN_D6850",
+      "file": "assets/LM_Landing_Gear_Experience_Report.pdf",
+      "url": "https://ntrs.nasa.gov/api/citations/19720018253/downloads/19720018253.pdf",
+      "title": "Apollo Experience Report: Lunar Module Landing Gear Subsystem",
+      "author": "William F. Rogers",
+      "date": "June 1972",
+      "configuration": "development through Apollo 11; explicit abstract scope",
+      "role": "canonical footpad dimensions, center radius, probe length and approximate diameter; gear topology",
+      "used_pdf_pages": [
+        2,
+        13,
+        14,
+        15,
+        56,
+        57,
+        58
+      ],
+      "sha256": "608097c6faf5f11f077e37d4192befd61dc19bae85bbc3d3077b315a908143e7",
+      "bytes": 3575577,
+      "limits": "joint positions and probe angles are inferred; approximately 7 in depth / 1.25 in tube diameter retain approximation"
+    },
+    {
+      "id": "A11_MISSION_REPORT",
+      "url": "https://ntrs.nasa.gov/api/citations/19700008096/downloads/19700008096.pdf",
+      "title": "Apollo 11 Mission Report MSC-00171",
+      "date": "November 1969",
+      "used_pdf_pages": [
+        325
+      ],
+      "role": "LM-5 configuration changes: forward probe removal, remaining probes lengthened, RCS plume deflectors added",
+      "limits": "not used for complete geometry dimensions"
     }
   ],
   "hard_gates": {
@@ -72,6 +105,7 @@
     "all drawing requirements passed before validation"
   ],
   "delivery": "interactive web model",
-  "geometry_source": "dist/model.js",
-  "strict_completion": false
+  "geometry_source": "model.js",
+  "strict_completion": false,
+  "dimension_policy": "TN D-6850 adopts 37 in footpad diameter; 36 in training illustration retained as unexplained discrepancy. Span is derived from 2×167.57+37 in; do not force rounded 31.0 ft figure to equal this."
 }
