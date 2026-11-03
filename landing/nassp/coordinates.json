@@ -1,0 +1,1470 @@
+{
+  "views": {
+    "MAIN": [
+      {
+        "id": "AID_MFDLEFT",
+        "rect": [
+          635,
+          1564,
+          1060,
+          1918
+        ]
+      },
+      {
+        "id": "AID_MFDRIGHT",
+        "rect": [
+          1640,
+          1564,
+          2065,
+          1918
+        ]
+      },
+      {
+        "id": "AID_LM_RCSIND",
+        "rect": [
+          1408,
+          245,
+          1657,
+          370
+        ]
+      },
+      {
+        "id": "AID_LM_ECSIND_UPPER",
+        "rect": [
+          1712,
+          245,
+          1988,
+          370
+        ]
+      },
+      {
+        "id": "AID_LM_ECSIND_LOWER",
+        "rect": [
+          1709,
+          439,
+          1867,
+          564
+        ]
+      },
+      {
+        "id": "AID_MAIN_PROP_AND_ENGINE_IND",
+        "rect": [
+          1045,
+          428,
+          1294,
+          553
+        ]
+      },
+      {
+        "id": "AID_THRUST_WEIGHT_INDICATOR",
+        "rect": [
+          1199,
+          632,
+          1230,
+          812
+        ]
+      },
+      {
+        "id": "AID_LM_CWS_LEFT",
+        "rect": [
+          859,
+          54,
+          1180,
+          180
+        ]
+      },
+      {
+        "id": "AID_LM_CWS_RIGHT",
+        "rect": [
+          1694,
+          54,
+          1994,
+          180
+        ]
+      },
+      {
+        "id": "AID_ABORT",
+        "rect": [
+          1161,
+          855,
+          1330,
+          975
+        ]
+      },
+      {
+        "id": "AID_ENG_ARM",
+        "rect": [
+          773,
+          1078,
+          807,
+          1117
+        ]
+      },
+      {
+        "id": "AID_DESCENT_ENGINE_SWITCH",
+        "rect": [
+          698,
+          1321,
+          740,
+          1361
+        ]
+      },
+      {
+        "id": "AID_MODECONTROL",
+        "rect": [
+          1137,
+          1425,
+          1385,
+          1470
+        ]
+      },
+      {
+        "id": "AID_DSKY_DISPLAY",
+        "rect": [
+          1370,
+          1560,
+          1475,
+          1736
+        ]
+      },
+      {
+        "id": "AID_DSKY_LIGHTS",
+        "rect": [
+          1226,
+          1565,
+          1328,
+          1734
+        ]
+      },
+      {
+        "id": "AID_DSKY_KEY",
+        "rect": [
+          1208,
+          1756,
+          1494,
+          1876
+        ]
+      },
+      {
+        "id": "AID_MISSION_CLOCK",
+        "rect": [
+          665,
+          285,
+          836,
+          310
+        ]
+      },
+      {
+        "id": "AID_EVENT_TIMER",
+        "rect": [
+          892,
+          285,
+          986,
+          310
+        ]
+      },
+      {
+        "id": "AID_MPS_OXID_QUANTITY_INDICATOR",
+        "rect": [
+          1064,
+          245,
+          1110,
+          270
+        ]
+      },
+      {
+        "id": "AID_MPS_FUEL_QUANTITY_INDICATOR",
+        "rect": [
+          1064,
+          296,
+          1110,
+          327
+        ]
+      },
+      {
+        "id": "AID_MPS_HELIUM_PRESS_INDICATOR",
+        "rect": [
+          1191,
+          285,
+          1290,
+          310
+        ]
+      },
+      {
+        "id": "AID_CONTACTLIGHT1",
+        "rect": [
+          930,
+          426,
+          978,
+          474
+        ]
+      },
+      {
+        "id": "AID_CONTACTLIGHT2",
+        "rect": [
+          1962,
+          1221,
+          2010,
+          1269
+        ]
+      },
+      {
+        "id": "AID_LEFTXPOINTERSWITCH",
+        "rect": [
+          938,
+          515,
+          972,
+          544
+        ]
+      },
+      {
+        "id": "AID_GUIDCONTSWITCHROW",
+        "rect": [
+          1269,
+          627,
+          1304,
+          823
+        ]
+      },
+      {
+        "id": "AID_LEM_MA_LEFT",
+        "rect": [
+          651,
+          620,
+          698,
+          663
+        ]
+      },
+      {
+        "id": "AID_LEFTMONITORSWITCHES",
+        "rect": [
+          659,
+          712,
+          693,
+          824
+        ]
+      },
+      {
+        "id": "AID_FDAILOWERSWITCHROW",
+        "rect": [
+          746,
+          920,
+          922,
+          959
+        ]
+      },
+      {
+        "id": "AID_MPS_REG_CONTROLS_LEFT",
+        "rect": [
+          962,
+          918,
+          998,
+          1125
+        ]
+      },
+      {
+        "id": "AID_MPS_REG_CONTROLS_RIGHT",
+        "rect": [
+          1036,
+          918,
+          1072,
+          1125
+        ]
+      },
+      {
+        "id": "AID_ENGINETHRUSTCONTSWITCHES",
+        "rect": [
+          819,
+          1006,
+          928,
+          1117
+        ]
+      },
+      {
+        "id": "AID_PROPELLANTSWITCHES",
+        "rect": [
+          1092,
+          991,
+          1154,
+          1112
+        ]
+      },
+      {
+        "id": "AID_HELIUMMONROTARY",
+        "rect": [
+          1192,
+          992,
+          1276,
+          1076
+        ]
+      },
+      {
+        "id": "AID_LEM_MA_RIGHT",
+        "rect": [
+          2005,
+          620,
+          2052,
+          663
+        ]
+      },
+      {
+        "id": "AID_RIGHTMONITORSWITCHES",
+        "rect": [
+          2008,
+          712,
+          2042,
+          824
+        ]
+      },
+      {
+        "id": "AID_TEMPPRESSMONROTARY",
+        "rect": [
+          1396,
+          1002,
+          1480,
+          1086
+        ]
+      },
+      {
+        "id": "AID_ACAPROPSWITCH",
+        "rect": [
+          1620,
+          1012,
+          1654,
+          1051
+        ]
+      },
+      {
+        "id": "AID_RCS_ASC_FEED_TALKBACKS",
+        "rect": [
+          1415,
+          440,
+          1652,
+          463
+        ]
+      },
+      {
+        "id": "AID_RCS_ASC_FEED_SWITCHES",
+        "rect": [
+          1410,
+          493,
+          1657,
+          532
+        ]
+      },
+      {
+        "id": "AID_RCS_LGC_CMD_ENABLE_14_TALKBACKS",
+        "rect": [
+          1415,
+          589,
+          1652,
+          612
+        ]
+      },
+      {
+        "id": "AID_RCS_LGC_CMD_ENABLE_14_SWITCHES",
+        "rect": [
+          1410,
+          642,
+          1658,
+          682
+        ]
+      },
+      {
+        "id": "AID_RCS_LGC_CMD_ENABLE_23_TALKBACKS",
+        "rect": [
+          1415,
+          715,
+          1652,
+          738
+        ]
+      },
+      {
+        "id": "AID_RCS_LGC_CMD_ENABLE_23_SWITCHES",
+        "rect": [
+          1410,
+          768,
+          1657,
+          807
+        ]
+      },
+      {
+        "id": "AID_RCS_XFEED_TALKBACK",
+        "rect": [
+          1416,
+          871,
+          1439,
+          894
+        ]
+      },
+      {
+        "id": "AID_RCS_XFEED_SWITCH",
+        "rect": [
+          1410,
+          921,
+          1444,
+          960
+        ]
+      },
+      {
+        "id": "AID_MAIN_SOV_TALKBACKS",
+        "rect": [
+          1555,
+          871,
+          1648,
+          894
+        ]
+      },
+      {
+        "id": "AID_MAIN_SOV_SWITCHES",
+        "rect": [
+          1549,
+          922,
+          1654,
+          961
+        ]
+      },
+      {
+        "id": "AID_GLYCOLSUITFANROTARIES",
+        "rect": [
+          1706,
+          926,
+          1790,
+          1130
+        ]
+      },
+      {
+        "id": "AID_QTYMONROTARY",
+        "rect": [
+          1892,
+          986,
+          1976,
+          1070
+        ]
+      },
+      {
+        "id": "AID_ENGGIMBALENABLESWITCH",
+        "rect": [
+          709,
+          1227,
+          743,
+          1268
+        ]
+      },
+      {
+        "id": "AID_RADARANTTESTSWITCHES",
+        "rect": [
+          779,
+          1227,
+          814,
+          1361
+        ]
+      },
+      {
+        "id": "AID_TESTMONITORROTARY",
+        "rect": [
+          724,
+          1410,
+          808,
+          1494
+        ]
+      },
+      {
+        "id": "AID_SLEWRATESWITCH",
+        "rect": [
+          880,
+          1364,
+          914,
+          1393
+        ]
+      },
+      {
+        "id": "AID_RENDEZVOUSRADARROTARY",
+        "rect": [
+          976,
+          1387,
+          1060,
+          1471
+        ]
+      },
+      {
+        "id": "AID_SATBCONTSWITCHES",
+        "rect": [
+          1137,
+          1221,
+          1362,
+          1260
+        ]
+      },
+      {
+        "id": "AID_ATTITUDECONTROLSWITCHES",
+        "rect": [
+          1137,
+          1322,
+          1362,
+          1351
+        ]
+      },
+      {
+        "id": "AID_TEMPMONITORROTARY",
+        "rect": [
+          1416,
+          1387,
+          1500,
+          1471
+        ]
+      },
+      {
+        "id": "AID_TEMPMONITORIND",
+        "rect": [
+          1438,
+          1219,
+          1486,
+          1344
+        ]
+      },
+      {
+        "id": "AID_RCSSYSQUADSWITCHES",
+        "rect": [
+          1579,
+          1331,
+          1671,
+          1455
+        ]
+      },
+      {
+        "id": "AID_LIGHTINGSWITCHES",
+        "rect": [
+          1758,
+          1222,
+          1792,
+          1319
+        ]
+      },
+      {
+        "id": "AID_FLOODROTARY",
+        "rect": [
+          1848,
+          1263,
+          1932,
+          1347
+        ]
+      },
+      {
+        "id": "AID_LAMPTONETESTROTARY",
+        "rect": [
+          1780,
+          1405,
+          1864,
+          1489
+        ]
+      },
+      {
+        "id": "AID_RIGHTXPOINTERSWITCH",
+        "rect": [
+          1982,
+          1318,
+          2016,
+          1347
+        ]
+      },
+      {
+        "id": "AID_EXTERIORLTGSWITCH",
+        "rect": [
+          1961,
+          1432,
+          1995,
+          1461
+        ]
+      },
+      {
+        "id": "AID_PANEL4LEFTSWITCHROW",
+        "rect": [
+          1094,
+          1614,
+          1128,
+          1794
+        ]
+      },
+      {
+        "id": "AID_PANEL4RIGHTSWITCHROW",
+        "rect": [
+          1572,
+          1614,
+          1606,
+          1794
+        ]
+      },
+      {
+        "id": "AID_XPOINTERCDR",
+        "rect": [
+          675,
+          426,
+          812,
+          559
+        ]
+      },
+      {
+        "id": "AID_XPOINTERLMP",
+        "rect": [
+          1914,
+          426,
+          2051,
+          559
+        ]
+      },
+      {
+        "id": "AID_LMRADARSIGNALSTRENGTH",
+        "rect": [
+          852,
+          1229,
+          943,
+          1319
+        ]
+      },
+      {
+        "id": "AID_LMRADARSLEWSWITCH",
+        "rect": [
+          877,
+          1433,
+          918,
+          1472
+        ]
+      },
+      {
+        "id": "AID_LM_EVENT_TIMER_SWITCHES",
+        "rect": [
+          1523,
+          1233,
+          1724,
+          1264
+        ]
+      },
+      {
+        "id": "AID_RR_NOTRACK",
+        "rect": [
+          1002,
+          1303,
+          1036,
+          1337
+        ]
+      },
+      {
+        "id": "AID_RANGE_TAPE",
+        "rect": [
+          1052,
+          660,
+          1096,
+          823
+        ]
+      },
+      {
+        "id": "AID_RATE_TAPE",
+        "rect": [
+          1103,
+          660,
+          1138,
+          823
+        ]
+      },
+      {
+        "id": "AID_LEM_PANEL_5",
+        "rect": [
+          33,
+          1548,
+          593,
+          1889
+        ]
+      },
+      {
+        "id": "AID_CO2_LIGHT",
+        "rect": [
+          1899,
+          1097,
+          1933,
+          1131
+        ]
+      },
+      {
+        "id": "AID_SUITFAN_LIGHT",
+        "rect": [
+          1823,
+          1074,
+          1857,
+          1108
+        ]
+      },
+      {
+        "id": "AID_H2OSEP_LIGHT",
+        "rect": [
+          1945,
+          1097,
+          1979,
+          1131
+        ]
+      },
+      {
+        "id": "AID_GLYCOL_LIGHT",
+        "rect": [
+          1823,
+          953,
+          1857,
+          987
+        ]
+      },
+      {
+        "id": "AID_LMP_MANUAL_ENGINE_STOP_SWITCH",
+        "rect": [
+          2160,
+          1609,
+          2228,
+          1678
+        ]
+      },
+      {
+        "id": "AID_LM_AGS_OPERATE_SWITCH",
+        "rect": [
+          2249,
+          1835,
+          2286,
+          1875
+        ]
+      },
+      {
+        "id": "AID_LM_DEDA_DISP",
+        "rect": [
+          2434,
+          1671,
+          2570,
+          1700
+        ]
+      },
+      {
+        "id": "AID_LM_DEDA_ADR",
+        "rect": [
+          2455,
+          1626,
+          2520,
+          1660
+        ]
+      },
+      {
+        "id": "AID_LM_DEDA_KEYS",
+        "rect": [
+          2363,
+          1710,
+          2587,
+          1887
+        ]
+      },
+      {
+        "id": "AID_LM_DEDA_LIGHTS",
+        "rect": [
+          2371,
+          1670,
+          2418,
+          1696
+        ]
+      },
+      {
+        "id": "AID_ORDEALSWITCHES",
+        "rect": [
+          1199,
+          10,
+          1676,
+          212
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_THRUST",
+        "rect": [
+          1072,
+          404,
+          1085,
+          416
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_DPSPRESS",
+        "rect": [
+          1254,
+          404,
+          1267,
+          416
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_RCSPRESS",
+        "rect": [
+          1526,
+          221,
+          1539,
+          233
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_ECSPRESS",
+        "rect": [
+          1832,
+          221,
+          1845,
+          233
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_RCSQUAN",
+        "rect": [
+          1617,
+          221,
+          1630,
+          233
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_ECSQUAN",
+        "rect": [
+          1829,
+          415,
+          1842,
+          427
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_GLYCOL",
+        "rect": [
+          1738,
+          415,
+          1751,
+          427
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_XPTRCDR",
+        "rect": [
+          725,
+          395,
+          738,
+          407
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_XPTRLMP",
+        "rect": [
+          1961,
+          383,
+          1974,
+          395
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_RNGALTRATE",
+        "rect": [
+          1097,
+          624,
+          1104,
+          636
+        ]
+      }
+    ],
+    "LEFTWINDOW": [
+      {
+        "id": "AID_LEM_COAS2",
+        "rect": [
+          675,
+          0,
+          1215,
+          540
+        ]
+      },
+      {
+        "id": "AID_MISSION_CLOCK",
+        "rect": [
+          1440,
+          106,
+          1604,
+          130
+        ]
+      },
+      {
+        "id": "AID_EVENT_TIMER",
+        "rect": [
+          1667,
+          105,
+          1768,
+          130
+        ]
+      },
+      {
+        "id": "AID_CONTACTLIGHT1",
+        "rect": [
+          1704,
+          246,
+          1753,
+          295
+        ]
+      },
+      {
+        "id": "AID_LEFTXPOINTERSWITCH",
+        "rect": [
+          1712,
+          335,
+          1747,
+          365
+        ]
+      },
+      {
+        "id": "AID_LEM_MA_LEFT",
+        "rect": [
+          1425,
+          440,
+          1472,
+          483
+        ]
+      },
+      {
+        "id": "AID_LEFTMONITORSWITCHES",
+        "rect": [
+          1433,
+          532,
+          1467,
+          645
+        ]
+      },
+      {
+        "id": "AID_XPOINTERCDR",
+        "rect": [
+          1449,
+          246,
+          1586,
+          379
+        ]
+      },
+      {
+        "id": "AID_FDAILOWERSWITCHROW",
+        "rect": [
+          1520,
+          740,
+          1696,
+          780
+        ]
+      },
+      {
+        "id": "AID_ENGINETHRUSTCONTSWITCHES",
+        "rect": [
+          1592,
+          826,
+          1702,
+          938
+        ]
+      },
+      {
+        "id": "AID_MPS_REG_CONTROLS_LEFT",
+        "rect": [
+          1736,
+          738,
+          1772,
+          945
+        ]
+      },
+      {
+        "id": "AID_MPS_REG_CONTROLS_RIGHT",
+        "rect": [
+          1810,
+          738,
+          1846,
+          945
+        ]
+      },
+      {
+        "id": "AID_RANGE_TAPE",
+        "rect": [
+          1826,
+          480,
+          1870,
+          643
+        ]
+      },
+      {
+        "id": "AID_RATE_TAPE",
+        "rect": [
+          1877,
+          480,
+          1915,
+          643
+        ]
+      },
+      {
+        "id": "AID_MPS_OXID_QUANTITY_INDICATOR",
+        "rect": [
+          1838,
+          65,
+          1884,
+          88
+        ]
+      },
+      {
+        "id": "AID_MPS_FUEL_QUANTITY_INDICATOR",
+        "rect": [
+          1838,
+          116,
+          1884,
+          141
+        ]
+      },
+      {
+        "id": "AID_ENG_ARM",
+        "rect": [
+          1547,
+          898,
+          1581,
+          937
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_THRUST",
+        "rect": [
+          1846,
+          224,
+          1859,
+          236
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_XPTRCDR",
+        "rect": [
+          1499,
+          215,
+          1512,
+          227
+        ]
+      }
+    ],
+    "LPDWINDOW": [
+      {
+        "id": "AID_MAIN_PROP_AND_ENGINE_IND",
+        "rect": [
+          1622,
+          46,
+          1871,
+          171
+        ]
+      },
+      {
+        "id": "AID_THRUST_WEIGHT_INDICATOR",
+        "rect": [
+          1776,
+          250,
+          1807,
+          430
+        ]
+      },
+      {
+        "id": "AID_XPOINTERCDR",
+        "rect": [
+          1241,
+          44,
+          1378,
+          177
+        ]
+      },
+      {
+        "id": "AID_CONTACTLIGHT1",
+        "rect": [
+          1507,
+          44,
+          1556,
+          93
+        ]
+      },
+      {
+        "id": "AID_RANGE_TAPE",
+        "rect": [
+          1629,
+          278,
+          1673,
+          441
+        ]
+      },
+      {
+        "id": "AID_RATE_TAPE",
+        "rect": [
+          1680,
+          278,
+          1718,
+          441
+        ]
+      },
+      {
+        "id": "AID_MPS_OXID_QUANTITY_INDICATOR",
+        "rect": [
+          1432,
+          132,
+          1478,
+          155
+        ]
+      },
+      {
+        "id": "AID_MPS_FUEL_QUANTITY_INDICATOR",
+        "rect": [
+          1432,
+          183,
+          1478,
+          209
+        ]
+      },
+      {
+        "id": "AID_ABORT",
+        "rect": [
+          1738,
+          473,
+          1907,
+          593
+        ]
+      },
+      {
+        "id": "AID_ENG_ARM",
+        "rect": [
+          1350,
+          696,
+          1384,
+          736
+        ]
+      },
+      {
+        "id": "AID_DESCENT_ENGINE_SWITCH",
+        "rect": [
+          1578,
+          865,
+          1620,
+          905
+        ]
+      },
+      {
+        "id": "AID_MODECONTROL",
+        "rect": [
+          1669,
+          878,
+          1917,
+          923
+        ]
+      },
+      {
+        "id": "AID_DSKY_KEY",
+        "rect": [
+          1592,
+          947,
+          1878,
+          1067
+        ]
+      },
+      {
+        "id": "AID_DSKY_DISPLAY",
+        "rect": [
+          1410,
+          888,
+          1515,
+          1065
+        ]
+      },
+      {
+        "id": "AID_DSKY_LIGHTS",
+        "rect": [
+          1266,
+          893,
+          1368,
+          1062
+        ]
+      },
+      {
+        "id": "AID_LEFTXPOINTERSWITCH",
+        "rect": [
+          1540,
+          133,
+          1574,
+          162
+        ]
+      },
+      {
+        "id": "AID_GUIDCONTSWITCHROW",
+        "rect": [
+          1846,
+          245,
+          1881,
+          441
+        ]
+      },
+      {
+        "id": "AID_LEM_MA_LEFT",
+        "rect": [
+          1228,
+          238,
+          1275,
+          281
+        ]
+      },
+      {
+        "id": "AID_LEFTMONITORSWITCHES",
+        "rect": [
+          1236,
+          330,
+          1270,
+          442
+        ]
+      },
+      {
+        "id": "AID_FDAILOWERSWITCHROW",
+        "rect": [
+          1323,
+          538,
+          1499,
+          577
+        ]
+      },
+      {
+        "id": "AID_MPS_REG_CONTROLS_LEFT",
+        "rect": [
+          1539,
+          536,
+          1575,
+          743
+        ]
+      },
+      {
+        "id": "AID_MPS_REG_CONTROLS_RIGHT",
+        "rect": [
+          1613,
+          536,
+          1649,
+          743
+        ]
+      },
+      {
+        "id": "AID_ENGINETHRUSTCONTSWITCHES",
+        "rect": [
+          1396,
+          624,
+          1505,
+          735
+        ]
+      },
+      {
+        "id": "AID_PROPELLANTSWITCHES",
+        "rect": [
+          1669,
+          609,
+          1731,
+          730
+        ]
+      },
+      {
+        "id": "AID_HELIUMMONROTARY",
+        "rect": [
+          1769,
+          610,
+          1853,
+          694
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_THRUST",
+        "rect": [
+          1649,
+          22,
+          1662,
+          34
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_DPSPRESS",
+        "rect": [
+          1831,
+          22,
+          1844,
+          34
+        ]
+      },
+      {
+        "id": "AID_LEM_PWRFAIL_XPTRCDR",
+        "rect": [
+          1291,
+          13,
+          1304,
+          25
+        ]
+      }
+    ]
+  },
+  "dskyKeys": [
+    {
+      "key": "VERB",
+      "relativeRect": [
+        0,
+        20,
+        38,
+        58
+      ]
+    },
+    {
+      "key": "NOUN",
+      "relativeRect": [
+        0,
+        60,
+        38,
+        98
+      ]
+    },
+    {
+      "key": "+",
+      "relativeRect": [
+        41,
+        0,
+        79,
+        38
+      ]
+    },
+    {
+      "key": "\u2212",
+      "relativeRect": [
+        41,
+        40,
+        79,
+        78
+      ]
+    },
+    {
+      "key": "0",
+      "relativeRect": [
+        41,
+        80,
+        79,
+        118
+      ]
+    },
+    {
+      "key": "7",
+      "relativeRect": [
+        82,
+        0,
+        120,
+        38
+      ]
+    },
+    {
+      "key": "4",
+      "relativeRect": [
+        82,
+        40,
+        120,
+        78
+      ]
+    },
+    {
+      "key": "1",
+      "relativeRect": [
+        82,
+        80,
+        120,
+        118
+      ]
+    },
+    {
+      "key": "8",
+      "relativeRect": [
+        123,
+        0,
+        161,
+        38
+      ]
+    },
+    {
+      "key": "5",
+      "relativeRect": [
+        123,
+        40,
+        161,
+        78
+      ]
+    },
+    {
+      "key": "2",
+      "relativeRect": [
+        123,
+        80,
+        161,
+        118
+      ]
+    },
+    {
+      "key": "9",
+      "relativeRect": [
+        164,
+        0,
+        202,
+        38
+      ]
+    },
+    {
+      "key": "6",
+      "relativeRect": [
+        164,
+        40,
+        202,
+        78
+      ]
+    },
+    {
+      "key": "3",
+      "relativeRect": [
+        164,
+        80,
+        202,
+        118
+      ]
+    },
+    {
+      "key": "CLR",
+      "relativeRect": [
+        205,
+        0,
+        243,
+        38
+      ]
+    },
+    {
+      "key": "PRO",
+      "relativeRect": [
+        205,
+        40,
+        243,
+        78
+      ]
+    },
+    {
+      "key": "KEY REL",
+      "relativeRect": [
+        205,
+        80,
+        243,
+        118
+      ]
+    },
+    {
+      "key": "ENTR",
+      "relativeRect": [
+        246,
+        20,
+        284,
+        58
+      ]
+    },
+    {
+      "key": "RSET",
+      "relativeRect": [
+        246,
+        60,
+        284,
+        98
+      ]
+    }
+  ]
+}

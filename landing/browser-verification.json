@@ -1,0 +1,27 @@
+{
+  "date": "2026-11-03",
+  "testedSurface": "Codex in-app browser",
+  "desktopViewport": [
+    1280,
+    800
+  ],
+  "mobileViewport": [
+    390,
+    844
+  ],
+  "checks": {
+    "originalMainPanelVisible": true,
+    "originalLeftWindowVisible": true,
+    "dskyViewSwitch": true,
+    "originalRomV35ResponseObserved": true,
+    "originalRomRegistersDisplayed88888": true,
+    "mobileHorizontalOverflow": false,
+    "engineeringTouchdownAndExportPreviouslyTested": true
+  },
+  "limitations": [
+    "Full NASSP subsystem behavior is not ported.",
+    "Original fixed bitmap gauge readings remain outside DSKY.",
+    "Exact simulator build in user video is unverified.",
+    "Viewport tests do not certify physical phone hardware performance."
+  ]
+}

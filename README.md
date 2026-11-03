@@ -103,3 +103,14 @@ F‑1流道采用NASA SP-8120表1：喉径35英寸、出口140英寸、轴向长
 原四个视图、指令舱/登月舱AGC操作页均保持原文件内容。
 
 本轮浏览器检查因Work设置关闭本地浏览器访问而未执行；线上视觉与交互验收仍待完成。
+
+
+## NASSP原始登月舱面板
+
+[打开原面板移植页面](https://yun999-ccc.github.io/apollo11-explorer/landing/)。主面板、左窗与着陆观察窗直接采用 orbiternassp/NASSP 提交 a4ed25511e626823f9c83b457cf9371375b82094 的资源。保留原始RGB像素、比例、像素坐标和19个DSKY按键位置。只将原图洋红色透明键转为透明。
+
+DSKY使用原字模和绘制坐标显示真实运行的Luminary099。其他仪表保留原始位图固定状态，完整电气、环境、雷达与推进系统逻辑尚未移植。简化下降工程实验独立于原始AGC。共享LM资源的精确任务修订适用性待核。
+
+landing/ 及其NASSP衍生移植按GPL-2.0-or-later提供，保留上游许可、源码和原始资源归档。来源、像素检查、浏览器检查分别见 landing/nassp/manifest.json、landing/nassp/verification.json 和 landing/browser-verification.json。
+
+检查原图与源码坐标：python3 validation/check-nassp-assets.py。

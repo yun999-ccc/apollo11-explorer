@@ -1,0 +1,37 @@
+{
+  "repository": "orbiternassp/NASSP",
+  "commit": "a4ed25511e626823f9c83b457cf9371375b82094",
+  "imageChecks": [
+    {
+      "asset": "lem_main_panel",
+      "width": 2700,
+      "height": 1920,
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "asset": "lem_left_window",
+      "width": 1920,
+      "height": 1080,
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "asset": "lem_lpd_window",
+      "width": 1920,
+      "height": 1080,
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    }
+  ],
+  "regionsFromUpstream": {
+    "MAIN": 96,
+    "LEFTWINDOW": 19,
+    "LPDWINDOW": 28
+  },
+  "dskyKeys": 19,
+  "originalCoordinatesRetained": true,
+  "originalGlyphsAndDrawingCoordinatesUsed": true,
+  "fullNasspSystemsPorted": false,
+  "exactScreenshotSimulatorBuildIdentified": false
+}

@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-03",
+  "checks": [
+    {
+      "name": "Free fall agrees with independent analytic solution",
+      "pass": true,
+      "evidence": {
+        "expectedHeightM": 19,
+        "errorM": 3.694822225952521e-13
+      }
+    },
+    {
+      "name": "Fuel consumption agrees with integrated thrust / Isp / g0",
+      "pass": true,
+      "evidence": {
+        "errorKg": 2.7711166694643907e-13
+      }
+    },
+    {
+      "name": "Engine cutoff consumes no further fuel",
+      "pass": true,
+      "evidence": {
+        "thrustN": 0,
+        "remainingKg": 650
+      }
+    },
+    {
+      "name": "One descent-rate input equals one foot per second",
+      "pass": true,
+      "evidence": {
+        "incrementMps": 0.3048
+      }
+    },
+    {
+      "name": "Thrust vector follows tilt without artificial horizontal drag",
+      "pass": true,
+      "evidence": {
+        "vx": 10,
+        "vy": 5
+      }
+    },
+    {
+      "name": "Ground sampling and touchdown use the same surface",
+      "pass": true,
+      "evidence": {
+        "time": 101.82845100536224,
+        "verticalSpeed": 0.3496708814138907,
+        "horizontalSpeed": 0.000003060933661043398,
+        "pitch": 0.00001735406223266444,
+        "roll": 0,
+        "fuel": 251.78782649619347,
+        "x": 223.9309110857698,
+        "y": 0
+      }
+    },
+    {
+      "name": "Half-step refinement converges for assisted touchdown",
+      "pass": true,
+      "evidence": {
+        "timeErrorAt60Hz": 0.001583264484679603,
+        "timeErrorAt120Hz": 0.0005254625105948207,
+        "coarse": {
+          "time": 105.30792895423198,
+          "verticalSpeed": 0.34967088141389974,
+          "horizontalSpeed": 0.0000017528798345588136,
+          "pitch": 0.00000993187066247071,
+          "roll": 0,
+          "fuel": 239.0756998037673,
+          "x": 223.93091925020553,
+          "y": 0
+        },
+        "finer": {
+          "time": 105.3063456897473,
+          "verticalSpeed": 0.34967096070972215,
+          "horizontalSpeed": 0.0000017876526742461979,
+          "pitch": 0.000010119572912411911,
+          "roll": 0,
+          "fuel": 239.0859254887756,
+          "x": 224.0865129156321,
+          "y": 0
+        }
+      }
+    },
+    {
+      "name": "Same tick-indexed controls give identical results at 30/60/144 render FPS",
+      "pass": true,
+      "evidence": [
+        {
+          "fps": 30,
+          "time": 20.000000000000146,
+          "tick": 1200
+        },
+        {
+          "fps": 60,
+          "time": 20.000000000000146,
+          "tick": 1200
+        },
+        {
+          "fps": 144,
+          "time": 20.000000000000146,
+          "tick": 1200
+        }
+      ]
+    },
+    {
+      "name": "Operator change produces a different trajectory",
+      "pass": true,
+      "evidence": {
+        "heightDifferenceM": 11.435460366676224
+      }
+    },
+    {
+      "name": "Empty propellant, bounded commands and invalid inputs",
+      "pass": true,
+      "evidence": {
+        "fuelKg": 0,
+        "maximumUpwardRateMps": 0.9144000000000001
+      }
+    }
+  ],
+  "allPassed": true,
+  "historicalFlightValidated": false,
+  "originalAgcClosedLoop": false,
+  "browserVerification": "pending"
+}

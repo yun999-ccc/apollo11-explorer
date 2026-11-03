@@ -1,0 +1,61 @@
+{
+  "scope": "Apollo 11 LM-5 terminal-descent engineering demonstrator",
+  "controlLaw": "New engineering rate controller. Not the original Luminary099 P66 execution.",
+  "sources": [
+    {
+      "title": "Apollo 11 Mission Report, printed 5-2 and 5-5",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/apollo50th/pdf/A11_MissionReport.pdf",
+      "local": "assets/mission-control-extract.pdf",
+      "supports": "P66 manual attitude, computer throttle and 1 ft/s rate command increments; pitch zero corresponds to vertical LM X axis.",
+      "titleZh": "Apollo 11 Mission Report（阿波罗11号任务报告）· 第5-2、5-5页",
+      "supportsZh": "P66由乘员控制姿态、计算机控制节流，下降率开关每次改变1英尺/秒。俯仰0°对应飞船X轴竖直。"
+    },
+    {
+      "title": "Apollo 11 Press Kit, PDF107 and110",
+      "url": "../assets/A11_PressKit.pdf#page=110",
+      "local": "assets/lm5-propulsion-extract.pdf",
+      "supports": "LM-5 rated descent thrust 9870 lbf and throttle range 1050–6300 lbf. Full-thrust regime is outside this terminal model.",
+      "titleZh": "Apollo 11 Press Kit（阿波罗11号新闻资料）· PDF第107、110页",
+      "supportsZh": "LM-5下降发动机额定推力9870磅力，节流范围1050至6300磅力。本模型用于末段下降。"
+    },
+    {
+      "title": "Apollo 11 landing transcript, 102:43:26",
+      "url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/a11.landing.html",
+      "supports": "Reported 400 ft altitude, 9 ft/s down and 58 ft/s forward. These anchor the starting state; they do not establish a complete flight-state snapshot.",
+      "titleZh": "Apollo 11 landing transcript（阿波罗11号着陆通话记录）· 102:43:26",
+      "supportsZh": "初始读数采用通话中的高度400英尺、下降9英尺/秒和前向58英尺/秒。完整任务状态仍需核对。"
+    },
+    {
+      "title": "NASA Moon gravity",
+      "url": "https://www1.grc.nasa.gov/beginners-guide-to-aeronautics/moon/",
+      "supports": "Rounded lunar surface gravity 1.62 m/s².",
+      "titleZh": "NASA Moon gravity（NASA月球重力资料）",
+      "supportsZh": "采用近似月面重力加速度1.62米/秒²。"
+    },
+    {
+      "title": "NASA LM controls and displays diagram",
+      "url": "https://www.nasa.gov/history/diagrams/apollo.html",
+      "local": "assets/lm-panel-original.gif",
+      "supports": "Independent functional layout reference; exact LM-5 revision applicability remains unverified.",
+      "titleZh": "NASA LM controls and displays（NASA登月舱控制与显示图）",
+      "supportsZh": "用于功能位置对照。原图修订版对LM-5的适用性尚未完成核验。"
+    }
+  ],
+  "engineeringAssumptions": {
+    "inertMassKg": 6500,
+    "initialDescentPropellantKg": 650,
+    "specificImpulseSeconds": 305,
+    "engineTimeConstantSeconds": 0.3,
+    "attitudeSlewDegreesPerSecond": 3,
+    "rateControllerGainPerSecond": 0.8,
+    "initialPitchDegrees": 6,
+    "initialRateCommandFtPerSecond": -3,
+    "probeContactHeightMeters": 1.7,
+    "terrain": "Deterministic schematic terrain, not survey data or reconstructed Tranquility Base.",
+    "window": "Illustrative triangular commander window and angular scale; measured eye-point and pane geometry not registered.",
+    "touchdown": "Reports impact speeds and attitude. No structural-damage or certified landing-safety classification."
+  },
+  "verifiedHistoricalFlightReproduction": false,
+  "originalAGCClosedLoop": false,
+  "visibleCockpit": "NASSP original panel assets. Source-controlled image regions and DSKY transplant. Engineering model remains independent."
+}

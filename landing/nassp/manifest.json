@@ -1,0 +1,88 @@
+{
+  "repository": "orbiternassp/NASSP",
+  "commit": "a4ed25511e626823f9c83b457cf9371375b82094",
+  "files": [
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Doc/Project Apollo License.txt",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Doc/Project%20Apollo%20License.txt"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Doc/GNU General Public License.txt",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Doc/GNU%20General%20Public%20License.txt"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/src_lm/lempanel.cpp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lempanel.cpp"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/src_lm/LEMResources.rc",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/LEMResources.rc"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Bitmaps/lem_main_panel.bmp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Bitmaps/lem_main_panel.bmp"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Bitmaps/lem_left_window.bmp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Bitmaps/lem_left_window.bmp"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Bitmaps/lem_lpd_window.bmp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Bitmaps/lem_lpd_window.bmp"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Bitmaps/digitaldisp.bmp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Bitmaps/digitaldisp.bmp",
+      "sha256": "647184bcbff92bc9f1d2e9be1381277fb3c72751ec8318599533b1f66e427ee8"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Bitmaps/dsky_disp.bmp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Bitmaps/dsky_disp.bmp",
+      "sha256": "232f9461b402ec8749e115b8bbf9a3f97a6e46176eb4f34442d663ad1bda2cf8"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/Bitmaps/dsky_lights.bmp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/Bitmaps/dsky_lights.bmp",
+      "sha256": "d1fb2ea9e29e9774aa6e776a057dc38fa46acc40aadeaccd66804fb001e52704"
+    },
+    {
+      "path": "Orbitersdk/samples/ProjectApollo/src_sys/dsky.cpp",
+      "url": "https://raw.githubusercontent.com/orbiternassp/NASSP/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_sys/dsky.cpp"
+    }
+  ],
+  "conversionChecks": [
+    {
+      "name": "lem_main_panel",
+      "size": [
+        2700,
+        1920
+      ],
+      "nonWindowRGBExact": true,
+      "transparentColorKeyPixels": 573673,
+      "sha256": "ff5a8a9f116f90dda8c3a463f53967d5df1df1fba197c0a5e2761b69fc6ae602"
+    },
+    {
+      "name": "lem_left_window",
+      "size": [
+        1920,
+        1080
+      ],
+      "nonWindowRGBExact": true,
+      "transparentColorKeyPixels": 493300,
+      "sha256": "20f53ca003282161f130f0841663e712e29d65cf3b0e4975edd00097ed183d89"
+    },
+    {
+      "name": "lem_lpd_window",
+      "size": [
+        1920,
+        1080
+      ],
+      "nonWindowRGBExact": true,
+      "transparentColorKeyPixels": 1036126,
+      "sha256": "4107d0e8f5726a8b823494cd683128de0a71c57023e76dca507c18f0648d6b04"
+    }
+  ],
+  "license": "GPL-2.0-or-later, upstream Project Apollo License.txt retained",
+  "exactSimulatorIdentityFromScreenshotVerified": false,
+  "hardwareMissionApplicability": "Original NASSP shared LM asset. LM-5 revision certification pending."
+}
