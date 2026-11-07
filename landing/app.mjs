@@ -6,7 +6,7 @@ import {createLunarView} from './scene.mjs';
 import {createFixedClock} from '../simulation/fixed-clock.mjs';
 
 const $ = selector => document.querySelector(selector);
-let flight, clock, running = false, lunarView;
+let flight, clock, running = false, lunarView, nativeCockpit;
 let previousFrame = performance.now(), replayEvents = null, replayIndex = 0;
 let samples = [], resultShown = false, lookDown = 28;
 const fmt = (number, digits = 1) => Number(number).toFixed(digits);
@@ -31,8 +31,9 @@ function reset() {
     if (tick % 60 === 0 || flight.state.touchdown) samples.push({...flight.state, touchdown: flight.state.touchdown && {...flight.state.touchdown}});
   });
   $('#start').textContent = '开始下降';
-  $('#flight-status').textContent = '准备下降';
-  $('#hint').textContent = '先点击“辅助演示”观察完整下降，再尝试操纵。空格暂停，R/F改变下降率，W/S/A/D改变姿态。';
+  $('#flight-status').textContent = '下降前检查 · 已暂停';
+  $('#hint').textContent = '下降已暂停，可先检查面板和操作DSKY。点击“开始下降”运行独立工程模型；该模型尚未与面板系统、原始AGC形成闭环。';
+  nativeCockpit?.resetControls();
   render();
 }
 function toggleRunning() {
@@ -121,7 +122,8 @@ function render() {
   $('#assist').classList.toggle('active', s.assist);
   $('#assist').textContent = s.assist ? '辅助演示中' : '辅助演示';
   $('#engine-stop').disabled = !s.engine || Boolean(s.touchdown) || Boolean(replayEvents);
-  $('#flight-status').textContent = s.touchdown ? '脚垫已接触月面' : replayEvents ? '操作重放中' : running ? s.assist ? '工程辅助下降' : '乘员操纵下降' : '已暂停';
+  for(const button of document.querySelectorAll('#rod-up,#rod-down,#quick-rate-up,#quick-rate-down,#quick-pitch-up,#quick-pitch-down,#assist,[data-control]'))button.disabled=Boolean(s.touchdown)||Boolean(replayEvents);
+  $('#flight-status').textContent = s.touchdown ? '脚垫已接触月面' : replayEvents ? '操作重放中' : running ? s.assist ? '工程辅助下降' : '乘员操纵下降' : s.tick===0 ? '下降前检查 · 已暂停' : '已暂停';
   if (lunarView && $('#cockpit').dataset.view !== 'panel') lunarView.render(s, lookDown);
   window.apolloLanding = {state: {...s}, running, replay: Boolean(replayEvents), tick: clock.tick, terrainHeight: groundHeight(s.x, s.y), triangles: lunarView?.triangles || 0};
 }
@@ -170,7 +172,7 @@ for (const button of document.querySelectorAll('button[data-view]')) button.oncl
 for (const button of document.querySelectorAll('[data-close]')) button.onclick = () => button.closest('dialog').close();
 $('#sources').onclick = () => $('#source-dialog').showModal();
 document.addEventListener('keydown', event => {
-  if (event.target.tagName === 'INPUT' || document.querySelector('dialog[open]') || event.ctrlKey || event.metaKey || event.altKey) return;
+  if (['INPUT','SELECT','TEXTAREA','BUTTON'].includes(event.target.tagName) || document.querySelector('dialog[open]') || event.ctrlKey || event.metaKey || event.altKey) return;
   if (event.code === 'Space') { event.preventDefault(); toggleRunning(); return; }
   const actions = {r: ['rate', 1], f: ['rate', -1], w: ['pitch', 1], s: ['pitch', -1], a: ['roll', -1], d: ['roll', 1]};
   const action = actions[event.key.toLowerCase()];
@@ -206,6 +208,8 @@ Promise.all([fetch('provenance.json').then(r => r.json()), fetch('validation.jso
 }).catch(() => { $('#test-summary').textContent = '资料报告暂未加载，请直接打开下方原始记录。'; });
 
 createNativeCockpit($('#native-cockpit'), $('#lunar-view')).then(native => {
+  nativeCockpit=native;
+  window.apolloPanel={inspect:()=>native.inspectControls()};
   for (const button of document.querySelectorAll('[data-native-view]')) button.onclick = () => {
     native.setView(button.dataset.nativeView);
     for (const other of document.querySelectorAll('[data-native-view]')) other.setAttribute('aria-pressed', String(other === button));

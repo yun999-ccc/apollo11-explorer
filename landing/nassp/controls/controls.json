@@ -1,0 +1,879 @@
+{
+  "source": "../lempanel.cpp",
+  "commit": "a4ed25511e626823f9c83b457cf9371375b82094",
+  "initialStateBasis": "NASSP InitSwitches defaults; not an Apollo 11 terminal descent snapshot",
+  "controls": [
+    {
+      "id": "AbortSwitch",
+      "area": "AID_ABORT",
+      "rect": [
+        1161,
+        881,
+        1216,
+        936
+      ],
+      "sprite": "LMAbortButton",
+      "kind": "abort",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 1989,
+      "registerLine": 157
+    },
+    {
+      "id": "AbortStageSwitch",
+      "area": "AID_ABORT",
+      "rect": [
+        1220,
+        855,
+        1329,
+        974
+      ],
+      "sprite": "LMAbortButton",
+      "kind": "abort",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 1990,
+      "registerLine": 158
+    },
+    {
+      "id": "EngineArmSwitch",
+      "area": "AID_ENG_ARM",
+      "rect": [
+        773,
+        1078,
+        807,
+        1117
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 1994,
+      "registerLine": 162
+    },
+    {
+      "id": "LeftXPointerSwitch",
+      "area": "AID_LEFTXPOINTERSWITCH",
+      "rect": [
+        938,
+        515,
+        972,
+        544
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 1997,
+      "registerLine": 167
+    },
+    {
+      "id": "GuidContSwitch",
+      "area": "AID_GUIDCONTSWITCHROW",
+      "rect": [
+        1269,
+        627,
+        1303,
+        666
+      ],
+      "sprite": "lemswitch2",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2000,
+      "registerLine": 168
+    },
+    {
+      "id": "ModeSelSwitch",
+      "area": "AID_GUIDCONTSWITCHROW",
+      "rect": [
+        1269,
+        710,
+        1303,
+        739
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 2,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2001,
+      "registerLine": 169
+    },
+    {
+      "id": "AltRngMonSwitch",
+      "area": "AID_GUIDCONTSWITCHROW",
+      "rect": [
+        1269,
+        794,
+        1303,
+        823
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2002,
+      "registerLine": 170
+    },
+    {
+      "id": "LeftMasterAlarmSwitch",
+      "area": "AID_LEM_MA_LEFT",
+      "rect": [
+        651,
+        620,
+        698,
+        663
+      ],
+      "sprite": "lem_master_alarm",
+      "kind": "alarm",
+      "default": 0,
+      "spring": false,
+      "delay": 1,
+      "angles": [],
+      "line": 2005,
+      "registerLine": 171
+    },
+    {
+      "id": "RateErrorMonSwitch",
+      "area": "AID_LEFTMONITORSWITCHES",
+      "rect": [
+        659,
+        712,
+        693,
+        741
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2008,
+      "registerLine": 173
+    },
+    {
+      "id": "AttitudeMonSwitch",
+      "area": "AID_LEFTMONITORSWITCHES",
+      "rect": [
+        659,
+        795,
+        693,
+        824
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2009,
+      "registerLine": 174
+    },
+    {
+      "id": "ASCHeReg1Switch",
+      "area": "AID_MPS_REG_CONTROLS_LEFT",
+      "rect": [
+        962,
+        961,
+        996,
+        990
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2015,
+      "registerLine": 179
+    },
+    {
+      "id": "DESHeReg1Switch",
+      "area": "AID_MPS_REG_CONTROLS_LEFT",
+      "rect": [
+        962,
+        1095,
+        996,
+        1124
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2017,
+      "registerLine": 183
+    },
+    {
+      "id": "ASCHeReg2Switch",
+      "area": "AID_MPS_REG_CONTROLS_RIGHT",
+      "rect": [
+        1036,
+        961,
+        1070,
+        990
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2023,
+      "registerLine": 181
+    },
+    {
+      "id": "DESHeReg2Switch",
+      "area": "AID_MPS_REG_CONTROLS_RIGHT",
+      "rect": [
+        1036,
+        1095,
+        1070,
+        1124
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2025,
+      "registerLine": 185
+    },
+    {
+      "id": "ShiftTruSwitch",
+      "area": "AID_FDAILOWERSWITCHROW",
+      "rect": [
+        746,
+        925,
+        780,
+        954
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2029,
+      "registerLine": 187
+    },
+    {
+      "id": "RateScaleSwitch",
+      "area": "AID_FDAILOWERSWITCHROW",
+      "rect": [
+        819,
+        925,
+        853,
+        954
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2030,
+      "registerLine": 188
+    },
+    {
+      "id": "ACAPropSwitch",
+      "area": "AID_FDAILOWERSWITCHROW",
+      "rect": [
+        888,
+        920,
+        922,
+        959
+      ],
+      "sprite": "lemswitch2",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2031,
+      "registerLine": 189
+    },
+    {
+      "id": "THRContSwitch",
+      "area": "AID_ENGINETHRUSTCONTSWITCHES",
+      "rect": [
+        819,
+        1006,
+        853,
+        1045
+      ],
+      "sprite": "lemswitch2",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2034,
+      "registerLine": 235
+    },
+    {
+      "id": "MANThrotSwitch",
+      "area": "AID_ENGINETHRUSTCONTSWITCHES",
+      "rect": [
+        888,
+        1006,
+        922,
+        1045
+      ],
+      "sprite": "lemswitch2",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2036,
+      "registerLine": 236
+    },
+    {
+      "id": "ATTTranslSwitch",
+      "area": "AID_ENGINETHRUSTCONTSWITCHES",
+      "rect": [
+        839,
+        1083,
+        873,
+        1112
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2037,
+      "registerLine": 237
+    },
+    {
+      "id": "BALCPLSwitch",
+      "area": "AID_ENGINETHRUSTCONTSWITCHES",
+      "rect": [
+        894,
+        1078,
+        928,
+        1117
+      ],
+      "sprite": "lemswitch2",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2038,
+      "registerLine": 238
+    },
+    {
+      "id": "QTYMonSwitch",
+      "area": "AID_PROPELLANTSWITCHES",
+      "rect": [
+        1092,
+        991,
+        1126,
+        1020
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2041,
+      "registerLine": 239
+    },
+    {
+      "id": "TempPressMonSwitch",
+      "area": "AID_PROPELLANTSWITCHES",
+      "rect": [
+        1120,
+        1083,
+        1154,
+        1112
+      ],
+      "sprite": "lem_threeposswitch",
+      "kind": "three",
+      "default": 2,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2042,
+      "registerLine": 240
+    },
+    {
+      "id": "HeliumMonRotary",
+      "area": "AID_HELIUMMONROTARY",
+      "rect": [
+        1192,
+        992,
+        1276,
+        1076
+      ],
+      "sprite": "LemRotationalSwitch",
+      "kind": "rotary",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [
+        285,
+        315,
+        344,
+        16,
+        45,
+        75,
+        106
+      ],
+      "line": 2045,
+      "registerLine": 309
+    },
+    {
+      "id": "RightMasterAlarmSwitch",
+      "area": "AID_LEM_MA_RIGHT",
+      "rect": [
+        2005,
+        620,
+        2052,
+        663
+      ],
+      "sprite": "lem_master_alarm",
+      "kind": "alarm",
+      "default": 0,
+      "spring": false,
+      "delay": 1,
+      "angles": [],
+      "line": 2048,
+      "registerLine": 241
+    },
+    {
+      "id": "RightRateErrorMonSwitch",
+      "area": "AID_RIGHTMONITORSWITCHES",
+      "rect": [
+        2008,
+        712,
+        2042,
+        741
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2051,
+      "registerLine": 243
+    },
+    {
+      "id": "RightAttitudeMonSwitch",
+      "area": "AID_RIGHTMONITORSWITCHES",
+      "rect": [
+        2008,
+        795,
+        2042,
+        824
+      ],
+      "sprite": "lem_switchup",
+      "kind": "two",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2052,
+      "registerLine": 244
+    },
+    {
+      "id": "TempPressMonRotary",
+      "area": "AID_TEMPPRESSMONROTARY",
+      "rect": [
+        1396,
+        1002,
+        1480,
+        1086
+      ],
+      "sprite": "LemRotationalSwitch",
+      "kind": "rotary",
+      "default": 0,
+      "spring": false,
+      "delay": 0,
+      "angles": [
+        345,
+        17,
+        45,
+        74
+      ],
+      "line": 2055,
+      "registerLine": 315
+    },
+    {
+      "id": "RightACAPropSwitch",
+      "area": "AID_ACAPROPSWITCH",
+      "rect": [
+        1620,
+        1012,
+        1654,
+        1051
+      ],
+      "sprite": "lemswitch2",
+      "kind": "two",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [],
+      "line": 2058,
+      "registerLine": 245
+    },
+    {
+      "id": "RCSAscFeed1ASwitch",
+      "area": "AID_RCS_ASC_FEED_SWITCHES",
+      "rect": [
+        1410,
+        493,
+        1444,
+        532
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2068,
+      "registerLine": 194
+    },
+    {
+      "id": "RCSAscFeed2ASwitch",
+      "area": "AID_RCS_ASC_FEED_SWITCHES",
+      "rect": [
+        1479,
+        493,
+        1513,
+        532
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2070,
+      "registerLine": 196
+    },
+    {
+      "id": "RCSAscFeed1BSwitch",
+      "area": "AID_RCS_ASC_FEED_SWITCHES",
+      "rect": [
+        1554,
+        493,
+        1588,
+        532
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2072,
+      "registerLine": 198
+    },
+    {
+      "id": "RCSAscFeed2BSwitch",
+      "area": "AID_RCS_ASC_FEED_SWITCHES",
+      "rect": [
+        1623,
+        493,
+        1657,
+        532
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2074,
+      "registerLine": 200
+    },
+    {
+      "id": "RCSQuad1ACmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_14_SWITCHES",
+      "rect": [
+        1410,
+        642,
+        1444,
+        681
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2084,
+      "registerLine": 206
+    },
+    {
+      "id": "RCSQuad4ACmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_14_SWITCHES",
+      "rect": [
+        1479,
+        642,
+        1513,
+        681
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2086,
+      "registerLine": 208
+    },
+    {
+      "id": "RCSQuad1BCmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_14_SWITCHES",
+      "rect": [
+        1554,
+        642,
+        1588,
+        681
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2088,
+      "registerLine": 210
+    },
+    {
+      "id": "RCSQuad4BCmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_14_SWITCHES",
+      "rect": [
+        1623,
+        642,
+        1657,
+        681
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2090,
+      "registerLine": 212
+    },
+    {
+      "id": "RCSQuad2ACmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_23_SWITCHES",
+      "rect": [
+        1410,
+        768,
+        1444,
+        807
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2100,
+      "registerLine": 218
+    },
+    {
+      "id": "RCSQuad3ACmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_23_SWITCHES",
+      "rect": [
+        1479,
+        768,
+        1513,
+        807
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2102,
+      "registerLine": 220
+    },
+    {
+      "id": "RCSQuad2BCmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_23_SWITCHES",
+      "rect": [
+        1554,
+        768,
+        1588,
+        807
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2104,
+      "registerLine": 222
+    },
+    {
+      "id": "RCSQuad3BCmdEnableSwitch",
+      "area": "AID_RCS_LGC_CMD_ENABLE_23_SWITCHES",
+      "rect": [
+        1623,
+        768,
+        1657,
+        807
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2106,
+      "registerLine": 224
+    },
+    {
+      "id": "RCSXFeedSwitch",
+      "area": "AID_RCS_XFEED_SWITCH",
+      "rect": [
+        1410,
+        921,
+        1444,
+        960
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2113,
+      "registerLine": 227
+    },
+    {
+      "id": "RCSMainSovASwitch",
+      "area": "AID_MAIN_SOV_SWITCHES",
+      "rect": [
+        1549,
+        922,
+        1583,
+        961
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2121,
+      "registerLine": 231
+    },
+    {
+      "id": "RCSMainSovBSwitch",
+      "area": "AID_MAIN_SOV_SWITCHES",
+      "rect": [
+        1620,
+        922,
+        1654,
+        961
+      ],
+      "sprite": "lemswitch3",
+      "kind": "three",
+      "default": 1,
+      "spring": true,
+      "delay": 1,
+      "angles": [],
+      "line": 2123,
+      "registerLine": 233
+    },
+    {
+      "id": "GlycolRotary",
+      "area": "AID_GLYCOLSUITFANROTARIES",
+      "rect": [
+        1706,
+        926,
+        1790,
+        1010
+      ],
+      "sprite": "LemRotationalSwitch",
+      "kind": "rotary",
+      "default": 2,
+      "spring": false,
+      "delay": 0,
+      "angles": [
+        46,
+        75,
+        107
+      ],
+      "line": 2127,
+      "registerLine": 320
+    },
+    {
+      "id": "SuitFanRotary",
+      "area": "AID_GLYCOLSUITFANROTARIES",
+      "rect": [
+        1706,
+        1046,
+        1790,
+        1130
+      ],
+      "sprite": "LemRotationalSwitch",
+      "kind": "rotary",
+      "default": 1,
+      "spring": false,
+      "delay": 0,
+      "angles": [
+        45,
+        74,
+        106
+      ],
+      "line": 2128,
+      "registerLine": 325
+    },
+    {
+      "id": "QtyMonRotary",
+      "area": "AID_QTYMONROTARY",
+      "rect": [
+        1892,
+        986,
+        1976,
+        1070
+      ],
+      "sprite": "LemRotationalSwitch",
+      "kind": "rotary",
+      "default": 3,
+      "spring": false,
+      "delay": 0,
+      "angles": [
+        343,
+        16,
+        45,
+        75
+      ],
+      "line": 2131,
+      "registerLine": 331
+    }
+  ]
+}

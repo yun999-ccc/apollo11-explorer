@@ -1,6 +1,10 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
+<script>
+// Existing LM bookmarks open the cockpit; the standalone computer remains explicit.
+if (new URLSearchParams(location.search).get('craft') !== 'cm' && new URLSearchParams(location.search).get('standalone') !== '1') location.replace('../landing/');
+</script>
  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
  <title>阿波罗11号｜DSKY（键盘显示器）操作</title>
  <meta name="description" content="通过DSKY按键操作真实运行的阿波罗11号Comanche055与Luminary099程序，查阅原始工程图及按键依据。">
@@ -11,7 +15,7 @@
  <header class="console-header"><a id="back-exterior" href="../?focus=lm">← 返回飞船外观</a><span>阿波罗11号</span><button id="sources-open">面板与操作依据</button></header>
  <main class="console-layout">
   <section class="instrument-area" aria-labelledby="console-title">
-   <div class="console-heading"><div><p id="craft-name">登月舱 Eagle（鹰号）</p><h1 id="console-title">DSKY（键盘显示器）操作</h1></div><nav aria-label="切换机载程序"><a href="?craft=cm" data-craft="cm">指令舱</a><a href="?craft=lm" data-craft="lm">登月舱</a></nav></div>
+   <div class="console-heading"><div><p id="craft-name">登月舱 Eagle（鹰号）</p><h1 id="console-title">DSKY（键盘显示器）操作</h1></div><nav aria-label="切换机载程序"><a href="?craft=cm" data-craft="cm">指令舱</a><a href="../landing/" data-craft="lm">登月舱</a></nav></div>
    <div class="dsky" id="dsky" tabindex="0" aria-label="DSKY键盘显示器，支持鼠标、触控和键盘输入" aria-busy="true">
     <i class="screw s1" aria-hidden="true"></i><i class="screw s2" aria-hidden="true"></i><i class="screw s3" aria-hidden="true"></i><i class="screw s4" aria-hidden="true"></i>
     <div class="dsky-display">

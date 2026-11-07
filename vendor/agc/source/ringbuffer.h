@@ -36,5 +36,6 @@ extern ringbuffer ringbuffer_in;
 extern ringbuffer ringbuffer_out;
 
 void ringbuffer_init (ringbuffer *buf);
+void reset_channel_io (void);
 int ringbuffer_put (ringbuffer* buf, unsigned char* Packet);
 int ringbuffer_get (ringbuffer* buf, unsigned char* Packet);

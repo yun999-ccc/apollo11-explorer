@@ -94,7 +94,14 @@ set_fixed (unsigned char* rom_data)
 export void
 cpu_reset ()
 {
+  reset_channel_io ();
   agc_engine_init (&State, NULL, NULL, 0);
+}
+
+export void
+set_command_module (int command_module)
+{
+  CmOrLm = command_module != 0;
 }
 
 

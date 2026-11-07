@@ -1,0 +1,112 @@
+{
+  "commit": "a4ed25511e626823f9c83b457cf9371375b82094",
+  "files": [
+    {
+      "file": "lemswitch3.png",
+      "original": "Bitmaps/lemswitch3.bmp",
+      "originalSha256": "94e467dbaefadc721b432f106adc9c63ad3ccafde9807d0ae38b5219e4c95908",
+      "pngSha256": "eb41c04343e01a7909ca652a67d82bf755f1eaa0271d3e306ff75b6d0bf9ab6d",
+      "size": [
+        102,
+        39
+      ]
+    },
+    {
+      "file": "lemswitch2.png",
+      "original": "Bitmaps/lemswitch2.bmp",
+      "originalSha256": "5772cef88c7ddc95f4b46b1df052e308a0aaa280153ce1ad841bd34f914bcd06",
+      "pngSha256": "0290d4f174f7f7e7bb105d0e69bd307fee5e376c85d46ff38f8dae5620622400",
+      "size": [
+        68,
+        39
+      ]
+    },
+    {
+      "file": "lem_switchup.png",
+      "original": "Bitmaps/lem_switchup.bmp",
+      "originalSha256": "4463de369c4d38c1331cc30dea7801c280b1125e6a90c93c824d4623d5e0619c",
+      "pngSha256": "d2e1a8d895d765274f751d4c6a5c22a69bf0727c82ac7c4aef7c079e5dd653cf",
+      "size": [
+        68,
+        29
+      ]
+    },
+    {
+      "file": "lem_threeposswitch.png",
+      "original": "Bitmaps/lem_threeposswitch.bmp",
+      "originalSha256": "5fc4beb46fab2af5bb5994152d782fbcfb47e9a3a68e40a36ab2b5f9d3ab3b9b",
+      "pngSha256": "da596daef581121ae91043791ddecbc1ed567059320495237fbd825190cc507f",
+      "size": [
+        102,
+        29
+      ]
+    },
+    {
+      "file": "LemRotationalSwitch.png",
+      "original": "Bitmaps/LemRotationalSwitch.bmp",
+      "originalSha256": "f0d4f34ca444a5e6588ca5bfe27e5283b8857e4ee3992452004db826e35554a6",
+      "pngSha256": "672517e58c774bdd02c5f588cb379599bb5b58d92bec83d3e4e97ca349c261e8",
+      "size": [
+        1008,
+        168
+      ]
+    },
+    {
+      "file": "LMAbortButton.png",
+      "original": "Bitmaps/LMAbortButton.bmp",
+      "originalSha256": "8e22d36f74f61a03cc638fb1c6c0a46ddcb69d7a1c703cf1daeaa5d6bea57fe5",
+      "pngSha256": "a2f88a19c247beb738761552e02868092d049778b68de86fc3923405afc5983f",
+      "size": [
+        327,
+        174
+      ]
+    },
+    {
+      "file": "lem_master_alarm.png",
+      "original": "Bitmaps/lem_master_alarm.bmp",
+      "originalSha256": "32bd90fc84f55e1f8cf8f329f887308ac2111ca2457ad093911936224db15cae",
+      "pngSha256": "02ee15110a5f48246ad37ec4dda32d86763a3cf8655774bbb62b7e2d56884457",
+      "size": [
+        47,
+        43
+      ]
+    },
+    {
+      "file": "Indicator.png",
+      "original": "Bitmaps/Indicator.bmp",
+      "originalSha256": "b2dddb4e6c6567ab48e7b33c9a4315370038bed0e16c0ca370fe3bd7a9c7418d",
+      "pngSha256": "a4b325bedc86da42034307e7db8847091fef65c7b03893eff458c0a04f5e5e14",
+      "size": [
+        115,
+        23
+      ]
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src_sys/toggleswitch.cpp",
+      "sha256": "63d52dc3c0aa63f0450c497927b4a03d0eb148529ec0cc38619c5a26a2e3f9f3"
+    },
+    {
+      "path": "src_sys/toggleswitch.h",
+      "sha256": "10e35c83acc54955e87ee4e38ad92fe3bfaf45fe7801062b900a4be1bf0539c7"
+    },
+    {
+      "path": "src_lm/lm_rcs.cpp",
+      "sha256": "dd74daf51f5e5f7d8c6c9e631a17a301f1294741be58f804a9b92441f9c12115"
+    },
+    {
+      "path": "src_lm/lm_aps.cpp",
+      "sha256": "db5f61b4aff706fa7a74669f23efa83fbee62f72a2c9962bc60d04c927885080"
+    },
+    {
+      "path": "src_lm/lm_scea.cpp",
+      "sha256": "db0057af696d22e6dc66ffcddac3bf14f24b58ac2c3e224a8729adf1263ec7ec"
+    },
+    {
+      "path": "src_lm/lm_dps.h",
+      "sha256": "f0d9f9709aa35e6b19d98620e3d2cb546da2ebb08afe9a131d898c330ea8b6e4"
+    }
+  ],
+  "sourceBase": "https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/"
+}

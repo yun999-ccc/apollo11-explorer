@@ -1,0 +1,47 @@
+{
+  "commit": "a4ed25511e626823f9c83b457cf9371375b82094",
+  "spriteChecks": [
+    {
+      "file": "lemswitch3.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "lemswitch2.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "lem_switchup.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "lem_threeposswitch.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "LemRotationalSwitch.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "LMAbortButton.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "lem_master_alarm.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    },
+    {
+      "file": "Indicator.png",
+      "rgbMismatchPixels": 0,
+      "onlyOriginalColorKeyTransparent": true
+    }
+  ],
+  "verifiedSourceFiles": 6,
+  "validatesSystemBehavior": false
+}

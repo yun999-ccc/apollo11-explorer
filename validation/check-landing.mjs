@@ -94,6 +94,6 @@ check('Empty propellant, bounded commands and invalid inputs', () => {
   assert.throws(() => flight.input('unknown', 1));
   return {fuelKg: flight.state.fuel, maximumUpwardRateMps: flight.state.rateCommand};
 });
-const result = {date: '2026-11-03', checks, allPassed: true, historicalFlightValidated: false, originalAgcClosedLoop: false, browserVerification: 'pending'};
+const result = {date: new Date().toISOString().slice(0,10), verifiedAt: new Date().toISOString(), checks, allPassed: true, historicalFlightValidated: false, originalAgcClosedLoop: false, browserVerification: 'pending'};
 fs.writeFileSync(new URL('../landing/validation.json', import.meta.url), JSON.stringify(result, null, 2) + '\n');
 console.log(JSON.stringify(result, null, 2));

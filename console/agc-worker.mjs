@@ -14,6 +14,10 @@ onmessage=async({data})=>{try{
   send('ready',{craft,program:ROMS[craft].file,version:cpu.version});send('display',{state:display});
  }else if(data.type==='pause'){running=false;queue=[];if(cpu)cpu.proceed(false);send('paused')}
  else if(data.type==='resume'&&cpu){running=true;last=performance.now();credit=0;send('running')}
+ else if(data.type==='autoThrottle'){
+  if(!cpu||cpu.craft!=='lm')throw new Error('LM computer not ready');
+  cpu.setAutoThrottle(data.value);send('panelSignal',{name:'autoThrottle',value:data.value});
+ }
  else if(data.type==='keys'){
   if(!cpu||!running){send('notice',{message:'先恢复模拟器运行，再输入按键。'});return}
   if(!Array.isArray(data.keys)||data.keys.some(k=>!Object.hasOwn(KEYS,k)&&!['PRO_DOWN','PRO_UP'].includes(k)))throw new Error('未知按键');

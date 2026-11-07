@@ -25,7 +25,16 @@
       "commit": "0575ea7a1231e3948bae7d2c22a6ac146da0c38d",
       "corresponding_c_source": "https://github.com/michaelfranzl/virtualagc/tree/ddc65e7bed41f1301921b934fcbaaee93db99dda/yaAGC",
       "reported_version": "2020-12-24 ddc65e7be",
-      "license": "GPL-2.0-or-later"
+      "license": "GPL-2.0-or-later",
+      "local_modifications": [
+        "Reset ring buffers before CPU initialization",
+        "Set CM/LM runtime mode explicitly",
+        "LM channel 016 rising edge requests KEYRUPT2",
+        "LM channel 014 bit 4 gates register 055 pulse output to channel 0142"
+      ],
+      "local_corresponding_source": "vendor/agc/source/",
+      "rebuild": "sh vendor/agc/build-wasm.sh /path/to/wasi-sdk-27.0 output.wasm",
+      "interface_reference": "https://github.com/orbiternassp/NASSP/tree/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo"
     },
     "flight_images": {
       "origin": "webAGC demo/agc at commit 0575ea7a1231e3948bae7d2c22a6ac146da0c38d",
@@ -47,8 +56,8 @@
   "files": [
     {
       "path": "vendor/agc/yaAGC.wasm",
-      "bytes": 132617,
-      "sha256": "a595f3ad3cc6833638b49879e2d41149a7327b1a10577828f50466d6c7747f14"
+      "bytes": 33230,
+      "sha256": "f901c3ab7a9a162ce56e76f221b4db1ef85bdbdf93f8136b98727bea47b9dbc3"
     },
     {
       "path": "assets/agc/1005025-original.pdf",

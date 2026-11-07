@@ -2373,6 +2373,17 @@ agc_engine (agc_t * State)
       State->Erasable[0][RegOPTY] = 0;
     }
 
+#ifdef WASI
+  // LM thrust drive, following the NASSP yaAGC interface. Counter 055 is
+  // consumed only while channel 014 bit 4 is enabled by the flight program.
+  int thrust = State->Erasable[0][055];
+  if (!CmOrLm && (State->InputChannel[014] & 010) && thrust != 0 && thrust != 077777)
+    {
+      ChannelOutput (State, 0142, thrust);
+      State->Erasable[0][055] = 0;
+    }
+#endif
+
   //----------------------------------------------------------------------  
   // Okay, here's the stuff that actually has to do with decoding instructions.
 

@@ -1,9 +1,13 @@
 # AGC runtime and corresponding source
 
-The unmodified `yaAGC.wasm` is the WebAssembly CPU emulator distributed by
+The `yaAGC.wasm` binary is built from the included sources. It keeps the
+flight ROMs intact and adds two LM interfaces to
 [Michael Karl Franzl's webAGC](https://github.com/michaelfranzl/webAGC/tree/0575ea7a1231e3948bae7d2c22a6ac146da0c38d).
-Its exported version is `2020-12-24 ddc65e7be`. SHA-256:
-`a595f3ad3cc6833638b49879e2d41149a7327b1a10577828f50466d6c7747f14`.
+Channel 016 raises KEYRUPT2 on a switch press. Channel 014 bit 4 gates the
+transfer of thrust pulses from register 055 to output channel 0142. These
+interfaces follow [Project Apollo NASSP](https://github.com/orbiternassp/NASSP/tree/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo).
+The exported base version is `2020-12-24 ddc65e7be`. Binary SHA-256:
+`f901c3ab7a9a162ce56e76f221b4db1ef85bdbdf93f8136b98727bea47b9dbc3`.
 
 The corresponding C implementation is Ronald S. Burkey's yaAGC with Michael Karl
 Franzl's WebAssembly entry points, at commit
@@ -12,12 +16,11 @@ The C files, headers and original build rules needed by the WASM target are
 included in `source/`. The original root build files are prefixed `root-` to
 distinguish them from `source/Makefile`, the original yaAGC-directory Makefile.
 
-The original build invokes `make WASI=yes NVER="2020-12-24 ddc65e7be"` inside
-the yaAGC source directory, using wasi-sdk at `/opt/wasi-sdk` (or the
-`WASI_SDK_PATH` override), plus `wasm-opt` and `wasm-strip`. The retained
-Makefile lists all flags and objects. The upstream prebuilt binary's exact
-toolchain versions were not recorded here; byte-identical rebuilding is not
-claimed. Platform SDK/compiler libraries are external build prerequisites.
+To rebuild the current binary, use [WASI SDK 27.0](https://github.com/WebAssembly/wasi-sdk/releases/tag/wasi-sdk-27).
+
+```sh
+sh vendor/agc/build-wasm.sh /path/to/wasi-sdk-27.0 vendor/agc/yaAGC.wasm
+```
 
 This runtime and its C source are GPL-2.0-or-later. Preserve `COPYING`, the
 copyright notices and original source. `console/` is also distributed under
@@ -43,9 +46,8 @@ The complete Comanche055 and Luminary099 source directories from that commit
 are included in `assets/agc/flight-source.zip`, without rewriting the source.
 Program/ROM SHA-256 values are checked before execution in `console/agc-core.mjs`.
 
-The new browser adapter replaces the upstream webAGC dependency on general
-WASI/filesystem packages with four bounded diagnostic WASI imports needed by
-this exact binary. It neither implements AGC instructions nor substitutes
-flight-program responses. The emulator exposes no filesystem or network to
-the historical program. No ROM bytes, erasable memory or display registers
-are patched to make the examples pass.
+The browser adapter replaces the upstream webAGC dependency on general
+WASI/filesystem packages with bounded WASI imports. The ROM produces the
+flight-program responses. The emulator has no filesystem or network access.
+The standalone validation fixture for thrust pulses starts at a documented
+ROM routine. The interactive console and landing page boot normally.

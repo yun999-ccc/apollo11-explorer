@@ -47,13 +47,9 @@
 static int CurrentChannelValues[256] = { 0 };
 static int ChannelMasks[256] = { 077777 };
 
-static int ChannelIsSetUp = 0;
-
-static void
-ChannelSetup (agc_t* State)
+void
+reset_channel_io (void)
 {
-  ChannelIsSetUp = 1;
-
   ringbuffer_init (&ringbuffer_out);
   ringbuffer_init (&ringbuffer_in);
 
@@ -71,9 +67,6 @@ ChannelSetup (agc_t* State)
 void
 ChannelOutput (agc_t* State, int Channel, int Value)
 {
-  if (!ChannelIsSetUp)
-    ChannelSetup (State);
-
   // Some output channels have purposes within the CPU, so we have to
   // account for those separately.
   if (Channel == 7)
@@ -103,9 +96,6 @@ ChannelOutput (agc_t* State, int Channel, int Value)
 int
 ChannelInput (agc_t* State)
 {
-  if (!ChannelIsSetUp)
-    ChannelSetup (State);
-
   unsigned char Packet[4];
   while (ringbuffer_get(&ringbuffer_in, Packet))
     {
@@ -137,13 +127,17 @@ ChannelInput (agc_t* State)
         }
 
       // Mask out irrelevant bits, set current bits, and write to CPU.
+      int previous = ReadIO (State, Channel);
       Value &= ChannelMasks[Channel];
-      Value |= ReadIO (State, Channel) & ~ChannelMasks[Channel];
+      Value |= previous & ~ChannelMasks[Channel];
       WriteIO (State, Channel, Value);
 
-      // If this is a keystroke from the DSKY, generate an interrupt req.
+      // The navigation panel and LM descent-rate switch share KEYRUPT2.
+      // NASSP's ApolloGuidance::SetInputChannelBit raises it on press.
       if (Channel == 015)
         State->InterruptRequests[5] = 1;
+      else if (Channel == 016 && (Value & ~previous) != 0)
+        State->InterruptRequests[6] = 1;
       // If this is on fictitious input channel 0173, then the data
       // should be placed in the INLINK counter register, and an
       // UPRUPT interrupt request should be set.
