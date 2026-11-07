@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // NASSP assets and pixel coordinates retained. Upstream sources ship in nassp/.
-import {createPanelControls} from './panel-controls.mjs';
+import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-2';
 export async function createNativeCockpit(container, moonElement) {
   const coordinates = await fetch('nassp/coordinates.json').then(response => response.json());
   const names = {MAIN: 'lem_main_panel', LEFTWINDOW: 'lem_left_window', LPDWINDOW: 'lem_lpd_window'};
@@ -247,7 +247,7 @@ export async function createNativeCockpit(container, moonElement) {
   document.querySelector('#native-fit').onclick=()=>{fit();draw();};
   document.querySelector('#native-pixels').onclick=()=>{ox=width/2-(rect[0]+rect[2]/2);oy=height/2-(rect[1]+rect[3]/2);scale=1;draw();};
   document.querySelector('#native-v35').onclick=()=>send(['VERB','3','5','ENTR']);
-  worker = new Worker(new URL('../console/agc-worker.mjs',import.meta.url),{type:'module'});
+  worker = new Worker(new URL('../console/agc-worker.mjs?v=cockpit-20261108-2',import.meta.url),{type:'module'});
   worker.onmessage=({data})=>{
     if(data.type==='ready'){ready=true;document.querySelector('#native-v35').disabled=false;document.querySelector('#native-agc-status').textContent='Luminary099（登月舱原始程序）运行中';worker.postMessage({type:'autoThrottle',value:panel.state.THRContSwitch===1});}
     if(data.type==='panelSignal'){acknowledgedThrottle=data.value;if(selectedControl==='THRContSwitch')describe(selectedControl);}

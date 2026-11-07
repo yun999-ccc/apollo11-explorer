@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {ROMS} from './agc-core.mjs';
+import {ROMS} from './agc-core.mjs?v=cockpit-20261108-2';
 import {SEGMENTS,DskyState} from './dsky.mjs';
 import paths from './glyphs.mjs';
 const $=selector=>document.querySelector(selector),$$=selector=>[...document.querySelectorAll(selector)];
@@ -52,7 +52,7 @@ $('#dsky').addEventListener('keyup',e=>{if(e.key.toLowerCase()==='p')releasePro(
 function logKey(key,cycle){const shown=key==='PRO_DOWN'?'PRO ↓':key==='PRO_UP'?'PRO ↑':key;record.keys.push({key,cycle});if(record.keys.length>2000){record.keys.shift();record.keys_truncated=true}const ol=$('#key-history');ol.querySelector('.empty')?.remove();const item=document.createElement('li');item.textContent=shown+(keyMeanings[key]?'（'+keyMeanings[key]+'）':key.startsWith('PRO_')?'（'+(key==='PRO_DOWN'?'按下继续键':'松开继续键')+'）':'');ol.append(item);while(ol.children.length>12)ol.firstElementChild.remove();const el=$$('[data-key]').find(b=>b.dataset.key===(key.startsWith('PRO_')?'PRO':key));if(el){el.classList.add('pressed');clearTimeout(el.releaseTimer);el.releaseTimer=setTimeout(()=>{if(el.dataset.key!=='PRO'||!proDown)el.classList.remove('pressed')},150)}}
 function start(){
  const current=++epoch;worker?.terminate();ready=false;running=false;proDown=false;pending=0;record.keys=[];record.channels={};record.cycles=0;record.keys_truncated=false;record.started_at=new Date().toISOString();$('#key-history').innerHTML='<li class="empty">尚未输入按键</li>';$('#runtime-error').hidden=true;$('#input-notice').textContent='';$('#cycle-count').textContent='0';$('#packet-count').textContent='0';$('#sim-time').textContent='0.000 s（秒）';$('#emulator-version').textContent='正在核对';$('#dsky').setAttribute('aria-busy','true');render(new DskyState());status('加载并校验历史程序…');
- worker=new Worker(new URL('./agc-worker.mjs?v=agc-20261028-2',import.meta.url),{type:'module'});
+ worker=new Worker(new URL('./agc-worker.mjs?v=cockpit-20261108-2',import.meta.url),{type:'module'});
  const failure=message=>{ready=false;running=false;pending=0;status('无法运行','failed');$('#dsky').setAttribute('aria-busy','false');$('#runtime-error').textContent='模拟器未能启动或继续运行：'+message+'。请点击重新启动；不会用预设动画替代程序。';$('#runtime-error').hidden=false;worker.terminate()};
  worker.onerror=e=>{if(current===epoch)failure(e.message||'工作线程载入失败')};
  worker.onmessage=({data})=>{if(current!==epoch)return;switch(data.type){

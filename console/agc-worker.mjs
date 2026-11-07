@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {createAgc,KEYS,ROMS} from './agc-core.mjs';
+import {createAgc,KEYS,ROMS} from './agc-core.mjs?v=cockpit-20261108-2';
 import {DskyState} from './dsky.mjs';
 let cpu,display,running=false,last=0,credit=0,queue=[],nextKey=0,heartbeat=0;
 const send=(type,data={})=>postMessage({type,...data});
@@ -9,7 +9,7 @@ onmessage=async({data})=>{try{
  if(data.type==='init'){
   if(cpu)throw new Error('Emulator already initialized');
   const craft=Object.hasOwn(ROMS,data.craft)?data.craft:'lm';
-  const [wasmBytes,romBytes]=await Promise.all([bytes(new URL('../vendor/agc/yaAGC.wasm',import.meta.url)),bytes(new URL('../assets/agc/'+ROMS[craft].file,import.meta.url))]);
+  const [wasmBytes,romBytes]=await Promise.all([bytes(new URL('../vendor/agc/yaAGC.wasm?v=f901c3ab7a9a162c',import.meta.url)),bytes(new URL('../assets/agc/'+ROMS[craft].file,import.meta.url))]);
   display=new DskyState();cpu=await createAgc({wasmBytes,romBytes,craft,onOutput:(c,v)=>display.accept(c,v)});running=true;last=performance.now();
   send('ready',{craft,program:ROMS[craft].file,version:cpu.version});send('display',{state:display});
  }else if(data.type==='pause'){running=false;queue=[];if(cpu)cpu.proceed(false);send('paused')}
