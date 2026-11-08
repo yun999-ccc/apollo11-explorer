@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {createNativeCockpit} from './native-cockpit.mjs?v=virtual-cabin-2';
+import {createNativeCockpit} from './native-cockpit.mjs?v=virtual-cabin-3';
 import {createFlight, FT, PARAMETERS} from './flight.mjs';
 import {groundHeight} from './terrain.mjs';
 import {createFixedClock} from '../simulation/fixed-clock.mjs';

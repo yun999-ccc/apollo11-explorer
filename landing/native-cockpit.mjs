@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-3';
 import {createDescentHelium} from './descent-helium.mjs';
-import {createCabinScene} from './cabin-scene.mjs?v=virtual-cabin-2';
+import {createCabinScene} from './cabin-scene.mjs?v=virtual-cabin-3';
 
 export async function createNativeCockpit(container) {
   async function image(name) {

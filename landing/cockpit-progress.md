@@ -6,7 +6,8 @@
 
 - 固定 NASSP 提交 `a4ed25511e626823f9c83b457cf9371375b82094`。从原始 `LM_VC.msh` 及其 34 张 DDS 材质开始，逐个与 GitHub 树中的 Git 对象哈希比对。 [原生座舱网格](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Meshes/ProjectApollo/LM_VC.msh)
 - `modeling/convert-lm-vc.py` 转换米制坐标 `(x, y, -z)` 和面方向，按材质合批静态网格，保留全部 686 个原组编号、335,729 个三角面和 66 个独立控件网格。面板图集保持原 4096 像素和无损编码，其余大图集下采样至最长边 2048 像素。材质、网格、开关枢轴与来源清单可通过 [资源清单](nassp/vc/manifest.json) 复核。
-- 完整座舱和左舷窗共用指令长眼位，着陆观察窗和 DSKY 采用上游眼位。转换时加下降级相机偏移 1.75 m，减上升级网格偏移 0.99 m。主面板近看使用居中检查眼位。左舷窗、DSKY 朝向与浏览器视野按网页构图调整。 [眼位和控件定义](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lemvc.cpp#L505) · [网格偏移](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lemmesh.cpp#L74)
+- 完整座舱和左舷窗共用指令长眼位，着陆观察窗和 DSKY 采用上游眼位。转换时加下降级相机偏移 1.75 m，减上升级网格偏移 0.99 m。主面板近看使用居中检查眼位。各预设朝向和视野按网页构图调整。着陆观察窗以 72° 纵向视野保留原网格的 0–60° 刻度。 [眼位和控件定义](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lemvc.cpp#L505) · [网格偏移](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lemmesh.cpp#L74)
+- 舱内照明是网页对原贴图与法线的近似渲染。原网格保留左窗与主仪表板之间的遮光板，对应 NASA 照片 69-H-134。月面按原工程模型的地形坡度着色，程序生成的颗粒只改变颜色，真实着陆区地形仍待配准。 [NASA 阿波罗11号图像档案](https://www.nasa.gov/wp-content/uploads/static/history/alsj/a11/images11.html)
 - 43 个面板控件支持拨动或旋转，4 个未接系统的中止／主警报按钮可查看说明。19 个 DSKY 按键可将指令送给原程序，数字、告警灯和两只下降级氦气阀反馈窗画到原三维材质坐标。侧壁与后舱设备按原网格展示，超出已接通范围的设备仍是观察对象。
 
 ## 技能试配与验收

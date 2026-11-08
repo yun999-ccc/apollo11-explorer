@@ -6,11 +6,11 @@ import {groundHeight} from './terrain.mjs';
 // Source coordinates in metres. The descent-stage eye height includes the
 // +1.75 m camera offset and subtracts the +0.99 m ascent-mesh translation.
 const views = {
-  panel: {eye: [0, 0.53, -1.12], yaw: 0, pitch: 3, fov: 66},
+  panel: {eye: [0, 0.53, -1.12], yaw: 0, pitch: 1, fov: 60},
   all: {eye: [-0.45, 0.69, -1.25], yaw: 0, pitch: -7.95581, fov: 85},
-  window: {eye: [-0.45, 0.69, -1.25], yaw: -29, pitch: -15, fov: 65},
-  lpd: {eye: [-0.58, 0.61, -1.40], yaw: 0, pitch: -30, fov: 60},
-  dsky: {eye: [0, 0.36, -1.20], yaw: 0, pitch: -48, fov: 38}
+  window: {eye: [-0.45, 0.69, -1.25], yaw: -33, pitch: -3, fov: 60},
+  lpd: {eye: [-0.58, 0.61, -1.40], yaw: -6, pitch: -30, fov: 72},
+  dsky: {eye: [0, 0.36, -1.20], yaw: 0, pitch: -48, fov: 34}
 };
 const rad = THREE.MathUtils.degToRad;
 const axisPosition = new THREE.Vector3();
@@ -32,17 +32,72 @@ async function loadModel() {
 function createLunarTerrain() {
   const geometry = new THREE.PlaneGeometry(6000, 6000, 240, 240).rotateX(-Math.PI / 2);
   const positions = geometry.attributes.position;
-  const colors = [];
   for (let i = 0; i < positions.count; i++) {
-    const x = -positions.getZ(i), y = positions.getX(i), z = groundHeight(x, y);
-    positions.setY(i, z);
-    const noise = (Math.sin(x * 0.23 + y * 0.91) * Math.sin(y * 0.13 - x * 0.17) + 1) * 0.035;
-    const shade = 0.18 + noise + Math.max(-0.06, z * 0.001);
-    colors.push(shade, shade * 0.98, shade * 0.93);
+    positions.setY(i, groundHeight(-positions.getZ(i), positions.getX(i)));
   }
   geometry.computeVertexNormals();
-  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
-  return new THREE.Mesh(geometry, new THREE.MeshBasicMaterial({vertexColors: true}));
+  const material = new THREE.ShaderMaterial({
+    vertexShader: `
+      varying vec2 groundMetres;
+      varying vec3 groundNormal;
+      void main() {
+        groundMetres = position.xz;
+        groundNormal = normal;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }`,
+    fragmentShader: `
+      varying vec2 groundMetres;
+      varying vec3 groundNormal;
+      float cellHash(vec2 cell) {
+        vec3 p = fract(cell.xyx * 0.1031);
+        p += dot(p, p.yzx + 33.33);
+        return fract((p.x + p.y) * p.z);
+      }
+      float grain(float metres) {
+        vec2 p = groundMetres / metres;
+        vec2 base = floor(p);
+        vec2 f = smoothstep(0.0, 1.0, fract(p));
+        float value = mix(mix(cellHash(base), cellHash(base + vec2(1, 0)), f.x),
+                          mix(cellHash(base + vec2(0, 1)), cellHash(base + vec2(1, 1)), f.x), f.y);
+        float footprint = max(length(dFdx(p)), length(dFdy(p)));
+        return (value - 0.5) * (1.0 - smoothstep(0.25, 1.0, footprint));
+      }
+      void main() {
+        // The craters come from groundHeight. Grain only modulates reflectance.
+        float albedo = 0.34 + 0.16 * grain(15.0) + 0.12 * grain(3.5)
+                     + 0.10 * grain(0.8) + 0.08 * grain(0.18);
+        float sun = max(0.0, dot(normalize(groundNormal), normalize(vec3(-0.85, 0.19, 0.49))));
+        gl_FragColor = vec4(vec3(1.0, 0.985, 0.95) * albedo * (0.055 + 0.92 * sun), 1.0);
+        #include <colorspace_fragment>
+      }`
+  });
+  return new THREE.Mesh(geometry, material);
+}
+
+function lightCabin(scene, model, renderer) {
+  // Keep the original maps and transparency. The soft key models cabin fill;
+  // the etched reticle keeps its independent luminance against the terrain.
+  const anisotropy = THREE.MathUtils.clamp(renderer.capabilities.getMaxAnisotropy(), 1, 8);
+  const materials = new Map();
+  model.traverse(mesh => {
+    if (!mesh.isMesh) return;
+    const original = mesh.material;
+    if (original.map) original.map.anisotropy = anisotropy;
+    if (mesh.userData.landingReticle || original.transparent) return;
+    if (!materials.has(original)) {
+      const material = new THREE.MeshLambertMaterial({
+        color: original.color, map: original.map, side: original.side,
+        alphaTest: original.alphaTest, opacity: original.opacity
+      });
+      material.userData = original.userData;
+      materials.set(original, material);
+    }
+    mesh.material = materials.get(original);
+  });
+  const ambient = new THREE.AmbientLight(0xffffff, 1.75);
+  const key = new THREE.DirectionalLight(0xfff3de, 1.05);
+  key.position.set(-1, 2, 1.7);
+  scene.add(ambient, key);
 }
 
 function createPanelAtlas(model) {
@@ -69,11 +124,11 @@ function createPanelAtlas(model) {
           '{ vec2 pixel = vMapUv * 2048.0 - ' + origin + ';',
           'if (all(greaterThanEqual(pixel, vec2(0.0))) && all(lessThan(pixel, ' + size + '))) {',
           'vec4 ink = texture2D(vcOverlay, (pixel + ' + output + ') / 256.0);',
-          'diffuseColor.rgb = mix(diffuseColor.rgb, ink.rgb, ink.a); } }'
+        'outgoingLight = mix(outgoingLight, ink.rgb, ink.a); } }'
         ].join('\n');
       });
-      shader.fragmentShader = shader.fragmentShader.replace('#include <map_fragment>',
-        '#include <map_fragment>\n' + lines.join('\n'));
+      shader.fragmentShader = shader.fragmentShader.replace('#include <opaque_fragment>',
+        lines.join('\n') + '\n#include <opaque_fragment>');
     };
     material.needsUpdate = true;
   });
@@ -84,7 +139,7 @@ function createPanelAtlas(model) {
 export async function createCabinScene(container) {
   const model = await loadModel();
   const renderer = new THREE.WebGLRenderer({antialias: true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   const canvas = renderer.domElement;
   canvas.id = 'native-panel';
@@ -95,6 +150,7 @@ export async function createCabinScene(container) {
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x020306);
   scene.add(model);
+  lightCabin(scene, model, renderer);
   const exterior = new THREE.Group();
   const ground = createLunarTerrain();
   exterior.add(ground);
