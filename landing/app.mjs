@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {createNativeCockpit} from './native-cockpit.mjs?v=cockpit-20261108-2';
+import {createNativeCockpit} from './native-cockpit.mjs?v=cockpit-20261108-3';
 import {createFlight, FT, PARAMETERS} from './flight.mjs';
 import {groundHeight} from './terrain.mjs';
 import {createLunarView} from './scene.mjs';

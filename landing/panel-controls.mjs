@@ -37,7 +37,13 @@ export function describeControl(c) {
   const feed=c.id.match(/^RCSAscFeed([12])([AB])Switch$/);
   const quad=c.id.match(/^RCSQuad([1-4])([AB])CmdEnableSwitch$/);
   const main=c.id.match(/^RCSMainSov([AB])Switch$/);
-  if(helium)d=[`${helium[1]} He REG ${helium[2]}`,`${helium[1]==='ASC'?'上升级':'下降级'}氦气调节器${helium[2]}`,['CLOSE（关闭）','CENTER（回中）','OPEN（打开）'],'保持指令后松手回中；阀门与供电回路尚未移植，不能把开关位置当作阀门已到位。'];
+  if (helium) {
+    const ascent = helium[1] === 'ASC';
+    d = [`${helium[1]} He REG ${helium[2]}`, `${ascent ? '上升级' : '下降级'}氦气调节器${helium[2]}`,
+      ['CLOSE（关闭）', 'CENTER（回中）', 'OPEN（打开）'],
+      ascent ? '发出上升级氦气调节器阀门指令，松手回中。阀门反馈尚未接入。'
+        : '上拨开阀，下拨关阀。指令回路有足够电压时动作，松手回中后保留阀位。'];
+  }
   if(feed)d=[`SYS ${feed[2]} ASC FEED ${feed[1]}`,`${feed[2]}系统上升级推进剂供给${feed[1]}`,['CLOSE（关闭）','CENTER（回中）','OPEN（打开）'],'发出推进剂供给阀指令，松手回中。阀门与电气联锁尚未移植。'];
   if(quad)d=[`SYS ${quad[2]} QUAD ${quad[1]} LGC CMD`,`${quad[2]}系统第${quad[1]}组制导指令使能`,['DISABLE（禁用）','CENTER（回中）','ENABLE（启用）'],'发出隔离阀控制指令，松手回中。阀门反馈和推进器故障逻辑尚未移植。'];
   if(main||c.id==='RCSXFeedSwitch')d=[main?`MAIN SOV SYS ${main[1]}`:'CRSFD',main?`${main[1]}系统主关断阀`:'反作用控制交叉供给',['CLOSE（关闭）','CENTER（回中）','OPEN（打开）'],'发出阀门控制指令，松手回中；阀门与供电回路尚未移植。'];

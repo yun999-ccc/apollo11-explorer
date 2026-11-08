@@ -40,7 +40,7 @@ NASSP固定版本：`a4ed25511e626823f9c83b457cf9371375b82094`。
 
 ## 尚未达到的要求
 
-1. 阀门、供电、继电器、环境控制、警报和监视仪表的完整系统模型尚未移植。开关操作成功不代表系统动作成功。
+1. 两只下降级氦气调节阀已接到独立阀门模型，详见下方。整舱供电、其余阀门、继电器、环境控制、警报和监视仪表仍待接通。
 2. 主面板绝大多数仪表仍为原图固定读数。不能用它们判断当前飞行状态。
 3. 初始开关位置使用NASSP的InitSwitches默认值；不是阿波罗11号末段下降检查配置。
 4. 原AGC、传感器、发动机与飞行动力学未形成已验证闭环；下降工程模型仍独立运行。没有可验证的P66完整任务初始快照。
@@ -52,4 +52,13 @@ NASSP固定版本：`a4ed25511e626823f9c83b457cf9371375b82094`。
 
 ## 供电与阀门的源码核对
 
-已归档固定版本的 `lm_rcs.cpp`、`lm_aps.cpp`、`lm_scea.cpp`、`lm_dps.h`，供后续移植核对。`LEMRCSValve::SwitchToggled` 和 `APSValve::SwitchToggled` 要求电源存在且电压超过源码阈值，上拨打开、下拨关闭、中位不改变阀门。RCS交叉供给还检查该系统是否具有交叉供给阀。不能把开关松手回中误作关阀，也不能在尚未接通电源模型时宣称阀门已执行。此次只核对并归档这些系统源文件，未把阀门完整系统伪装成已实现。
+已归档固定版本的 `lm_rcs.cpp`、`lm_aps.cpp`、`lm_scea.cpp`、`lm_dps.h`，供后续移植核对。`LEMRCSValve::SwitchToggled` 和 `APSValve::SwitchToggled` 要求电源存在且电压超过源码阈值，上拨打开、下拨关闭、中位不改变阀门。RCS交叉供给还检查该系统是否具有交叉供给阀。不能把开关松手回中误作关阀，也不能在尚未接通电源模型时宣称阀门已执行。其余阀门仍在核对供电和指示回路。
+
+## 下降级氦气调节阀
+
+DES He REG 1 / 2（下降级氦气调节器 1 / 2）的两只拨杆分别控制主、备用调节阀。指令回路高于 20 V 时，上拨打开、下拨关闭，回中不改变阀位。指示回路单独判定供电，掉电时反馈窗分别取上游定义的失电位置。反馈窗采用原 `Indicator.bmp` 的 23 × 23 像素帧与原始位置，按源码的每秒 4 帧行程向目标移动，网页用界面时钟推进显示。
+
+- 初始主阀打开、备用阀关闭，取自 [NASSP 下降前存档，第 15495 行附近](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Scenarios/Project%20Apollo%20-%20NASSP/Apollo%20-%20Mission%20Scenarios/Apollo%2011/Apollo%2011%20-%2010%20-%20PDI%20T-15m.scn#L15495)。网页检查采用两路 28 V 标称供电条件。母线实际电压及飞行压力尚未联动。
+- 阀门动作、阈值和独立回路来自 [DPSValve::SwitchToggled](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lm_dps.cpp#L42)、[20 V 源码阈值](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_sys/PanelSDK/PanelSDK.h#L49) 与 [lemsystems.cpp 接线](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lemsystems.cpp#L781)。
+- 反馈窗逻辑、位置与动画来自 [LEMDPSValveTalkback::GetState](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lemswitches.cpp#L1702)、[面板反馈窗定义](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lempanel.cpp#L2012) 与 [IndicatorSwitch::DrawSwitch](https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_sys/toggleswitch.cpp#L3760)。
+- `node validation/check-descent-helium.mjs` 检查双阀独立、松手保持、20 V 临界条件、指示掉电位置、动画帧及重置。

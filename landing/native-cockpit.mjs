@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 // NASSP assets and pixel coordinates retained. Upstream sources ship in nassp/.
-import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-2';
+import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-3';
+import {createDescentHelium} from './descent-helium.mjs';
 export async function createNativeCockpit(container, moonElement) {
   const coordinates = await fetch('nassp/coordinates.json').then(response => response.json());
   const names = {MAIN: 'lem_main_panel', LEFTWINDOW: 'lem_left_window', LPDWINDOW: 'lem_lpd_window'};
@@ -14,6 +15,10 @@ export async function createNativeCockpit(container, moonElement) {
   const controlData = await fetch('nassp/controls/controls.json').then(r => r.json());
   const sprites = {};
   for (const name of new Set(controlData.controls.map(c => c.sprite))) sprites[name] = await image('controls/' + name);
+  const indicator = await image('controls/Indicator');
+  const descentHelium = createDescentHelium();
+  let lastIndicatorTime = performance.now();
+  let indicatorFrame = null;
   const canvas = document.createElement('canvas');
   canvas.id = 'native-panel'; canvas.tabIndex = 0;
   canvas.setAttribute('aria-label', 'NASSP原始面板，拖动平移，滚轮缩放，点击原始DSKY按键操作');
@@ -26,8 +31,20 @@ export async function createNativeCockpit(container, moonElement) {
   const inspector = id => document.querySelector('#control-' + id);
   const panel = createPanelControls(controlData.controls, {
     onSignal(signal) { if (ready) worker.postMessage({type: signal.name, value: signal.value}); },
-    onChange(c) { if(c) describe(c.id, false); draw(); }
+    onChange(c) {
+      advanceTalkbacks();
+      if (c) {
+        descentHelium.move(c.id, panel.state[c.id]);
+        describe(c.id);
+      }
+      draw();
+    }
   });
+  function advanceTalkbacks() {
+    const now = performance.now();
+    descentHelium.advance((now - lastIndicatorTime) / 1000);
+    lastIndicatorTime = now;
+  }
   function describe(id, pin = false) {
     if (pin) pinnedControl = id;
     selectedControl = id;
@@ -35,7 +52,12 @@ export async function createNativeCockpit(container, moonElement) {
     inspector('title').textContent = `${c.english}（${c.chinese}）`;
     inspector('state').textContent = c.blocked ? '当前仅显示原图，真实按钮状态尚未建模。' : `开关位置：${c.current}。` + (c.spring ? ' 松手回中。' : ' 保持当前位置。');
     inspector('purpose').textContent = c.purpose;
-    inspector('coverage').textContent = c.blocked ? '尚未实现系统动作，本按钮暂不执行指令。' : c.systemConnected ? `AGC输入已接线${acknowledgedThrottle===Boolean(c.value)?'，已收到计算机确认':'，等待计算机确认'}；发动机与飞行闭环未接通。` : '当前实现档位操作；系统电气、阀门与仪表反馈尚未接通。';
+    const regulator = descentHelium.inspect(id);
+    if (regulator) {
+      inspector('coverage').textContent = `调节器阀门：${regulator.open ? 'OPEN（打开）' : 'CLOSED（关闭）'}。反馈窗随阀位变化。初始阀位取自 NASSP 下降前存档，指令和指示回路采用 28 V 标称供电。此阀门模型独立于下降工程模型。`;
+    } else {
+      inspector('coverage').textContent = c.blocked ? '尚未实现系统动作，本按钮暂不执行指令。' : c.systemConnected ? `AGC输入已接线${acknowledgedThrottle===Boolean(c.value)?'，已收到计算机确认':'，等待计算机确认'}；发动机与飞行闭环未接通。` : '当前实现档位操作；系统电气、阀门与仪表反馈尚未接通。';
+    }
     inspector('source').href = `https://github.com/orbiternassp/NASSP/blob/a4ed25511e626823f9c83b457cf9371375b82094/Orbitersdk/samples/ProjectApollo/src_lm/lempanel.cpp#L${c.line}`;
     inspector('source').textContent = `原始控件定义 · 第${c.line}行 ↗`;
     inspector('select').value = id;
@@ -91,6 +113,14 @@ export async function createNativeCockpit(container, moonElement) {
       }
       context.drawImage(sprites[c.sprite],sx,sy,w,h,r[0],r[1],w,h);
       if(heldControl===c.id){context.strokeStyle='#d0bb71';context.lineWidth=1/scale;context.strokeRect(r[0],r[1],w,h);}
+    }
+  }
+  function drawTalkbacks() {
+    for (const c of panel.controls) {
+      const regulator = descentHelium.inspect(c.id);
+      if (!regulator) continue;
+      const area = zone(c.area);
+      if (area) stamp(indicator, 23 * regulator.frame, 0, 23, 23, area[0] + 7, area[1] + 134);
     }
   }
   const pointers = new Map();
@@ -167,6 +197,7 @@ export async function createNativeCockpit(container, moonElement) {
     });
   }
   function draw() {
+    advanceTalkbacks();
     const ratio = canvas.width / width;
     context.setTransform(ratio, 0, 0, ratio, 0, 0);
     context.clearRect(0, 0, width, height);
@@ -176,11 +207,18 @@ export async function createNativeCockpit(container, moonElement) {
     context.translate(ox, oy); context.scale(scale, scale);
     context.drawImage(images[view], 0, 0);
     drawControls();
+    drawTalkbacks();
     drawLamps();
     drawDsky();
     if (hover && document.querySelector('#show-zones').checked) {
       context.strokeStyle = '#d0bb71'; context.lineWidth = 1.5 / scale;
       const [x1,y1,x2,y2] = hover.rect; context.strokeRect(x1,y1,x2-x1,y2-y1);
+    }
+    if (descentHelium.moving && indicatorFrame === null) {
+      indicatorFrame = requestAnimationFrame(() => {
+        indicatorFrame = null;
+        draw();
+      });
     }
   }
   function local(event) {
@@ -260,7 +298,7 @@ export async function createNativeCockpit(container, moonElement) {
   return {
     draw,
     inspectControls(){return panel.controls.map(c=>panel.inspect(c.id));},
-    resetControls(){releaseHeld();panel.reset();if(selectedControl)describe(selectedControl);},
+    resetControls(){releaseHeld();descentHelium.reset();panel.reset();if(selectedControl)describe(selectedControl);},
     setView(key) {
       if(key==='dsky'){view='MAIN';rect=[1185,1520,330,380];}
       else if(key==='window'){view='LEFTWINDOW';rect=[0,0,1920,1080];}
