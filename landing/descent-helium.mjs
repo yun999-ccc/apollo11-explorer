@@ -7,7 +7,7 @@ const regulatorDefinitions = {
   DESHeReg2Switch: {initialOpen: false, failOpen: false}
 };
 
-export function createDescentHelium({commandVoltage = 28, indicatorVoltage = 28} = {}) {
+export function createDescentHelium({commandVoltage = 28, indicatorVoltage = 28, indicatorRate = 4} = {}) {
   const valves = new Map();
   const commandPowered = commandVoltage > minDcVoltage;
   const indicatorPowered = indicatorVoltage > minDcVoltage;
@@ -38,7 +38,7 @@ export function createDescentHelium({commandVoltage = 28, indicatorVoltage = 28}
     advance(seconds) {
       for (const valve of valves.values()) {
         const displayedOpen = indicatorPowered ? valve.open : valve.failOpen;
-        const travel = 4 * seconds;
+        const travel = indicatorRate * seconds;
         valve.display = displayedOpen ? Math.min(3, valve.display + travel) : Math.max(0, valve.display - travel);
       }
     },

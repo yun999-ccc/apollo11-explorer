@@ -42,4 +42,10 @@ assert.deepEqual([frame(indicatorUnpowered, primary), frame(indicatorUnpowered, 
 model.reset();
 assert.deepEqual([state(model, primary), state(model, secondary)], [true, false]);
 assert.deepEqual([frame(model, primary), frame(model, secondary)], [3, 0]);
+const vc = createDescentHelium({indicatorRate: 64});
+vc.move(primary, 0);
+vc.advance(2 / 64);
+assert.equal(frame(vc, primary), 1);
+vc.advance(1 / 64);
+assert.equal(frame(vc, primary), 0);
 console.log('Two descent helium valves verified: independent latch, strict >20 V command threshold, separate indicator power, original frame travel, and scenario reset.');

@@ -17,3 +17,6 @@
 #control-inspector select{max-width:100%;width:100%;margin-top:6px;background:#101a20;color:#e1e6e8;padding:8px;border:1px solid #52636b;font-size:11px}
 #control-inspector details{margin-top:16px}#control-inspector summary{cursor:pointer}
 @media(max-width:950px){.cockpit-workspace{grid-template-columns:1fr}#control-inspector{max-height:none;border-left:0;border-top:1px solid #3d4b51;padding:12px 16px}#native-cockpit{height:58dvh}#control-inspector h2{margin:6px 0}#control-inspector p{margin:6px 0}}
+#native-loading{margin:0;padding:24px;color:#c9d8dd}
+#native-panel{width:100%;height:100%;display:block;outline-offset:-2px}
+#native-panel:focus-visible{outline:2px solid #e7bd67}

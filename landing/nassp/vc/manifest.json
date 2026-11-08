@@ -1,0 +1,1344 @@
+{
+  "upstream": "orbiternassp/NASSP",
+  "commit": "a4ed25511e626823f9c83b457cf9371375b82094",
+  "license": "../Project Apollo License.txt",
+  "mesh": {
+    "source": "Meshes/ProjectApollo/LM_VC.msh",
+    "sha256": "e35a6fa23562814c05c51e3b32af08540d538fcbff8421d93565b1d1a405ab83",
+    "web": "LM_VC.glb.gz",
+    "webSha256": "1037623c3e6e4304a12be714072ebc18d23d9e150c8a64648e881cfa402edaa3",
+    "groups": 686,
+    "vertices": 468775,
+    "triangles": 335729,
+    "drawBatches": 126,
+    "coordinateTransform": [
+      1,
+      1,
+      -1
+    ]
+  },
+  "textures": [
+    {
+      "source": "Textures/ProjectApollo/VC/LM_ACA.dds",
+      "sha256": "57187477a2dfd10469edb31594e5f5393ffab0a5e1184f2790742c5d1b9b6263",
+      "imageIndex": 0,
+      "webSha256": "795538e20ad91bef54a214c407f4a6bd682e7c9f19a634a3f1db09c54d31ea9b",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/LM_Interior.dds",
+      "sha256": "6cccd1f95462d3d709cbc5230c3723aee496b55ecdf0955c88e520fd423b9b26",
+      "imageIndex": 1,
+      "webSha256": "96f5dc63df8a7bccc0e50bffec4430696eac72056ea988c571af2879254ae10c",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/LMVC_2.dds",
+      "sha256": "0bae66784a7063f23ef75ccaa337c7c40c96af0f05901d9b7ec54c9867afd47e",
+      "imageIndex": 2,
+      "webSha256": "9d44b5b92b603af99c2d091acdc8f33300b4ad27869a03304402f7445bf0bb58",
+      "size": [
+        4096,
+        4096
+      ],
+      "lossless": true
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/LMVC.dds",
+      "sha256": "bc407ffca429b07ac1ea3be1579402c07e54ce2c572e9ac3d5d5fa51d837fa1a",
+      "imageIndex": 3,
+      "webSha256": "fc3e3499a3c3d6f7132faaf5e40967ec23c873b16685ee563b863c19f2adc987",
+      "size": [
+        4096,
+        4096
+      ],
+      "lossless": true
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/Armrest.dds",
+      "sha256": "4ec3dc598bbc42229af1ea6275895298ec5b49380efb772654b1ffdb9fd3834f",
+      "imageIndex": 4,
+      "webSha256": "ff25c8f8b87846b93f730b5691324aec56c958eb87748a0bb1804bc64424a698",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzECS_FrontParts.dds",
+      "sha256": "1b3fc53fa25bdb5e91296cf1fe3f8394151db7598f5d097c08b06f79ed5d8d97",
+      "imageIndex": 5,
+      "webSha256": "6d99ba73a1544fdeddf3a3333bdc24316085599581b7a65375d375f8bc07ce2b",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzBags.dds",
+      "sha256": "05d8af73d49f37f47f0ff18d4348ca821e7f269991ab492156ecb61707d53b23",
+      "imageIndex": 6,
+      "webSha256": "c650b4487b2ddce205c57d8b8127cb267641c3ba5e5e88bd503320c8c42881ea",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/CircuitBreakers.dds",
+      "sha256": "4bf5b3d3610f69a7a5f16d7ce0a84eb7935e1f07a5518ce76e65583313993bcf",
+      "imageIndex": 7,
+      "webSha256": "d9271a9dda28c4a2042a7372fe9bc845012b2baa1147c77fcd57e1372ca3a02e",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/coas.dds",
+      "sha256": "a77f27059176614d23247311297f5d7dccbca45622672d46a5f8e25df19fcf36",
+      "imageIndex": 8,
+      "webSha256": "83256cad4c982294427be473201c6a1fe3623409bfadaa5c6773c922753f168c",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/AditionalParts.dds",
+      "sha256": "c7709fe9e76cf1e98d02e9a7403df83b40773b2c5efc387b79d02006428fedda",
+      "imageIndex": 9,
+      "webSha256": "f0a6f78f4dcd276eb7485304190ba2900a41a71a4f61442d7e5c90f4fd4720ac",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzECSFrontConsole2.dds",
+      "sha256": "ac5780e06289a48c3dba6e461cecd3bce16a2f832cf716efda1668652f63976b",
+      "imageIndex": 10,
+      "webSha256": "7b8363eacfe016bb43063056e360e46c80d23da4717fafaa62cea263389da213",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/CMVCTex1.dds",
+      "sha256": "9b5520e901e01a8e9047dc0cf2d31bac856f8b5811884689a607de7af49b3aba",
+      "imageIndex": 11,
+      "webSha256": "3304e84d88b5a2444ad57bce7a88f6145411b013ab403f9a9fcbeb005065e83f",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzECS.dds",
+      "sha256": "7d11aab69269b1519c4c8533f6a258e342596b8fd63e2598a5f439b075115134",
+      "imageIndex": 12,
+      "webSha256": "9008c9809c37c93823fa6fabbbdabf4b4a317110b3b131c31f068f4ec30a7229",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzECSConnection.dds",
+      "sha256": "8a1d148eb63d2d04c25dd4540553cbc83af9cb7cbffe7cbd08a618ba507b23a6",
+      "imageIndex": 13,
+      "webSha256": "87faab696c32a6807cb4347c5ccad5799e35c899e35e5c1edf3444dd0d5f8d4d",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/FDAI_Ball_LM.dds",
+      "sha256": "d405d91e08cb99b2d806fbd7205f0fb98cee978837c6fc114f70939c9e234942",
+      "imageIndex": 14,
+      "webSha256": "dff8812d96c158aafcbe71f52f8bc0301e6b7bcafd846dbcdf3a85251226a67b",
+      "size": [
+        1800,
+        900
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/Colors.dds",
+      "sha256": "5e10d7e47c2cc3c6149018e00f2cd8226aca0fe055210a8bd1eb221573ecd49b",
+      "imageIndex": 15,
+      "webSha256": "bd407404209f378936699dd4609ee4860a9ad836839cd0db6075fe0a0cdce1ef",
+      "size": [
+        512,
+        512
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/FDAI_LM.dds",
+      "sha256": "63697f773fd8e1acc2d8798114bac3cc95c3723e483cb3cfe690d862c4069969",
+      "imageIndex": 16,
+      "webSha256": "c5c25a145dbbd963735b94d29089347a52712a69c76eefdc35eef76ecfffe4c8",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/LMASC.dds",
+      "sha256": "ba4776ca48e08f924fd75d9678809efbc2ab7f697ffd955f7b72fd0cacd32977",
+      "imageIndex": 17,
+      "webSha256": "0227aa8deb13658827c11e927a4341a084247971f1356a2217accbfa0e3916bc",
+      "size": [
+        512,
+        512
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/upperhatch_vc.dds",
+      "sha256": "4b80fc47c17b18ea599c08ebdad55f851bf53c57015553c7c7d6e034d6c5bb9f",
+      "imageIndex": 18,
+      "webSha256": "a0149d056e6133ba393d9ef4bca53458fe2da9eb41538d992af0d60410e271d0",
+      "size": [
+        1080,
+        1080
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/ForwardHatch.dds",
+      "sha256": "f39e010043ea304596cc644578858772519deaa44babbcd2133bce294a9dc540",
+      "imageIndex": 19,
+      "webSha256": "bf37edc8ae326b5811d8bc4094cacc6cda31ba606b0f928de2404d167bcf780c",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/redfoil.dds",
+      "sha256": "da28d7dd32706801bf200a81ea435e50a18c69cb2c30220d5ef3d8504717b03d",
+      "imageIndex": 20,
+      "webSha256": "6ba05f8ca2615c01d115239b5ff21c543709e72058696f819fb30b89ca97c13d",
+      "size": [
+        512,
+        512
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/LM11.dds",
+      "sha256": "432363268a1059c2b4836c1575eea1fef662cb7892fc2a838deb881ee31294c5",
+      "imageIndex": 21,
+      "webSha256": "56cc7b3618ebb0deab4988081c2382326ad90b36df4cb57f801d6314c8f8a598",
+      "size": [
+        2002,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/Ordeal.dds",
+      "sha256": "eba5407299fecf37dca5bd06446d98458334dadd39a5ae9e4da6875cbd036dbf",
+      "imageIndex": 22,
+      "webSha256": "e87a672da503e1edc20822a354d249653c4215fd9555671f9c2cc836fa6e1d8c",
+      "size": [
+        256,
+        256
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/rcs.dds",
+      "sha256": "8cd19058c2e5a6c4b8a08ff2b53514a13da0db001d8a57e5ad7c12094ec88853",
+      "imageIndex": 23,
+      "webSha256": "84702c666242c4092193617101bb54d198b32d887bb5c3e5d4a393cd60e11ff5",
+      "size": [
+        64,
+        64
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/ECS_Rotary_LMVC.dds",
+      "sha256": "83303c2168befd54d9a7011a178b0e6dd393259cc68f4834476e1461cb105c64",
+      "imageIndex": 24,
+      "webSha256": "eace808156edc88d5af97e48ace15c8b5e56b0530c9339ec9fa020c4a23a6477",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/Rotary_LM.dds",
+      "sha256": "27e01746b2d12baa33b827ce2bd8424c03de09d7ba491eb755ed4d78cc08ad86",
+      "imageIndex": 25,
+      "webSha256": "3449b3f3686f7eb0046908f0ec55bb2ccd847d3d52bda8c908d153ad4205d59c",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzPipeRegler.dds",
+      "sha256": "e00ccf2d0017a6c86e037a5d8bb36a8e7e9e7a8dda0f9fe2467b9301182324fa",
+      "imageIndex": 26,
+      "webSha256": "e5ad56831f0d82230d49d24c60181cbc0b0cfd412e7aa02a7120eff1ad092f96",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/WaterControlModule.dds",
+      "sha256": "8e30d1aa7b807ca24114b2fbbbf3fcfc2a9f777482e00e3761e636249c39f1bf",
+      "imageIndex": 27,
+      "webSha256": "64ec32c735f6cae00c589897891fc39a5db49b41fb5e06ef3191f886f0e659f9",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/Hose.dds",
+      "sha256": "6ee646af7d1bdcc65c2dd29c4c9f0b92f6e8d9d63ef3ed26fb9509baade392ba",
+      "imageIndex": 28,
+      "webSha256": "accbdf54c8ecce66c8dfd2f462a973bc30c676fe2297ba45e4a21788258fd9fa",
+      "size": [
+        171,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/HolderRahmen.dds",
+      "sha256": "9d2a93ccf0fd9114446ceb07e7d5330e564b48c98539109bfd2f57ccb0f46d41",
+      "imageIndex": 29,
+      "webSha256": "e006910fc6547f4d573adebf81bd8e26a56e358798d04e7ff611e5cde886bf9c",
+      "size": [
+        256,
+        256
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/TTCA.dds",
+      "sha256": "9a205ec54089a75e262a4edb5d88b179fb3289bf64e93e69aa955ad4b6eb4d20",
+      "imageIndex": 30,
+      "webSha256": "0684872d8d5949ca9415fddbf252c146549d3b004e1eceaaee053c6764453b44",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/UpperHatch.dds",
+      "sha256": "8c89abb844df9108071231d9ed0b9523a35bf1db7fe1e0c4c728e77aa9408ddd",
+      "imageIndex": 31,
+      "webSha256": "42346323c5a7313516bd79863c937dabb942bdd024b063bd70cf725246a23947",
+      "size": [
+        1024,
+        1024
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzMetalMantel.dds",
+      "sha256": "ded23a1b5ba52bb9cf028bbca65a74161c885af1e3c3038c12bc634004be105a",
+      "imageIndex": 32,
+      "webSha256": "fe4980d70092db5eaa7ff912fd797f032b0b8a15a0723367db5b3d6e079953ad",
+      "size": [
+        1964,
+        1965
+      ],
+      "lossless": false
+    },
+    {
+      "source": "Textures/ProjectApollo/VC/zzzNet.dds",
+      "sha256": "64b6ef59d05a2587f45bd1a2643fd30eda5a747711877faf3f51b770b8d4ba37",
+      "imageIndex": 33,
+      "webSha256": "ddc6886713b1f568764d48023a44f8aa25a543a6450c1cb95c56e1ac1264cfa8",
+      "size": [
+        2048,
+        2048
+      ],
+      "lossless": false
+    }
+  ],
+  "controls": [
+    {
+      "group": 12,
+      "kind": "abort",
+      "name": "AbortSwitch",
+      "line": 2511
+    },
+    {
+      "group": 13,
+      "kind": "abort",
+      "name": "AbortStageSwitch",
+      "line": 2517
+    },
+    {
+      "group": 537,
+      "kind": "three",
+      "name": "EngineArmSwitch",
+      "pivot": [
+        -0.344825,
+        0.321379,
+        -1.667756
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2425
+    },
+    {
+      "group": 528,
+      "kind": "two",
+      "name": "LeftXPointerSwitch",
+      "pivot": [
+        -0.24326,
+        0.666534,
+        -1.715854
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2389
+    },
+    {
+      "group": 529,
+      "kind": "two",
+      "name": "GuidContSwitch",
+      "pivot": [
+        -0.040785,
+        0.595291,
+        -1.705927
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2393
+    },
+    {
+      "group": 530,
+      "kind": "three",
+      "name": "ModeSelSwitch",
+      "pivot": [
+        -0.040025,
+        0.547691,
+        -1.699348
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2397
+    },
+    {
+      "group": 531,
+      "kind": "two",
+      "name": "AltRngMonSwitch",
+      "pivot": [
+        -0.03942,
+        0.496879,
+        -1.692121
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2401
+    },
+    {
+      "group": 281,
+      "kind": "alarm",
+      "name": "LeftMasterAlarmSwitch",
+      "line": 2529
+    },
+    {
+      "group": 526,
+      "kind": "two",
+      "name": "RateErrorMonSwitch",
+      "pivot": [
+        -0.414641,
+        0.546586,
+        -1.699172
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2381
+    },
+    {
+      "group": 527,
+      "kind": "two",
+      "name": "AttitudeMonSwitch",
+      "pivot": [
+        -0.41477,
+        0.496147,
+        -1.692049
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2385
+    },
+    {
+      "group": 540,
+      "kind": "three",
+      "name": "ASCHeReg1Switch",
+      "pivot": [
+        -0.228567,
+        0.395044,
+        -1.677975
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2437
+    },
+    {
+      "group": 542,
+      "kind": "three",
+      "name": "DESHeReg1Switch",
+      "pivot": [
+        -0.227949,
+        0.313448,
+        -1.666632
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2445
+    },
+    {
+      "group": 541,
+      "kind": "three",
+      "name": "ASCHeReg2Switch",
+      "pivot": [
+        -0.1832,
+        0.394991,
+        -1.677967
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2441
+    },
+    {
+      "group": 543,
+      "kind": "three",
+      "name": "DESHeReg2Switch",
+      "pivot": [
+        -0.182563,
+        0.313463,
+        -1.666498
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2449
+    },
+    {
+      "group": 532,
+      "kind": "two",
+      "name": "ShiftTruSwitch",
+      "pivot": [
+        -0.36135,
+        0.417043,
+        -1.681146
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2405
+    },
+    {
+      "group": 533,
+      "kind": "two",
+      "name": "RateScaleSwitch",
+      "pivot": [
+        -0.316536,
+        0.417075,
+        -1.681118
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2409
+    },
+    {
+      "group": 534,
+      "kind": "two",
+      "name": "ACAPropSwitch",
+      "pivot": [
+        -0.274721,
+        0.417141,
+        -1.681057
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2413
+    },
+    {
+      "group": 535,
+      "kind": "two",
+      "name": "THRContSwitch",
+      "pivot": [
+        -0.317088,
+        0.365357,
+        -1.673783
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2417
+    },
+    {
+      "group": 536,
+      "kind": "two",
+      "name": "MANThrotSwitch",
+      "pivot": [
+        -0.274707,
+        0.365293,
+        -1.673774
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2421
+    },
+    {
+      "group": 538,
+      "kind": "two",
+      "name": "ATTTranslSwitch",
+      "pivot": [
+        -0.30415,
+        0.321385,
+        -1.667736
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2429
+    },
+    {
+      "group": 539,
+      "kind": "two",
+      "name": "BALCPLSwitch",
+      "pivot": [
+        -0.270978,
+        0.321355,
+        -1.667717
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2433
+    },
+    {
+      "group": 544,
+      "kind": "three",
+      "name": "QTYMonSwitch",
+      "pivot": [
+        -0.148754,
+        0.376823,
+        -1.67545
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2453
+    },
+    {
+      "group": 545,
+      "kind": "three",
+      "name": "TempPressMonSwitch",
+      "pivot": [
+        -0.13168,
+        0.320759,
+        -1.667584
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2457
+    },
+    {
+      "group": 435,
+      "kind": "rotary",
+      "name": "HeliumMonRotary",
+      "pivot": [
+        -0.0721,
+        0.3602,
+        -1.673
+      ],
+      "axis": [
+        0,
+        -0.13840930450522118,
+        -0.9903751129881955
+      ],
+      "line": 2461
+    },
+    {
+      "group": 282,
+      "kind": "alarm",
+      "name": "RightMasterAlarmSwitch",
+      "line": 2723
+    },
+    {
+      "group": 562,
+      "kind": "two",
+      "name": "RightRateErrorMonSwitch",
+      "pivot": [
+        0.413899,
+        0.54629,
+        -1.69915
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2599
+    },
+    {
+      "group": 563,
+      "kind": "two",
+      "name": "RightAttitudeMonSwitch",
+      "pivot": [
+        0.413992,
+        0.495853,
+        -1.692103
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2603
+    },
+    {
+      "group": 436,
+      "kind": "rotary",
+      "name": "TempPressMonRotary",
+      "pivot": [
+        0.052,
+        0.3542,
+        -1.672
+      ],
+      "axis": [
+        0,
+        -0.13840930450522118,
+        -0.9903751129881955
+      ],
+      "line": 2607
+    },
+    {
+      "group": 561,
+      "kind": "two",
+      "name": "RightACAPropSwitch",
+      "pivot": [
+        0.17412,
+        0.361105,
+        -1.673267
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2595
+    },
+    {
+      "group": 546,
+      "kind": "three",
+      "name": "RCSAscFeed1ASwitch",
+      "pivot": [
+        0.045885,
+        0.676289,
+        -1.717328
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2535
+    },
+    {
+      "group": 547,
+      "kind": "three",
+      "name": "RCSAscFeed2ASwitch",
+      "pivot": [
+        0.088232,
+        0.676319,
+        -1.717332
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2539
+    },
+    {
+      "group": 548,
+      "kind": "three",
+      "name": "RCSAscFeed1BSwitch",
+      "pivot": [
+        0.134322,
+        0.676356,
+        -1.717329
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2543
+    },
+    {
+      "group": 549,
+      "kind": "three",
+      "name": "RCSAscFeed2BSwitch",
+      "pivot": [
+        0.17647,
+        0.676407,
+        -1.717335
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2547
+    },
+    {
+      "group": 550,
+      "kind": "three",
+      "name": "RCSQuad1ACmdEnableSwitch",
+      "pivot": [
+        0.045959,
+        0.585804,
+        -1.70468
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2551
+    },
+    {
+      "group": 551,
+      "kind": "three",
+      "name": "RCSQuad4ACmdEnableSwitch",
+      "pivot": [
+        0.088331,
+        0.585888,
+        -1.704689
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2555
+    },
+    {
+      "group": 552,
+      "kind": "three",
+      "name": "RCSQuad1BCmdEnableSwitch",
+      "pivot": [
+        0.134278,
+        0.585964,
+        -1.704702
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2559
+    },
+    {
+      "group": 553,
+      "kind": "three",
+      "name": "RCSQuad4BCmdEnableSwitch",
+      "pivot": [
+        0.176613,
+        0.585796,
+        -1.70468
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2563
+    },
+    {
+      "group": 554,
+      "kind": "three",
+      "name": "RCSQuad2ACmdEnableSwitch",
+      "pivot": [
+        0.045969,
+        0.509331,
+        -1.693991
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2567
+    },
+    {
+      "group": 555,
+      "kind": "three",
+      "name": "RCSQuad3ACmdEnableSwitch",
+      "pivot": [
+        0.088249,
+        0.509365,
+        -1.693995
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2571
+    },
+    {
+      "group": 556,
+      "kind": "three",
+      "name": "RCSQuad2BCmdEnableSwitch",
+      "pivot": [
+        0.134309,
+        0.50929,
+        -1.693981
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2575
+    },
+    {
+      "group": 557,
+      "kind": "three",
+      "name": "RCSQuad3BCmdEnableSwitch",
+      "pivot": [
+        0.176591,
+        0.509346,
+        -1.693988
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2579
+    },
+    {
+      "group": 558,
+      "kind": "three",
+      "name": "RCSXFeedSwitch",
+      "pivot": [
+        0.045998,
+        0.416488,
+        -1.681014
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2583
+    },
+    {
+      "group": 559,
+      "kind": "three",
+      "name": "RCSMainSovASwitch",
+      "pivot": [
+        0.131341,
+        0.415909,
+        -1.680932
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2587
+    },
+    {
+      "group": 560,
+      "kind": "three",
+      "name": "RCSMainSovBSwitch",
+      "pivot": [
+        0.17463,
+        0.415624,
+        -1.680883
+      ],
+      "axis": [
+        -1,
+        0,
+        0
+      ],
+      "line": 2591
+    },
+    {
+      "group": 437,
+      "kind": "rotary",
+      "name": "GlycolRotary",
+      "pivot": [
+        0.2438,
+        0.4007,
+        -1.6786
+      ],
+      "axis": [
+        0,
+        -0.13840930450522118,
+        -0.9903751129881955
+      ],
+      "line": 2611
+    },
+    {
+      "group": 438,
+      "kind": "rotary",
+      "name": "SuitFanRotary",
+      "pivot": [
+        0.2439,
+        0.3275,
+        -1.6683
+      ],
+      "axis": [
+        0,
+        -0.13840930450522118,
+        -0.9903751129881955
+      ],
+      "line": 2615
+    },
+    {
+      "group": 439,
+      "kind": "rotary",
+      "name": "QtyMonRotary",
+      "pivot": [
+        0.3568,
+        0.3643,
+        -1.6735
+      ],
+      "axis": [
+        0,
+        -0.13840930450522118,
+        -0.9903751129881955
+      ],
+      "line": 2619
+    },
+    {
+      "group": 314,
+      "kind": "key",
+      "name": "DskySwitchVerb",
+      "pivot": [
+        -0.068631,
+        0.008015,
+        -1.4369
+      ],
+      "key": "VERB",
+      "line": 2878
+    },
+    {
+      "group": 315,
+      "kind": "key",
+      "name": "DskySwitchNoun",
+      "pivot": [
+        -0.068244,
+        -0.007669,
+        -1.42117
+      ],
+      "key": "NOUN",
+      "line": 2883
+    },
+    {
+      "group": 316,
+      "kind": "key",
+      "name": "DskySwitchPlus",
+      "pivot": [
+        -0.045774,
+        0.015927,
+        -1.44483
+      ],
+      "key": "+",
+      "line": 2888
+    },
+    {
+      "group": 317,
+      "kind": "key",
+      "name": "DskySwitchMinus",
+      "pivot": [
+        -0.045737,
+        0.000295,
+        -1.4291
+      ],
+      "key": "−",
+      "line": 2893
+    },
+    {
+      "group": 318,
+      "kind": "key",
+      "name": "DskySwitchZero",
+      "pivot": [
+        -0.045635,
+        -0.01525,
+        -1.41354
+      ],
+      "key": "0",
+      "line": 2898
+    },
+    {
+      "group": 319,
+      "kind": "key",
+      "name": "DskySwitchOne",
+      "pivot": [
+        -0.023046,
+        -0.01511,
+        -1.413551
+      ],
+      "key": "1",
+      "line": 2903
+    },
+    {
+      "group": 320,
+      "kind": "key",
+      "name": "DskySwitchTwo",
+      "pivot": [
+        -0.000177,
+        -0.01511,
+        -1.413551
+      ],
+      "key": "2",
+      "line": 2908
+    },
+    {
+      "group": 321,
+      "kind": "key",
+      "name": "DskySwitchThree",
+      "pivot": [
+        0.022441,
+        -0.01511,
+        -1.413551
+      ],
+      "key": "3",
+      "line": 2913
+    },
+    {
+      "group": 322,
+      "kind": "key",
+      "name": "DskySwitchFour",
+      "pivot": [
+        -0.022966,
+        0.000311,
+        -1.429174
+      ],
+      "key": "4",
+      "line": 2918
+    },
+    {
+      "group": 323,
+      "kind": "key",
+      "name": "DskySwitchFive",
+      "pivot": [
+        -0.000208,
+        0.000311,
+        -1.429174
+      ],
+      "key": "5",
+      "line": 2923
+    },
+    {
+      "group": 324,
+      "kind": "key",
+      "name": "DskySwitchSix",
+      "pivot": [
+        0.022667,
+        0.000311,
+        -1.429174
+      ],
+      "key": "6",
+      "line": 2928
+    },
+    {
+      "group": 325,
+      "kind": "key",
+      "name": "DskySwitchSeven",
+      "pivot": [
+        -0.023022,
+        0.015839,
+        -1.444753
+      ],
+      "key": "7",
+      "line": 2933
+    },
+    {
+      "group": 326,
+      "kind": "key",
+      "name": "DskySwitchEight",
+      "pivot": [
+        -0.000197,
+        0.015839,
+        -1.444753
+      ],
+      "key": "8",
+      "line": 2938
+    },
+    {
+      "group": 327,
+      "kind": "key",
+      "name": "DskySwitchNine",
+      "pivot": [
+        0.02235,
+        0.015839,
+        -1.444753
+      ],
+      "key": "9",
+      "line": 2943
+    },
+    {
+      "group": 328,
+      "kind": "key",
+      "name": "DskySwitchClear",
+      "pivot": [
+        0.045282,
+        0.015839,
+        -1.444753
+      ],
+      "key": "CLR",
+      "line": 2948
+    },
+    {
+      "group": 329,
+      "kind": "key",
+      "name": "DskySwitchProceed",
+      "pivot": [
+        0.045019,
+        0.00018,
+        -1.428975
+      ],
+      "key": "PRO",
+      "line": 2953
+    },
+    {
+      "group": 330,
+      "kind": "key",
+      "name": "DskySwitchKeyRel",
+      "pivot": [
+        0.045087,
+        -0.015076,
+        -1.413737
+      ],
+      "key": "KEY REL",
+      "line": 2958
+    },
+    {
+      "group": 331,
+      "kind": "key",
+      "name": "DskySwitchEnter",
+      "pivot": [
+        0.067903,
+        0.007901,
+        -1.436722
+      ],
+      "key": "ENTR",
+      "line": 2963
+    },
+    {
+      "group": 332,
+      "kind": "key",
+      "name": "DskySwitchReset",
+      "pivot": [
+        0.067771,
+        -0.007522,
+        -1.421295
+      ],
+      "key": "RSET",
+      "line": 2968
+    }
+  ],
+  "sourceFiles": [
+    "Orbitersdk/samples/ProjectApollo/src_lm/lemvc.cpp",
+    "Orbitersdk/samples/ProjectApollo/src_lm/LM_VC_Resource.h",
+    "Orbitersdk/samples/ProjectApollo/src_lm/lemmesh.cpp",
+    "Orbitersdk/samples/ProjectApollo/src_lm/LEM.h"
+  ]
+}

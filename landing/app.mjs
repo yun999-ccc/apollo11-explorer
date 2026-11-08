@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {createNativeCockpit} from './native-cockpit.mjs?v=cockpit-20261108-3';
+import {createNativeCockpit} from './native-cockpit.mjs?v=virtual-cabin-2';
 import {createFlight, FT, PARAMETERS} from './flight.mjs';
 import {groundHeight} from './terrain.mjs';
-import {createLunarView} from './scene.mjs';
 import {createFixedClock} from '../simulation/fixed-clock.mjs';
 
 const $ = selector => document.querySelector(selector);
-let flight, clock, running = false, lunarView, nativeCockpit;
+let flight, clock, running = false, nativeCockpit;
 let previousFrame = performance.now(), replayEvents = null, replayIndex = 0;
-let samples = [], resultShown = false, lookDown = 28;
+let samples = [], resultShown = false;
 const fmt = (number, digits = 1) => Number(number).toFixed(digits);
 const clearance = s => Math.max(0, s.altitude - groundHeight(s.x, s.y));
 function elapsed(seconds) {
@@ -124,8 +123,8 @@ function render() {
   $('#engine-stop').disabled = !s.engine || Boolean(s.touchdown) || Boolean(replayEvents);
   for(const button of document.querySelectorAll('#rod-up,#rod-down,#quick-rate-up,#quick-rate-down,#quick-pitch-up,#quick-pitch-down,#assist,[data-control]'))button.disabled=Boolean(s.touchdown)||Boolean(replayEvents);
   $('#flight-status').textContent = s.touchdown ? '脚垫已接触月面' : replayEvents ? '操作重放中' : running ? s.assist ? '工程辅助下降' : '乘员操纵下降' : s.tick===0 ? '下降前检查 · 已暂停' : '已暂停';
-  if (lunarView && $('#cockpit').dataset.view !== 'panel') lunarView.render(s, lookDown);
-  window.apolloLanding = {state: {...s}, running, replay: Boolean(replayEvents), tick: clock.tick, terrainHeight: groundHeight(s.x, s.y), triangles: lunarView?.triangles || 0};
+  nativeCockpit?.setFlight(s);
+  window.apolloLanding = {state: {...s}, running, replay: Boolean(replayEvents), tick: clock.tick, terrainHeight: groundHeight(s.x, s.y), triangles: nativeCockpit?.inspectCamera().triangles || 0};
 }
 function animate(now) {
   const delta = Math.max(0, (now - previousFrame) / 1000);
@@ -160,10 +159,6 @@ $('#replay').onclick = () => {
   $('#start').textContent = '暂停重放';
   $('#hint').textContent = '正在从相同初始状态重放已记录的操作，当前操纵输入已锁定。';
 };
-$('#look').oninput = event => {
-  lookDown = Number(event.target.value);
-  $('#look-value').textContent = `向下${lookDown}°`;
-};
 for (const button of document.querySelectorAll('[data-control]')) button.onclick = () => control(button.dataset.control, Number(button.dataset.amount));
 for (const button of document.querySelectorAll('button[data-view]')) button.onclick = () => {
   $('#cockpit').dataset.view = button.dataset.view;
@@ -185,14 +180,6 @@ document.addEventListener('visibilitychange', () => {
     $('#hint').textContent = '页面进入后台，下降已暂停。返回后点击“继续下降”。';
   }
 });
-try { lunarView = createLunarView($('#lunar-view')); }
-catch (error) {
-  const note = document.createElement('p');
-  note.className = 'error';
-  note.textContent = '三维舷窗暂时不可用，请启用WebGL（三维图形）。仪表和操作记录仍可使用。';
-  $('#lunar-view').append(note);
-  console.error(error);
-}
 reset();
 requestAnimationFrame(animate);
 Promise.all([fetch('provenance.json').then(r => r.json()), fetch('validation.json').then(r => r.json())]).then(([sources, tests]) => {
@@ -207,12 +194,24 @@ Promise.all([fetch('provenance.json').then(r => r.json()), fetch('validation.jso
   $('#test-summary').textContent = `已通过${tests.checks.length}项自动检查，覆盖自由落体解析解、推进剂守恒、步长收敛、帧率一致性和操作重放。实际检查结果见记录。`;
 }).catch(() => { $('#test-summary').textContent = '资料报告暂未加载，请直接打开下方原始记录。'; });
 
-createNativeCockpit($('#native-cockpit'), $('#lunar-view')).then(native => {
+createNativeCockpit($('#native-cockpit')).then(native => {
   nativeCockpit=native;
-  window.apolloPanel={inspect:()=>native.inspectControls()};
-  for (const button of document.querySelectorAll('[data-native-view]')) button.onclick = () => {
-    native.setView(button.dataset.nativeView);
-    for (const other of document.querySelectorAll('[data-native-view]')) other.setAttribute('aria-pressed', String(other === button));
-  };
+  window.apolloPanel = {inspect: native.inspectControls, camera: native.inspectCamera};
+  const viewButtons = [...document.querySelectorAll('[data-native-view]')];
+  for (const button of viewButtons) {
+    button.disabled = false;
+    button.onclick = () => {
+      native.setView(button.dataset.nativeView);
+      for (const other of viewButtons) other.setAttribute('aria-pressed', String(other === button));
+    };
+  }
+  $('#native-fit').disabled = false;
   native.setView('panel');
-}).catch(error => { $('#native-note').textContent = '原始面板载入失败：' + error.message; });
+  native.setFlight(flight.state);
+  $('#native-note').textContent = '左键拖动转头，滚轮调视野，点按操作实体控件。五个视角共用座舱、开关和 AGC 状态。';
+}).catch(error => {
+  const message = '三维座舱载入失败。请刷新或检查浏览器 WebGL 支持。' + error.message;
+  $('#native-note').textContent = message;
+  $('#native-loading')?.replaceChildren(message);
+  console.error(error);
+});
