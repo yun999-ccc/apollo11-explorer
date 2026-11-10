@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {createNativeCockpit} from './native-cockpit.mjs?v=virtual-cabin-3';
+import {createNativeCockpit} from './native-cockpit.mjs?v=cabin-load-1';
 import {createFlight, FT, PARAMETERS} from './flight.mjs';
 import {groundHeight} from './terrain.mjs';
 import {createFixedClock} from '../simulation/fixed-clock.mjs';
@@ -194,8 +194,9 @@ Promise.all([fetch('provenance.json').then(r => r.json()), fetch('validation.jso
   $('#test-summary').textContent = `已通过${tests.checks.length}项自动检查，覆盖自由落体解析解、推进剂守恒、步长收敛、帧率一致性和操作重放。实际检查结果见记录。`;
 }).catch(() => { $('#test-summary').textContent = '资料报告暂未加载，请直接打开下方原始记录。'; });
 
-createNativeCockpit($('#native-cockpit')).then(native => {
-  nativeCockpit=native;
+export async function startCockpit(signal, report) {
+  const native = await createNativeCockpit($('#native-cockpit'), signal, report);
+  nativeCockpit = native;
   window.apolloPanel = {inspect: native.inspectControls, camera: native.inspectCamera};
   const viewButtons = [...document.querySelectorAll('[data-native-view]')];
   for (const button of viewButtons) {
@@ -208,10 +209,4 @@ createNativeCockpit($('#native-cockpit')).then(native => {
   $('#native-fit').disabled = false;
   native.setView('panel');
   native.setFlight(flight.state);
-  $('#native-note').textContent = '左键拖动转头，滚轮调视野，点按操作实体控件。五个视角共用座舱、开关和 AGC 状态。';
-}).catch(error => {
-  const message = '三维座舱载入失败。请刷新或检查浏览器 WebGL 支持。' + error.message;
-  $('#native-note').textContent = message;
-  $('#native-loading')?.replaceChildren(message);
-  console.error(error);
-});
+}

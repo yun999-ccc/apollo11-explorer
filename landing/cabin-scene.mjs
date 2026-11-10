@@ -21,11 +21,23 @@ const regions = [
   {source: [422, 1025], size: [23, 23], output: [24, 184]}
 ];
 
-async function loadModel() {
+export async function loadCabinModel(signal, report) {
   const directory = new URL('nassp/vc/', import.meta.url);
-  const response = await fetch(new URL('LM_VC.glb.gz?v=virtual-cabin-2', directory));
-  if (!response.ok || !response.body) throw new Error('座舱网格下载失败');
-  const data = await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+  report('正在下载 NASSP 三维座舱和原始材质…');
+  const response = await fetch(new URL('LM_VC.glb.gz?v=virtual-cabin-2', directory), {signal});
+  if (!response.ok || !response.body) throw new Error('座舱文件下载失败（HTTP ' + response.status + '）');
+  const total = Number(response.headers.get('Content-Length'));
+  const size = bytes => (bytes / 1_000_000).toFixed(1) + ' MB';
+  let received = 0;
+  const meter = new TransformStream({transform(chunk, stream) {
+    received += chunk.byteLength;
+    report('正在下载三维座舱 · ' + size(received) + (total ? ' / ' + size(total) : ''));
+    stream.enqueue(chunk);
+  }});
+  const unpacked = response.body.pipeThrough(meter).pipeThrough(new DecompressionStream('gzip'));
+  const data = await new Response(unpacked).arrayBuffer();
+  signal.throwIfAborted();
+  report('已下载座舱，正在解码网格和原始材质…');
   return (await new GLTFLoader().parseAsync(data, directory.href)).scene;
 }
 
@@ -136,16 +148,19 @@ function createPanelAtlas(model) {
   return {context, changed() { overlay.needsUpdate = true; }};
 }
 
-export async function createCabinScene(container) {
-  const model = await loadModel();
-  const renderer = new THREE.WebGLRenderer({antialias: true});
+export function createCabinScene(container, model) {
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({antialias: true});
+  } catch (error) {
+    throw new Error('无法启动 WebGL，请检查浏览器的硬件加速设置', {cause: error});
+  }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   const canvas = renderer.domElement;
   canvas.id = 'native-panel';
   canvas.tabIndex = 0;
   canvas.setAttribute('aria-label', 'NASSP 三维驾驶舱。左键拖动或用方向键转头，点击实体控件。');
-  container.replaceChildren(canvas);
 
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x020306);

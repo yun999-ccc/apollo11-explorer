@@ -1,23 +1,33 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-3';
 import {createDescentHelium} from './descent-helium.mjs';
-import {createCabinScene} from './cabin-scene.mjs?v=virtual-cabin-3';
+import {createCabinScene, loadCabinModel} from './cabin-scene.mjs?v=cabin-load-1';
 
-export async function createNativeCockpit(container) {
+export async function createNativeCockpit(container, signal, report) {
   async function image(name) {
     const value = new Image();
     value.src = new URL('nassp/' + name + '.png', import.meta.url);
-    await value.decode();
+    try {
+      await value.decode();
+    } catch (error) {
+      throw new Error('仪表图像加载失败（' + name + '）', {cause: error});
+    }
     return value;
   }
-  const [cabin, controlData, digits, display, lamps, indicator] = await Promise.all([
-    createCabinScene(container),
-    fetch(new URL('nassp/controls/controls.json', import.meta.url)).then(response => {
+  const [model, controlData, digits, display, lamps, indicator] = await Promise.all([
+    loadCabinModel(signal, report).then(model => {
+      report('座舱模型已解码，正在等候控件资料和仪表图像…');
+      return model;
+    }),
+    fetch(new URL('nassp/controls/controls.json', import.meta.url), {signal}).then(response => {
       if (!response.ok) throw new Error('控件资料下载失败');
       return response.json();
     }),
     image('digitaldisp'), image('dsky_disp'), image('dsky_lights'), image('controls/Indicator')
   ]);
+  signal.throwIfAborted();
+  report('正在初始化三维视角和实体控件…');
+  const cabin = createCabinScene(container, model);
   const {canvas} = cabin;
   const context = cabin.atlas.context;
   // IndicatorSwitch::DrawSwitchVC uses 64 frame units per simulation second.
@@ -38,7 +48,7 @@ export async function createNativeCockpit(container) {
   let lastHover = 0;
   let releaseTimer;
   const keyTimers = new Map();
-  const worker = new Worker(new URL('../console/agc-worker.mjs?v=cockpit-20261108-2', import.meta.url), {type: 'module'});
+  let worker, agcTimeout;
   const inspector = id => document.querySelector('#control-' + id);
 
   const panel = createPanelControls(controlData.controls, {
@@ -226,7 +236,7 @@ export async function createNativeCockpit(container) {
 
   function send(keys) {
     if (!ready) {
-      status.textContent = '原始 AGC 正在启动，请稍后。';
+      if (agcTimeout !== null) status.textContent = '原始 AGC 正在启动，请稍后。';
       return;
     }
     worker.postMessage({type: 'keys', keys});
@@ -328,11 +338,23 @@ export async function createNativeCockpit(container) {
   document.querySelector('#native-fit').onclick = () => cabin.setView(view);
   showZones.onchange = () => cabin.select(selectedControl, showZones.checked);
   document.querySelector('#native-v35').onclick = () => send(['VERB', '3', '5', 'ENTR']);
-  worker.onmessage = ({data}) => {
+  const agcStatus = document.querySelector('#native-agc-status');
+  const lampTest = document.querySelector('#native-v35');
+  function agcFailed(message) {
+    clearTimeout(agcTimeout);
+    agcTimeout = null;
+    worker?.terminate();
+    ready = false;
+    lampTest.disabled = true;
+    agcStatus.textContent = 'AGC 启动或运行失败';
+    status.textContent = message + '。三维座舱仍可查看，刷新可重新启动计算机。';
+  }
+  function handleAgcMessage({data}) {
     if (data.type === 'ready') {
+      clearTimeout(agcTimeout);
       ready = true;
-      document.querySelector('#native-v35').disabled = false;
-      document.querySelector('#native-agc-status').textContent = 'Luminary099（登月舱原始程序）运行中';
+      lampTest.disabled = false;
+      agcStatus.textContent = 'Luminary099（登月舱原始程序）运行中';
       worker.postMessage({type: 'autoThrottle', value: panel.state.THRContSwitch === 1});
     }
     if (data.type === 'panelSignal') {
@@ -347,13 +369,23 @@ export async function createNativeCockpit(container) {
         + data.state.registers.map(row => row.join('')).join(' / ');
       drawAtlas();
     }
-    if (data.type === 'error') {
-      status.textContent = data.message;
-      ready = false;
-    }
-  };
-  worker.postMessage({type: 'init', craft: 'lm'});
-  window.addEventListener('pagehide', () => worker.terminate());
+    if (data.type === 'error') agcFailed(data.message);
+  }
+  container.replaceChildren(canvas);
+  status.textContent = '左键拖动转头，滚轮调视野，点按操作实体控件。五个视角共用座舱、开关和 AGC 状态。';
+  agcStatus.textContent = '原始 AGC 启动中';
+  try {
+    worker = new Worker(new URL('../console/agc-worker.mjs?v=cockpit-20261108-2', import.meta.url), {type: 'module'});
+    worker.onmessage = handleAgcMessage;
+    worker.onerror = () => agcFailed('计算机程序未能载入');
+    agcTimeout = setTimeout(() => agcFailed('计算机启动超时'), 25_000);
+    worker.postMessage({type: 'init', craft: 'lm'});
+    window.addEventListener('pagehide', event => {
+      if (!event.persisted) worker.terminate();
+    });
+  } catch (error) {
+    agcFailed(error.message);
+  }
   drawAtlas();
 
   return {
