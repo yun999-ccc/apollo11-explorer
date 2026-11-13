@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-3';
 import {createDescentHelium} from './descent-helium.mjs';
-import {createCabinScene, loadCabinModel} from './cabin-scene.mjs?v=cockpit-overview-1';
+import {createCabinScene, loadCabinModel} from './cabin-scene.mjs?v=cockpit-free-view-1';
 
 export async function createNativeCockpit(container, signal, report) {
   async function image(name) {
@@ -261,7 +261,7 @@ export async function createNativeCockpit(container, signal, report) {
   }
 
   canvas.addEventListener('pointerdown', event => {
-    if (event.button !== 0 || gesture || !cabin.pointerInPanel(event.clientX, event.clientY)) return;
+    if (event.button !== 0 || gesture || view === 'dual-window') return;
     canvas.focus({preventScroll: true});
     canvas.setPointerCapture(event.pointerId);
     gesture = {id: event.pointerId, x: event.clientX, y: event.clientY, drag: false};
@@ -285,7 +285,7 @@ export async function createNativeCockpit(container, signal, report) {
     lastHover = now;
     const hit = cabin.pick(event.clientX, event.clientY, true);
     if (hit && hit.data.kind !== 'key' && hit.data.name !== selectedControl) describe(hit.data.name);
-    canvas.style.cursor = hit ? 'pointer' : cabin.pointerInPanel(event.clientX, event.clientY) ? 'grab' : 'default';
+    canvas.style.cursor = hit ? 'pointer' : view === 'dual-window' ? 'default' : 'grab';
   });
 
   canvas.addEventListener('pointerup', event => {
@@ -330,7 +330,7 @@ export async function createNativeCockpit(container, signal, report) {
     }
   });
   canvas.addEventListener('wheel', event => {
-    if (!cabin.pointerInPanel(event.clientX, event.clientY)) return;
+    if (view === 'dual-window') return;
     event.preventDefault();
     const multiplier = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 320 : 1;
     cabin.zoom(event.deltaY * multiplier);
@@ -374,16 +374,16 @@ export async function createNativeCockpit(container, signal, report) {
   }
   const windowLabels = document.createElement('div');
   windowLabels.className = 'cabin-window-labels';
-  windowLabels.append(...['左舷窗 · 指令长', '主仪表板', '右舷窗 · 登月舱驾驶员'].map(label => {
+  windowLabels.append(...['左舷窗 · 指令长', '右舷窗 · 登月舱驾驶员'].map(label => {
     const cell = document.createElement('div');
     const element = document.createElement('span');
     element.textContent = label;
     cell.append(element);
     return cell;
   }));
-  const overviewNote = '左右舷窗同步显示模拟月面。拖动中间视角可转头，点按仪表板可操作控件。';
+  const panelNote = '按住画面左右拖动看舷窗，稍向下看可见模拟月面。点按仪表板可操作控件。';
   container.replaceChildren(canvas, windowLabels, cabin.viewStatus);
-  status.textContent = overviewNote;
+  status.textContent = panelNote;
   agcStatus.textContent = '原始 AGC 启动中';
   try {
     worker = new Worker(new URL('../console/agc-worker.mjs?v=cockpit-20261108-2', import.meta.url), {type: 'module'});
@@ -414,7 +414,7 @@ export async function createNativeCockpit(container, signal, report) {
       view = name;
       cabin.setView(name);
       if (name === 'panel') {
-        status.textContent = overviewNote;
+        status.textContent = panelNote;
       } else if (name === 'dual-window') {
         status.textContent = '两扇舷窗显示同一时刻的月面。选单窗可拖动转头，按上方按钮可开始下降。';
       } else {

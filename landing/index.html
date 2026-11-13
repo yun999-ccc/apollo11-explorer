@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NASSP（阿波罗任务模拟）｜三维登月舱驾驶舱</title>
 <meta name="description" content="可拖动转头的 NASSP 三维登月舱。可切换左右舷窗、着陆观察窗和操作面板。">
-<link rel="stylesheet" href="landing.css?v=cockpit-overview-1">
+<link rel="stylesheet" href="landing.css?v=cockpit-free-view-1">
 <script type="importmap">{"imports":{"three":"../vendor/three.module.js"}}</script>
 </head>
 <body>
@@ -125,7 +125,7 @@
     cabinLoadTimer = setTimeout(() => cabinLoadFailed(new Error('此步骤超过 30 秒无进展。' + message)), 30_000);
   }
   reportCabinLoad(loadMessage.textContent);
-  import('./app.mjs?v=cockpit-overview-1')
+  import('./app.mjs?v=cockpit-free-view-1')
     .catch(error => { throw new Error('座舱网页程序未能载入，请检查网络后重试。', {cause: error}); })
     .then(({startCockpit}) => {
       cabinLoad.signal.throwIfAborted();

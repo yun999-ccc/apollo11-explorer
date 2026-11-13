@@ -197,14 +197,14 @@ export function createCabinScene(container, model) {
   let reticle, yaw = 0, pitch = 0, view, scheduled = false, tick = null;
   let nominalFov = 65;
   let width = 0, height = 0;
-  let panelFrame;
-  let renderedViews = [];
   model.traverse(mesh => {
     if (!mesh.isMesh) return;
     if (mesh.material.userData.sourceTexture && !mesh.material.map) {
       throw new Error('原始座舱材质未能解码');
     }
-    if (mesh.userData.optionalSight) mesh.visible = false;
+    // The NASSP group contains both instrument-panel glare shields.
+    const glareShields = mesh.userData.sourceGroups?.length === 1 && mesh.userData.sourceGroups[0] === 245;
+    if (mesh.userData.optionalSight || glareShields) mesh.visible = false;
     if (mesh.userData.landingReticle) reticle = mesh;
     if (mesh.userData.control) {
       const control = mesh.userData.control;
@@ -234,13 +234,17 @@ export function createCabinScene(container, model) {
     requestDraw();
   });
 
-  function renderViews() {
+  function renderComparison() {
+    const stacked = width < 700;
+    const split = Math.floor((stacked ? height : width) / 2);
+    const rectangles = stacked
+      ? [[0, split, width, height - split], [0, 0, width, split]]
+      : [[0, 0, split, height], [split, 0, width - split, height]];
     renderer.setScissorTest(true);
-    for (const {camera: viewCamera, frame} of renderedViews) {
-      const [x, y, w, h] = frame;
-      renderer.setViewport(x, height - y - h, w, h);
-      renderer.setScissor(x, height - y - h, w, h);
-      renderer.render(scene, viewCamera);
+    for (const [index, rectangle] of rectangles.entries()) {
+      renderer.setViewport(...rectangle);
+      renderer.setScissor(...rectangle);
+      renderer.render(scene, comparisonCameras[index]);
     }
     renderer.setScissorTest(false);
     renderer.setViewport(0, 0, width, height);
@@ -252,7 +256,7 @@ export function createCabinScene(container, model) {
     requestAnimationFrame(() => {
       scheduled = false;
       if (!width || !height || !viewStatus.hidden) return;
-      if (renderedViews.length) renderViews();
+      if (view === 'dual-window') renderComparison();
       else renderer.render(scene, camera);
     });
   }
@@ -277,65 +281,9 @@ export function createCabinScene(container, model) {
     activeCamera.updateProjectionMatrix();
   }
 
-  function layoutViews() {
-    if (!width || !height) return;
-    const panelStacked = width < 900;
-    const dualStacked = width < 700;
-    const halfWidth = Math.floor(width / 2);
-    let windowFrames = [];
-    panelFrame = [0, 0, width, height];
-    if (view === 'panel') {
-      if (panelStacked) {
-        const panelHeight = Math.round(height * 2 / 3);
-        panelFrame = [0, 0, width, panelHeight];
-        windowFrames = [[0, panelHeight, halfWidth, height - panelHeight],
-          [halfWidth, panelHeight, width - halfWidth, height - panelHeight]];
-      } else {
-        const side = Math.floor(width / 4);
-        panelFrame = [side, 0, width - 2 * side, height];
-        windowFrames = [[0, 0, side, height], [width - side, 0, side, height]];
-      }
-    } else if (view === 'dual-window') {
-      const halfHeight = Math.ceil(height / 2);
-      windowFrames = dualStacked
-        ? [[0, 0, width, halfHeight], [0, halfHeight, width, height - halfHeight]]
-        : [[0, 0, halfWidth, height], [halfWidth, 0, width - halfWidth, height]];
-    }
-    container.classList.toggle('is-panel-stacked', panelStacked);
-    container.classList.toggle('is-window-stacked', dualStacked);
-    camera.aspect = panelFrame[2] / panelFrame[3];
-    updateFov();
-    renderedViews = windowFrames.map((frame, index) => {
-      const preset = views[index === 0 ? 'window' : 'right-window'];
-      const windowCamera = comparisonCameras[index];
-      windowCamera.aspect = frame[2] / frame[3];
-      windowCamera.position.fromArray(preset.eye);
-      if (view === 'panel') {
-        windowCamera.fov = 65;
-        windowCamera.updateProjectionMatrix();
-      } else updateFov(windowCamera, preset.fov);
-      pointCamera(windowCamera, preset.yaw, preset.pitch);
-      return {camera: windowCamera, frame};
-    });
-    if (view === 'panel') renderedViews.push({camera, frame: panelFrame});
-  }
-
-  function pointerInPanel(x, y) {
-    if (!panelFrame || view === 'dual-window') return false;
-    const rect = canvas.getBoundingClientRect();
-    if (!rect.width || !rect.height) return false;
-    const [left, top, w, h] = panelFrame;
-    const localX = (x - rect.left) * width / rect.width - left;
-    const localY = (y - rect.top) * height / rect.height - top;
-    if (localX < 0 || localX >= w || localY < 0 || localY >= h) return false;
-    pointer.set(2 * localX / w - 1, 1 - 2 * localY / h);
-    return true;
-  }
-
   function setView(name) {
     if (!views[name] && name !== 'dual-window') return;
-    container.classList.toggle('is-panel-overview', name === 'panel');
-    container.parentElement.classList.toggle('is-panel-overview', name === 'panel');
+    container.classList.toggle('is-panel-view', name === 'panel');
     container.classList.toggle('is-window-comparison', name === 'dual-window');
     view = name;
     if (name === 'dual-window') {
@@ -359,14 +307,27 @@ export function createCabinScene(container, model) {
     if (!width || !height) return;
     renderer.setSize(width, height, false);
     renderer.setViewport(0, 0, width, height);
-    layoutViews();
+    const stacked = width < 700;
+    container.classList.toggle('is-window-stacked', stacked);
+    camera.aspect = width / height;
+    updateFov();
+    if (view === 'dual-window') {
+      for (const [index, name] of ['window', 'right-window'].entries()) {
+        const preset = views[name];
+        const comparison = comparisonCameras[index];
+        comparison.aspect = stacked ? 2 * width / height : width / (2 * height);
+        comparison.position.fromArray(preset.eye);
+        updateFov(comparison, preset.fov);
+        pointCamera(comparison, preset.yaw, preset.pitch);
+      }
+    }
     requestDraw();
   }
   new ResizeObserver(resize).observe(container);
   setView('panel');
 
   return {
-    canvas, viewStatus, atlas, requestDraw, setView, pointerInPanel,
+    canvas, viewStatus, atlas, requestDraw, setView,
     rotate(dx, dy) {
       if (view === 'dual-window') return;
       yaw = (yaw + dx * 0.25) % 360;
@@ -380,7 +341,11 @@ export function createCabinScene(container, model) {
       requestDraw();
     },
     pick(x, y, hoverOnly = false) {
-      if (!pointerInPanel(x, y)) return null;
+      if (view === 'dual-window') return null;
+      const rect = canvas.getBoundingClientRect();
+      if (!rect.width || !rect.height) return null;
+      pointer.set(2 * (x - rect.left) / rect.width - 1, 1 - 2 * (y - rect.top) / rect.height);
+      if (Math.abs(pointer.x) > 1 || Math.abs(pointer.y) > 1) return null;
       ray.setFromCamera(pointer, camera);
       if (hoverOnly && !ray.intersectObjects(clickableMeshes, false).length) return null;
       const hit = ray.intersectObjects(blockers, false)[0];
@@ -434,7 +399,7 @@ export function createCabinScene(container, model) {
     snapshot() {
       return {view, eye: camera.position.toArray(), yaw, pitch, fov: camera.fov,
         triangles: renderer.info.render.triangles, controls: controls.size, tick,
-        comparison: renderedViews.length ? comparisonCameras.map(cam => cam.position.toArray()) : null};
+        comparison: view === 'dual-window' ? comparisonCameras.map(cam => cam.position.toArray()) : null};
     },
     controlSourceLine(name) {
       return controls.get(name)?.control.line;

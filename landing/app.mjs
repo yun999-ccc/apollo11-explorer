@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
-import {createNativeCockpit} from './native-cockpit.mjs?v=cockpit-overview-1';
+import {createNativeCockpit} from './native-cockpit.mjs?v=cockpit-free-view-1';
 import {createFlight, FT, PARAMETERS} from './flight.mjs?v=mission-replay-1';
 import {groundHeight} from './terrain.mjs';
 import {LROC_TERRAIN, SCHEMATIC_TERRAIN, tranquilityHeight} from './lroc-terrain.mjs';
