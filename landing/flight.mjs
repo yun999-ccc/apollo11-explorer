@@ -26,7 +26,8 @@ export function createFlight(parameters = PARAMETERS, ground = () => 0) {
     pitch: 6, roll: 0, pitchCommand: 6, rollCommand: 0,
     rateCommand: -3 * FT, fuel: p.initialPropellant,
     thrust: (p.inertMass + p.initialPropellant) * p.gravity,
-    engine: true, contact: false, touchdown: null, assist: false
+    engine: true, contact: false, probeContactTime: null, engineShutdownTime: null,
+    touchdown: null, assist: false
   };
   const events = [];
   function input(action, value) {
@@ -36,7 +37,10 @@ export function createFlight(parameters = PARAMETERS, ground = () => 0) {
       case 'rate': s.rateCommand = clamp(s.rateCommand + value * FT, -15 * FT, 3 * FT); break;
       case 'pitch': s.pitchCommand = clamp(s.pitchCommand + value, -25, 35); break;
       case 'roll': s.rollCommand = clamp(s.rollCommand + value, -20, 20); break;
-      case 'engine': s.engine = Boolean(value); break;
+      case 'engine':
+        if (s.engine && !value) s.engineShutdownTime = s.time;
+        s.engine = Boolean(value);
+        break;
       case 'assist': s.assist = Boolean(value); break;
       default: throw new TypeError('Unknown control');
     }
@@ -76,9 +80,13 @@ export function createFlight(parameters = PARAMETERS, ground = () => 0) {
     s.fuel -= consumed; s.time += dt; s.tick++;
     // Geometric contact probe approximation, measured relative to footpad height.
     const clearance = s.altitude - ground(s.x, s.y);
-    s.contact = clearance <= 1.7;
+    const oldClearance = old.altitude - ground(old.x, old.y);
+    if (clearance <= 1.7 && s.probeContactTime === null) {
+      const fraction = oldClearance > 1.7 ? clamp((oldClearance - 1.7) / (oldClearance - clearance), 0, 1) : 0;
+      s.probeContactTime = old.time + dt * fraction;
+    }
+    s.contact = s.probeContactTime !== null;
     if (clearance <= 0) {
-      const oldClearance = old.altitude - ground(old.x, old.y);
       const fraction = clamp(oldClearance / (oldClearance - clearance), 0, 1);
       s.time = old.time + dt * fraction;
       s.x = old.x + (s.x - old.x) * fraction;

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 import {createPanelControls} from './panel-controls.mjs?v=cockpit-20261108-3';
 import {createDescentHelium} from './descent-helium.mjs';
-import {createCabinScene, loadCabinModel} from './cabin-scene.mjs?v=cabin-load-1';
+import {createCabinScene, loadCabinModel} from './cabin-scene.mjs?v=mission-replay-1';
 
 export async function createNativeCockpit(container, signal, report) {
   async function image(name) {
@@ -371,8 +371,15 @@ export async function createNativeCockpit(container, signal, report) {
     }
     if (data.type === 'error') agcFailed(data.message);
   }
-  container.replaceChildren(canvas);
-  status.textContent = '左键拖动转头，滚轮调视野，点按操作实体控件。五个视角共用座舱、开关和 AGC 状态。';
+  const windowLabels = document.createElement('div');
+  windowLabels.className = 'cabin-window-labels';
+  windowLabels.append(...['指令长 · 左舷窗', '登月舱驾驶员 · 右舷窗'].map(label => {
+    const element = document.createElement('span');
+    element.textContent = label;
+    return element;
+  }));
+  container.replaceChildren(canvas, windowLabels, cabin.viewStatus);
+  status.textContent = '左键拖动转头，滚轮调视野，点按操作实体控件。所有视角共用座舱、开关和 AGC 状态。';
   agcStatus.textContent = '原始 AGC 启动中';
   try {
     worker = new Worker(new URL('../console/agc-worker.mjs?v=cockpit-20261108-2', import.meta.url), {type: 'module'});
@@ -402,6 +409,11 @@ export async function createNativeCockpit(container, signal, report) {
       cancelGesture();
       view = name;
       cabin.setView(name);
+      if (name === 'dual-window') {
+        status.textContent = '两扇舷窗显示同一时刻的月面。选单窗可拖动转头，按上方按钮可开始下降。';
+      } else {
+        status.textContent = '左键拖动转头，滚轮调视野，点按操作实体控件。所有视角共用座舱、开关和 AGC 状态。';
+      }
     }
   };
 }

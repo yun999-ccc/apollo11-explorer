@@ -2,13 +2,15 @@
 import * as THREE from 'three';
 import {GLTFLoader} from '../vendor/GLTFLoader.js';
 import {groundHeight} from './terrain.mjs';
+import {LROC_TERRAIN, measuredTerrainMesh} from './lroc-terrain.mjs';
 
 // Source coordinates in metres. The descent-stage eye height includes the
 // +1.75 m camera offset and subtracts the +0.99 m ascent-mesh translation.
 const views = {
   panel: {eye: [0, 0.53, -1.12], yaw: 0, pitch: 1, fov: 60},
   all: {eye: [-0.45, 0.69, -1.25], yaw: 0, pitch: -7.95581, fov: 85},
-  window: {eye: [-0.45, 0.69, -1.25], yaw: -33, pitch: -3, fov: 60},
+  window: {eye: [-0.45, 0.69, -1.25], yaw: -33, pitch: -20, fov: 68},
+  'right-window': {eye: [0.45, 0.69, -1.25], yaw: 33, pitch: -20, fov: 68},
   lpd: {eye: [-0.58, 0.61, -1.40], yaw: -6, pitch: -30, fov: 72},
   dsky: {eye: [0, 0.36, -1.20], yaw: 0, pitch: -48, fov: 34}
 };
@@ -41,13 +43,25 @@ export async function loadCabinModel(signal, report) {
   return (await new GLTFLoader().parseAsync(data, directory.href)).scene;
 }
 
-function createLunarTerrain() {
+function terrainGeometry(terrainId) {
+  if (terrainId === LROC_TERRAIN) {
+    const {vertices, indices} = measuredTerrainMesh();
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    geometry.setIndex(indices);
+    geometry.computeVertexNormals();
+    return geometry;
+  }
   const geometry = new THREE.PlaneGeometry(6000, 6000, 240, 240).rotateX(-Math.PI / 2);
   const positions = geometry.attributes.position;
   for (let i = 0; i < positions.count; i++) {
     positions.setY(i, groundHeight(-positions.getZ(i), positions.getX(i)));
   }
   geometry.computeVertexNormals();
+  return geometry;
+}
+
+function createLunarTerrain() {
   const material = new THREE.ShaderMaterial({
     vertexShader: `
       varying vec2 groundMetres;
@@ -83,7 +97,7 @@ function createLunarTerrain() {
         #include <colorspace_fragment>
       }`
   });
-  return new THREE.Mesh(geometry, material);
+  return new THREE.Mesh(terrainGeometry(LROC_TERRAIN), material);
 }
 
 function lightCabin(scene, model, renderer) {
@@ -168,9 +182,12 @@ export function createCabinScene(container, model) {
   lightCabin(scene, model, renderer);
   const exterior = new THREE.Group();
   const ground = createLunarTerrain();
+  let terrainId = LROC_TERRAIN;
   exterior.add(ground);
   scene.add(exterior);
   const camera = new THREE.PerspectiveCamera(65, 1, 0.007, 8500);
+  const comparisonCameras = [new THREE.PerspectiveCamera(68, 1, 0.007, 8500),
+    new THREE.PerspectiveCamera(68, 1, 0.007, 8500)];
   const direction = new THREE.Vector3(), target = new THREE.Vector3();
   const ray = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
@@ -179,6 +196,7 @@ export function createCabinScene(container, model) {
   const clickableMeshes = [];
   let reticle, yaw = 0, pitch = 0, view, scheduled = false, tick = null;
   let nominalFov = 65;
+  let width = 0, height = 0;
   model.traverse(mesh => {
     if (!mesh.isMesh) return;
     if (mesh.material.userData.sourceTexture && !mesh.material.map) {
@@ -200,31 +218,74 @@ export function createCabinScene(container, model) {
   selection.visible = false;
   scene.add(selection);
 
+  const viewStatus = document.createElement('p');
+  viewStatus.className = 'cabin-render-status';
+  viewStatus.setAttribute('role', 'status');
+  viewStatus.hidden = true;
+  canvas.addEventListener('webglcontextlost', event => {
+    event.preventDefault();
+    viewStatus.textContent = '三维画面连接已中断，正在等待浏览器恢复。';
+    viewStatus.hidden = false;
+  });
+  canvas.addEventListener('webglcontextrestored', () => {
+    viewStatus.hidden = true;
+    requestDraw();
+  });
+
+  function renderComparison() {
+    const stacked = width < 700;
+    const split = Math.floor((stacked ? height : width) / 2);
+    const rectangles = stacked
+      ? [[0, split, width, height - split], [0, 0, width, split]]
+      : [[0, 0, split, height], [split, 0, width - split, height]];
+    renderer.setScissorTest(true);
+    for (const [index, rectangle] of rectangles.entries()) {
+      renderer.setViewport(...rectangle);
+      renderer.setScissor(...rectangle);
+      renderer.render(scene, comparisonCameras[index]);
+    }
+    renderer.setScissorTest(false);
+    renderer.setViewport(0, 0, width, height);
+  }
+
   function requestDraw() {
     if (scheduled) return;
     scheduled = true;
     requestAnimationFrame(() => {
       scheduled = false;
-      renderer.render(scene, camera);
+      if (!width || !height || !viewStatus.hidden) return;
+      if (view === 'dual-window') renderComparison();
+      else renderer.render(scene, camera);
     });
   }
-  function orient() {
-    const h = rad(yaw), v = rad(pitch);
+  function pointCamera(activeCamera, horizontal, vertical) {
+    const h = rad(horizontal), v = rad(vertical);
     direction.set(Math.sin(h) * Math.cos(v), Math.sin(v), -Math.cos(h) * Math.cos(v));
-    camera.lookAt(target.copy(camera.position).add(direction));
-    camera.updateMatrixWorld();
+    activeCamera.lookAt(target.copy(activeCamera.position).add(direction));
+    activeCamera.updateMatrixWorld();
+  }
+  function orient() {
+    pointCamera(camera, yaw, pitch);
     canvas.dataset.view = view;
     canvas.dataset.eye = camera.position.toArray().join(',');
     canvas.dataset.yaw = String(yaw);
     canvas.dataset.pitch = String(pitch);
     requestDraw();
   }
-  function updateFov() {
-    const narrowScale = Math.max(1, 1.1 / camera.aspect);
-    camera.fov = Math.min(115, THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(rad(nominalFov) / 2) * narrowScale)));
-    camera.updateProjectionMatrix();
+  function updateFov(activeCamera = camera, fov = nominalFov) {
+    const narrowScale = Math.max(1, 1.1 / activeCamera.aspect);
+    activeCamera.fov = Math.min(115, THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(rad(fov) / 2) * narrowScale)));
+    activeCamera.updateProjectionMatrix();
   }
   function setView(name) {
+    container.classList.toggle('is-window-comparison', name === 'dual-window');
+    if (name === 'dual-window') {
+      view = name;
+      canvas.dataset.view = name;
+      if (reticle) reticle.visible = false;
+      requestDraw();
+      return;
+    }
     const preset = views[name];
     if (!preset) return;
     view = name;
@@ -237,11 +298,23 @@ export function createCabinScene(container, model) {
     orient();
   }
   function resize() {
-    const {clientWidth: width, clientHeight: height} = container;
+    width = container.clientWidth;
+    height = container.clientHeight;
     if (!width || !height) return;
     renderer.setSize(width, height, false);
+    renderer.setViewport(0, 0, width, height);
+    const stacked = width < 700;
+    container.classList.toggle('is-window-stacked', stacked);
     camera.aspect = width / height;
     updateFov();
+    for (const [index, name] of ['window', 'right-window'].entries()) {
+      const preset = views[name];
+      const comparison = comparisonCameras[index];
+      comparison.aspect = stacked ? 2 * width / height : width / (2 * height);
+      comparison.position.fromArray(preset.eye);
+      updateFov(comparison, preset.fov);
+      pointCamera(comparison, preset.yaw, preset.pitch);
+    }
     requestDraw();
   }
   new ResizeObserver(resize).observe(container);
@@ -249,18 +322,21 @@ export function createCabinScene(container, model) {
   setView('panel');
 
   return {
-    canvas, atlas, requestDraw, setView,
+    canvas, viewStatus, atlas, requestDraw, setView,
     rotate(dx, dy) {
+      if (view === 'dual-window') return;
       yaw = (yaw + dx * 0.25) % 360;
       pitch = THREE.MathUtils.clamp(pitch - dy * 0.25, -89, 89);
       orient();
     },
     zoom(delta) {
+      if (view === 'dual-window') return;
       nominalFov = THREE.MathUtils.clamp(nominalFov * Math.exp(delta * 0.001), 20, 105);
       updateFov();
       requestDraw();
     },
     pick(x, y, hoverOnly = false) {
+      if (view === 'dual-window') return null;
       const rect = canvas.getBoundingClientRect();
       pointer.set((x - rect.left) * 2 / rect.width - 1, 1 - (y - rect.top) * 2 / rect.height);
       if (Math.abs(pointer.x) > 1 || Math.abs(pointer.y) > 1) return null;
@@ -300,7 +376,15 @@ export function createCabinScene(container, model) {
       requestDraw();
     },
     setFlight(state) {
-      if (state.tick === tick) return;
+      if (state.terrain !== terrainId) {
+        terrainId = state.terrain;
+        const old = ground.geometry;
+        ground.geometry = terrainGeometry(terrainId);
+        old.dispose();
+        tick = null;
+      }
+      if (state.tick === tick && state.x === ground.position.z && -state.y === ground.position.x &&
+          -state.altitude - 1.8 === ground.position.y) return;
       tick = state.tick;
       ground.position.set(-state.y, -state.altitude - 1.8, state.x);
       exterior.rotation.set(rad(state.pitch), 0, rad(-state.roll), 'YXZ');
@@ -308,7 +392,8 @@ export function createCabinScene(container, model) {
     },
     snapshot() {
       return {view, eye: camera.position.toArray(), yaw, pitch, fov: camera.fov,
-        triangles: renderer.info.render.triangles, controls: controls.size};
+        triangles: renderer.info.render.triangles, controls: controls.size, tick,
+        comparison: view === 'dual-window' ? comparisonCameras.map(cam => cam.position.toArray()) : null};
     },
     controlSourceLine(name) {
       return controls.get(name)?.control.line;
